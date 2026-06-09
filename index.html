@@ -3,95 +3,94 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Capital en Marcha | Calculadora de objetivos financieros</title>
+<title>Capital en Marcha | Herramientas para libertad financiera</title>
+
 <style>
 body {
     font-family: Arial, sans-serif;
     background: #f8fafc;
     margin: 0;
-    padding: 30px;
     color: #0f172a;
 }
 
 .contenedor {
-    max-width: 760px;
+    max-width: 1000px;
     margin: auto;
-    background: white;
-    padding: 40px;
-    border-radius: 18px;
-    box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+    padding: 40px 24px;
+}
+
+.hero {
+    text-align: center;
+    padding: 50px 20px;
 }
 
 .marca {
-    text-align: center;
-    font-weight: bold;
     color: #2563eb;
-    margin-bottom: 15px;
+    font-weight: bold;
+    margin-bottom: 16px;
 }
 
 h1 {
-    text-align: center;
-    font-size: 42px;
+    font-size: 46px;
     margin: 0;
 }
 
 .subtitulo {
-    text-align: center;
     color: #475569;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1.5;
-    margin: 20px 0 35px;
+    max-width: 720px;
+    margin: 20px auto 0;
 }
 
-label {
-    display: block;
-    margin-top: 20px;
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 26px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+.card p {
+    color: #475569;
+    line-height: 1.5;
+}
+
+.boton {
+    display: inline-block;
+    margin-top: 12px;
+    background: #2563eb;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 10px;
+    text-decoration: none;
     font-weight: bold;
 }
 
-input {
-    width: 100%;
-    padding: 14px;
-    margin-top: 6px;
-    font-size: 18px;
-    box-sizing: border-box;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
+.proximamente {
+    display: inline-block;
+    margin-top: 12px;
+    background: #e2e8f0;
+    color: #475569;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-weight: bold;
 }
 
-button {
-    width: 100%;
-    padding: 16px;
-    margin-top: 28px;
-    background: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 12px;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-.resultado {
-    margin-top: 30px;
-    background: #ecfdf5;
-    padding: 24px;
-    border-radius: 14px;
-    line-height: 1.9;
-    font-size: 18px;
-}
-
-.aviso {
-    margin-top: 20px;
-    font-size: 13px;
-    color: #64748b;
-    line-height: 1.5;
-}
-
-.seo {
-    margin-top: 35px;
-    border-top: 1px solid #e2e8f0;
-    padding-top: 25px;
-    color: #334155;
+.seccion {
+    margin-top: 50px;
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
     line-height: 1.6;
 }
 </style>
@@ -101,39 +100,64 @@ button {
 
 <div class="contenedor">
 
-<div class="marca">Capital en Marcha</div>
+<section class="hero">
+    <div class="marca">Capital en Marcha</div>
+    <h1>Herramientas para construir libertad financiera</h1>
+    <p class="subtitulo">
+        Calculadoras sencillas para visualizar tus objetivos financieros, entender el interés compuesto y planificar tu camino hacia la independencia financiera desde España.
+    </p>
+</section>
 
-<h1>¿Cuándo alcanzarás tus primeros 100.000 €?</h1>
+<section class="grid">
 
-<p class="subtitulo">
-Calcula en cuántos años podrías alcanzar 100.000 €, 250.000 €, 500.000 € y 1 millón de euros según tu patrimonio actual, tu ahorro mensual y una rentabilidad anual estimada.
-</p>
+    <div class="card">
+        <h2>🎯 Objetivos financieros</h2>
+        <p>Descubre en cuánto tiempo podrías alcanzar 100.000 €, 250.000 €, 500.000 € y 1 millón de euros.</p>
+        <a class="boton" href="#objetivos">Usar calculadora</a>
+    </div>
 
-<label>Patrimonio actual (€)</label>
-<input type="number" id="patrimonio" value="1000">
+    <div class="card">
+        <h2>🔥 Calculadora FIRE</h2>
+        <p>Calcula cuánto dinero necesitarías para alcanzar la independencia financiera usando la regla del 4%.</p>
+        <span class="proximamente">Próximamente</span>
+    </div>
 
-<label>Ahorro mensual (€)</label>
-<input type="number" id="ahorro" value="300">
+    <div class="card">
+        <h2>📈 Interés compuesto</h2>
+        <p>Simula cómo puede crecer tu patrimonio con aportaciones periódicas y rentabilidad anual estimada.</p>
+        <span class="proximamente">Próximamente</span>
+    </div>
 
-<label>Rentabilidad anual esperada (%)</label>
-<input type="number" id="rentabilidad" value="8">
+    <div class="card">
+        <h2>💸 Ahorro mensual necesario</h2>
+        <p>Calcula cuánto tendrías que ahorrar o invertir cada mes para alcanzar un objetivo concreto.</p>
+        <span class="proximamente">Próximamente</span>
+    </div>
 
-<button onclick="calcular()">Calcular mi camino</button>
+</section>
 
-<div class="resultado" id="resultado">
-Introduce tus datos y pulsa calcular.
-</div>
+<section class="seccion" id="objetivos">
+    <h2>Calculadora de objetivos financieros</h2>
 
-<p class="aviso">
-Esta herramienta ofrece una estimación orientativa basada en los datos introducidos. No constituye asesoramiento financiero ni garantiza resultados futuros.
-</p>
+    <label>Patrimonio actual (€)</label><br>
+    <input type="number" id="patrimonio" value="1000"><br><br>
 
-<div class="seo">
-<h2>Calculadora de objetivos financieros</h2>
-<p>
-Capital en Marcha te ayuda a estimar cuánto tiempo podrías tardar en alcanzar diferentes objetivos financieros. Puedes usar esta calculadora para visualizar el impacto del ahorro mensual, la rentabilidad anual y el interés compuesto a largo plazo.
-</p>
-</div>
+    <label>Ahorro mensual (€)</label><br>
+    <input type="number" id="ahorro" value="300"><br><br>
+
+    <label>Rentabilidad anual esperada (%)</label><br>
+    <input type="number" id="rentabilidad" value="8"><br><br>
+
+    <button class="boton" onclick="calcular()">Calcular mi camino</button>
+
+    <div id="resultado" style="margin-top:25px; background:#ecfdf5; padding:20px; border-radius:12px;">
+        Introduce tus datos y pulsa calcular.
+    </div>
+
+    <p style="font-size:13px; color:#64748b;">
+        Esta herramienta ofrece una estimación orientativa. No constituye asesoramiento financiero ni garantiza resultados futuros.
+    </p>
+</section>
 
 </div>
 
