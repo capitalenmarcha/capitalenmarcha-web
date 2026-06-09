@@ -74,6 +74,8 @@ h1 {
     border-radius: 10px;
     text-decoration: none;
     font-weight: bold;
+    border: none;
+    cursor: pointer;
 }
 
 .proximamente {
@@ -92,6 +94,16 @@ h1 {
     padding: 30px;
     border-radius: 16px;
     line-height: 1.6;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
 }
 </style>
 </head>
@@ -113,13 +125,13 @@ h1 {
     <div class="card">
         <h2>🎯 Objetivos financieros</h2>
         <p>Descubre en cuánto tiempo podrías alcanzar 100.000 €, 250.000 €, 500.000 € y 1 millón de euros.</p>
-        <a class="boton" href="#objetivos">Usar calculadora</a>
+        <a class="boton" href="#objetivos">Calcular mis objetivos</a>
     </div>
 
     <div class="card">
         <h2>🔥 Calculadora FIRE</h2>
         <p>Calcula cuánto dinero necesitarías para alcanzar la independencia financiera usando la regla del 4%.</p>
-        <span class="proximamente">Próximamente</span>
+        <a class="boton" href="fire.html">Usar calculadora</a>
     </div>
 
     <div class="card">
@@ -197,4 +209,4 @@ function calcular() {
 </script>
 
 </body>
-</html>    
+</html>
