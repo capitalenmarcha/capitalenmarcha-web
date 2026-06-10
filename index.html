@@ -132,8 +132,7 @@ input {
     <div class="card">
         <h2>🎯 Objetivos financieros</h2>
         <p>Descubre en cuánto tiempo podrías alcanzar 100.000 €, 250.000 €, 500.000 € y 1 millón de euros.</p>
-        <a class="boton" href="#objetivos">Calcular mis objetivos</a>
-    </div>
+<a class="boton" href="objetivos-financieros.html">Usar calculadora</a>    </div>
 
     <div class="card">
         <h2>🔥 Calculadora FIRE</h2>
@@ -177,65 +176,11 @@ input {
 </div>
 </section>
 
-<section class="seccion" id="objetivos">
-    <h2>Calculadora de objetivos financieros</h2>
 
-    <label>Patrimonio actual (€)</label><br>
-    <input type="number" id="patrimonio" value="1000"><br><br>
-
-    <label>Ahorro mensual (€)</label><br>
-    <input type="number" id="ahorro" value="300"><br><br>
-
-    <label>Rentabilidad anual esperada (%)</label><br>
-    <input type="number" id="rentabilidad" value="8"><br><br>
-
-    <button class="boton" onclick="calcular()">Calcular mi camino</button>
-
-    <div id="resultado" style="margin-top:25px; background:#ecfdf5; padding:20px; border-radius:12px;">
-        Introduce tus datos y pulsa calcular.
-    </div>
-
-    <p style="font-size:13px; color:#64748b;">
-        Esta herramienta ofrece una estimación orientativa. No constituye asesoramiento financiero ni garantiza resultados futuros.
-    </p>
-</section>
 
 </div>
 
-<script>
-function calcular() {
-    let patrimonio = Number(document.getElementById("patrimonio").value);
-    let ahorro = Number(document.getElementById("ahorro").value);
-    let rentabilidad = Number(document.getElementById("rentabilidad").value);
 
-    let objetivos = [100000, 250000, 500000, 1000000];
-    let resultado = "";
-
-    objetivos.forEach(objetivo => {
-        let total = patrimonio;
-        let meses = 0;
-
-        while (total < objetivo && meses < 1000 * 12) {
-            total = total * (1 + rentabilidad / 100 / 12);
-            total += ahorro;
-            meses++;
-        }
-
-        let anos = Math.floor(meses / 12);
-        let mesesRestantes = meses % 12;
-
-        resultado += "🎯 <strong>" + objetivo.toLocaleString("es-ES") + " €</strong> → ";
-
-        if (meses >= 1000 * 12) {
-            resultado += "No alcanzado con estos datos<br>";
-        } else {
-            resultado += anos + " años y " + mesesRestantes + " meses<br>";
-        }
-    });
-
-    document.getElementById("resultado").innerHTML = resultado;
-}
-</script>
 
 </body>
 </html>
