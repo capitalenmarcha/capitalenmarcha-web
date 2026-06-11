@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de jubilación | Capital en Marcha</title>
+
+<style>
+body{font-family:Arial,sans-serif;background:#f8fafc;margin:0;color:#0f172a;}
+.container{max-width:820px;margin:50px auto;background:white;padding:40px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,0.08);}
+.marca{text-align:center;color:#2563eb;font-weight:bold;margin-bottom:15px;}
+h1{text-align:center;}
+.sub{text-align:center;color:#64748b;line-height:1.5;}
+label{display:block;margin-top:20px;margin-bottom:8px;font-weight:bold;}
+input{width:100%;padding:14px;font-size:18px;border:1px solid #cbd5e1;border-radius:10px;box-sizing:border-box;}
+button{width:100%;margin-top:30px;padding:16px;border:none;border-radius:12px;background:#2563eb;color:white;font-size:18px;cursor:pointer;}
+.resultado{margin-top:30px;padding:25px;background:#ecfdf5;border-radius:12px;line-height:1.8;font-size:17px;}
+.aviso{margin-top:20px;font-size:13px;color:#64748b;line-height:1.5;}
+a{color:#2563eb;text-decoration:none;font-weight:bold;}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="marca">Capital en Marcha</div>
+
+<h1>👴 Calculadora de jubilación</h1>
+
+<p class="sub">
+Estima cuánto patrimonio podrías acumular hasta tu jubilación según tu edad actual, tus aportaciones mensuales y una rentabilidad anual esperada.
+</p>
+
+<label>Edad actual</label>
+<input type="number" id="edadActual" value="30">
+
+<label>Edad de jubilación</label>
+<input type="number" id="edadJubilacion" value="67">
+
+<label>Patrimonio actual (€)</label>
+<input type="number" id="patrimonio" value="10000">
+
+<label>Aportación mensual (€)</label>
+<input type="number" id="aportacion" value="300">
+
+<label>Rentabilidad anual esperada (%)</label>
+<input type="number" id="rentabilidad" value="7">
+
+<button onclick="calcularJubilacion()">Calcular jubilación</button>
+
+<div class="resultado" id="resultado">
+Introduce tus datos y pulsa calcular.
+</div>
+
+<p class="aviso">
+Esta herramienta ofrece una estimación orientativa. No tiene en cuenta impuestos, inflación, pensión pública ni cambios futuros en ingresos o gastos.
+</p>
+
+<br>
+
+<a href="index.html">← Volver a Capital en Marcha</a>
+
+</div>
+
+<script>
+function calcularJubilacion() {
+    let edadActual = Number(document.getElementById("edadActual").value);
+    let edadJubilacion = Number(document.getElementById("edadJubilacion").value);
+    let patrimonio = Number(document.getElementById("patrimonio").value);
+    let aportacion = Number(document.getElementById("aportacion").value);
+    let rentabilidad = Number(document.getElementById("rentabilidad").value) / 100;
+
+    let anos = edadJubilacion - edadActual;
+
+    if (anos <= 0) {
+        document.getElementById("resultado").innerHTML =
+            "⚠️ La edad de jubilación debe ser mayor que la edad actual.";
+        return;
+    }
+
+    let meses = anos * 12;
+    let rentabilidadMensual = rentabilidad / 12;
+    let capitalFinal = patrimonio;
+
+    for (let i = 0; i < meses; i++) {
+        capitalFinal = capitalFinal * (1 + rentabilidadMensual) + aportacion;
+    }
+
+    let totalAportado = patrimonio + (aportacion * meses);
+    let ganancias = capitalFinal - totalAportado;
+
+    document.getElementById("resultado").innerHTML =
+        "<h3>Resultado estimado</h3>" +
+        "⏳ <strong>Años hasta la jubilación:</strong> " + anos + " años<br>" +
+        "📥 <strong>Total aportado:</strong> " + totalAportado.toLocaleString("es-ES", {maximumFractionDigits: 0}) + " €<br>" +
+        "📈 <strong>Capital estimado al jubilarte:</strong> " + capitalFinal.toLocaleString("es-ES", {maximumFractionDigits: 0}) + " €<br>" +
+        "🚀 <strong>Ganancias estimadas:</strong> " + ganancias.toLocaleString("es-ES", {maximumFractionDigits: 0}) + " €";
+}
+</script>
+
+</body>
+</html>
