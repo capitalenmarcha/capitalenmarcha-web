@@ -41,6 +41,8 @@ Calcula cuánto patrimonio necesitas para alcanzar la independencia financiera y
 <input type="number" id="aportacion" value="500">
 
 <label>Gastos anuales (€)</label>
+    <label>Tasa de retirada segura (%)</label>
+<input type="number" id="retirada" value="4" step="0.1">
 <input type="number" id="gastos" value="25000">
 
 <label>Rentabilidad anual esperada (%)</label>
@@ -69,7 +71,9 @@ function calcularFireAvanzado() {
     let gastos = Number(document.getElementById("gastos").value);
     let rentabilidad = Number(document.getElementById("rentabilidad").value) / 100;
 
-    let objetivoFire = gastos * 25;
+let retirada = Number(document.getElementById("retirada").value);
+
+let objetivoFire = gastos / (retirada / 100);
     let patrimonioActual = patrimonio;
     let meses = 0;
     let rentabilidadMensual = rentabilidad / 12;
@@ -111,6 +115,7 @@ function calcularFireAvanzado() {
         "📊 <strong>Patrimonio actual:</strong> " + patrimonioActual.toLocaleString("es-ES", {maximumFractionDigits: 0}) + " €<br>" +
         "💸 <strong>Aportación mensual:</strong> " + aportacion.toLocaleString("es-ES", {maximumFractionDigits: 0}) + " €<br>" +
         "📈 <strong>Rentabilidad estimada:</strong> " + (rentabilidad * 100).toLocaleString("es-ES", {maximumFractionDigits: 1}) + "% anual<br><br>" +
+        "🏦 <strong>Tasa de retirada:</strong> " + retirada.toLocaleString("es-ES", {maximumFractionDigits: 1}) + "%<br>" +
         "⏳ <strong>Tiempo estimado hasta FIRE:</strong> " + tiempoTexto + "<br>" +
         "📅 <strong>Fecha estimada:</strong> " + fechaTexto + "<br><br>" +
         "🎯 <strong>Progreso actual hacia FIRE:</strong> " + progreso.toLocaleString("es-ES", {maximumFractionDigits: 1}) + "%<br>" +
