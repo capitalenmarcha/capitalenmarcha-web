@@ -1,361 +1,278 @@
 <!DOCTYPE html>
 <html lang="es">
-    <!-- Google tag (gtag.js) -->
+<head>
+
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LEKXT80FP0"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-LEKXT80FP0');
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-LEKXT80FP0');
 </script>
-<head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Capital en Marcha | Herramientas para libertad financiera</title>
+<meta name="description" content="Calculadoras, guías y artículos para aprender a invertir, entender el interés compuesto y construir libertad financiera.">
 
 <style>
-body {
-    font-family: Arial, sans-serif;
-    background: #f8fafc;
-    margin: 0;
-    color: #0f172a;
-}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f8fbff;color:#0f172a}
+a{text-decoration:none;color:inherit}
+.header{height:78px;background:white;display:flex;align-items:center;justify-content:space-between;padding:0 56px;box-shadow:0 2px 14px rgba(15,23,42,.08);position:sticky;top:0;z-index:10}
+.logo{font-size:30px;font-weight:800;color:#0f172a;display:flex;align-items:center;gap:10px}
+.logo span{color:#2563eb}
+.nav{display:flex;gap:34px;font-weight:700}
+.nav a{color:#0f172a}
+.nav a.active{color:#2563eb;border-bottom:3px solid #2563eb;padding-bottom:26px}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:70px 70px 45px}
+.hero h1{font-size:52px;line-height:1.05;margin:0 0 20px}
+.hero h1 span{color:#2563eb}
+.hero p{font-size:21px;line-height:1.5;color:#475569;max-width:680px}
+.buttons{display:flex;gap:16px;margin-top:28px}
+.btn{padding:16px 26px;border-radius:9px;font-size:18px;font-weight:800;display:inline-block}
+.btn.primary{background:#2563eb;color:white}
+.btn.secondary{border:1.5px solid #2563eb;color:#2563eb;background:white}
+.hero-art{height:260px;display:flex;align-items:center;justify-content:center}
+.chart{width:420px;height:240px;background:linear-gradient(135deg,#eff6ff,#ffffff);border-radius:45% 55% 45% 55%;position:relative}
+.bar{position:absolute;bottom:45px;width:50px;background:#2563eb;border-radius:6px 6px 0 0}
+.b1{height:55px;left:95px}.b2{height:90px;left:160px}.b3{height:130px;left:225px}.b4{height:180px;left:290px}
+.arrow{position:absolute;left:100px;top:40px;font-size:140px;color:#2563eb;transform:rotate(-18deg)}
+.leaf{position:absolute;right:25px;bottom:38px;font-size:95px}
+.section{padding:25px 70px}
+.section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+.section h2{font-size:28px;margin:0}
+.section-head a{color:#2563eb;font-weight:800}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:22px}
+.card{background:white;border:1px solid #e2e8f0;border-radius:12px;padding:24px;box-shadow:0 8px 22px rgba(15,23,42,.06);transition:.2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(15,23,42,.10)}
+.icon{font-size:34px;color:#2563eb;margin-bottom:18px}
+.card h3{font-size:20px;margin:0 0 12px}
+.card p{color:#475569;line-height:1.55;margin:0}
+.article-card{padding:0;overflow:hidden}
+.thumb{height:115px;background:linear-gradient(135deg,#dbeafe,#bbf7d0);display:flex;align-items:center;justify-content:center;font-size:48px}
+.article-card .content{padding:20px}
+.quick{margin:35px 70px 60px;background:#eff6ff;border:1px solid #dbeafe;border-radius:12px;display:grid;grid-template-columns:repeat(5,1fr);overflow:hidden}
+.quick a{padding:20px;text-align:center;font-weight:800;color:#2563eb;border-right:1px solid #bfdbfe}
+.quick a:last-child{border-right:none}
+.more-sections{padding:10px 70px 60px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.listbox{background:white;border:1px solid #e2e8f0;border-radius:14px;padding:24px}
+.listbox h2{font-size:24px;margin-top:0}
+.listbox a{display:block;color:#2563eb;font-weight:700;margin:12px 0}
+.footer{text-align:center;padding:35px;color:#64748b}
 
-.contenedor {
-    max-width: 1000px;
-    margin: auto;
-    padding: 40px 24px;
-}
-
-.hero {
-    text-align: center;
-    padding: 50px 20px;
-}
-
-.marca {
-    color: #2563eb;
-    font-weight: bold;
-    margin-bottom: 16px;
-}
-
-h1 {
-    font-size: 46px;
-    margin: 0;
-}
-
-.subtitulo {
-    color: #475569;
-    font-size: 20px;
-    line-height: 1.5;
-    max-width: 720px;
-    margin: 20px auto 0;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-}
-
-.card {
-    background: white;
-    padding: 26px;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.07);
-}
-
-.card h2 {
-    margin-top: 0;
-}
-
-.card p {
-    color: #475569;
-    line-height: 1.5;
-}
-
-.boton {
-    display: inline-block;
-    margin-top: 12px;
-    background: #2563eb;
-    color: white;
-    padding: 12px 18px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-}
-
-.proximamente {
-    display: inline-block;
-    margin-top: 12px;
-    background: #e2e8f0;
-    color: #475569;
-    padding: 12px 18px;
-    border-radius: 10px;
-    font-weight: bold;
-}
-
-.seccion {
-    margin-top: 50px;
-    background: white;
-    padding: 30px;
-    border-radius: 16px;
-    line-height: 1.6;
-}
-
-input {
-    width: 100%;
-    padding: 12px;
-    margin-top: 6px;
-    box-sizing: border-box;
-    font-size: 16px;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
+@media(max-width:1000px){
+.header{padding:0 22px}.nav{display:none}
+.hero{grid-template-columns:1fr;padding:45px 24px}
+.hero h1{font-size:40px}
+.grid{grid-template-columns:1fr}
+.section{padding:25px 24px}
+.quick{margin:25px 24px;grid-template-columns:1fr}
+.quick a{border-right:none;border-bottom:1px solid #bfdbfe}
+.more-sections{padding:10px 24px 50px;grid-template-columns:1fr}
+.hero-art{display:none}
 }
 </style>
+
 </head>
 
 <body>
 
-<div class="contenedor">
+<header class="header">
+    <a href="index.html" class="logo">📈 Capital en <span>Marcha</span></a>
+    <nav class="nav">
+        <a class="active" href="index.html">Inicio</a>
+        <a href="#invertir">Invertir</a>
+        <a href="#calculadoras">Calculadoras</a>
+        <a href="#libertad">Libertad financiera</a>
+        <a href="herramientas-recomendadas.html">Recursos</a>
+        <a href="sobre.html">Sobre mí</a>
+    </nav>
+</header>
 
 <section class="hero">
-    <div class="marca">Capital en Marcha</div>
-    <p style="text-align:center; margin-top:10px;">
-    <a href="sobre.html" style="text-decoration:none; color:#2563eb; font-weight:bold;">
-        Sobre Capital en Marcha
-    </a>
-</p>
-    <h1>Herramientas para construir libertad financiera</h1>
-    <p class="subtitulo">
-        Calculadoras sencillas para visualizar tus objetivos financieros, entender el interés compuesto y planificar tu camino hacia la independencia financiera desde España.
-    </p>
-<div style="text-align:center; margin:30px 0; font-size:18px; font-weight:bold;">    <a href="#calculadoras">🧮 Calculadoras</a> |
-    <a href="#libertad">🔥 Libertad financiera</a> |
-    <a href="#inversion">📈 Inversión</a>
-</div>
-    <div class="card">
-    <h2>🚀 Guía definitiva de libertad financiera</h2>
-    <p>Aprende paso a paso cómo ahorrar, invertir y construir un patrimonio capaz de darte mayor independencia financiera.</p>
-    <a class="boton" href="guia-libertad-financiera-espana.html">Leer guía</a>
-</div>
-</section>
-  
-    <div class="card">
-    <h2>🛠️ Herramientas recomendadas</h2>
-    <p>
-        Plataformas para invertir en ETF, fondos indexados y gestionar tu dinero a largo plazo.
-    </p>
-    <a class="boton" href="herramientas-recomendadas.html">Ver herramientas</a>
-</div>
-<h2 id="calculadoras" style="text-align:center; margin-top:50px;">
-🧮 Calculadoras
-</h2>
-<section class="grid">
-
-    <div class="card">
-        <h2>🎯 Objetivos financieros</h2>
-        <p>Descubre en cuánto tiempo podrías alcanzar 100.000 €, 250.000 €, 500.000 € y 1 millón de euros.</p>
-<a class="boton" href="objetivos-financieros.html">Usar calculadora</a>    </div>
-
-    <div class="card">
-        <h2>🔥 Calculadora FIRE</h2>
-        <p>Calcula cuánto dinero necesitarías para alcanzar la independencia financiera usando la regla del 4%.</p>
-        <a class="boton" href="fire.html">Usar calculadora</a>
+    <div>
+        <h1>Aprende a invertir.<br>Construye tu <span>libertad financiera.</span></h1>
+        <p>Guías claras, herramientas útiles y calculadoras sencillas para tomar el control de tu dinero y planificar tu futuro financiero.</p>
+        <div class="buttons">
+            <a class="btn primary" href="guia-libertad-financiera-espana.html">🚀 Empieza aquí</a>
+            <a class="btn secondary" href="#calculadoras">🧮 Ver calculadoras</a>
+        </div>
     </div>
 
-    <div class="card">
-        <h2>📈 Interés compuesto</h2>
-        <p>Simula cómo puede crecer tu patrimonio con aportaciones periódicas y rentabilidad anual estimada.</p>
-     <a class="boton" href="interes-compuesto.html">Usar calculadora</a>
+    <div class="hero-art">
+        <div class="chart">
+            <div class="arrow">↗</div>
+            <div class="bar b1"></div>
+            <div class="bar b2"></div>
+            <div class="bar b3"></div>
+            <div class="bar b4"></div>
+            <div class="leaf">🌿</div>
+        </div>
     </div>
-
-    <div class="card">
-        <h2>💸 Ahorro mensual necesario</h2>
-        <p>Calcula cuánto tendrías que ahorrar o invertir cada mes para alcanzar un objetivo concreto.</p>
-       <a class="boton" href="ahorro-mensual.html">Usar calculadora</a>
-    </div>
-    <div class="card">
-    <h2>📉 Calculadora de inflación</h2>
-    <p>Descubre cuánto poder adquisitivo puede perder tu dinero con el paso del tiempo debido a la inflación.</p>
-    <a class="boton" href="calculadora-inflacion.html">Usar calculadora</a>
-</div>
-    <div class="card">
-    <h2>📈 Inversión mensual</h2>
-    <p>Calcula cuánto patrimonio podrías acumular realizando aportaciones mensuales durante varios años.</p>
-    <a class="boton" href="calculadora-inversion-mensual.html">Usar calculadora</a>
-</div>
-    <div class="card">
-    <h2>👴 Calculadora de jubilación</h2>
-    <p>Estima cuánto patrimonio podrías acumular hasta la jubilación según tu edad, aportaciones mensuales y rentabilidad esperada.</p>
-    <a class="boton" href="calculadora-jubilacion.html">Usar calculadora</a>
-</div>
-    <div class="card">
-    <h2>🔥 FIRE Avanzado</h2>
-    <p>Descubre cuánto patrimonio necesitas para alcanzar la independencia financiera y cuándo podrías conseguirlo.</p>
-<a class="boton" href="calculadora-fire-avanzada.html">Usar calculadora</a>    </section>
-
-<h2 id="libertad" style="text-align:center; margin-top:50px;">
-🔥 Libertad financiera
-</h2>
-
-<section class="grid">
- <div class="card">
-    <h2>📝 ¿Cuánto dinero necesito para jubilarme?</h2>
-    <p>Descubre cuánto patrimonio podrías necesitar para jubilarte en España y cómo calcular tu número FIRE.</p>
-    <a class="boton" href="jubilacion-espana.html">Leer artículo</a>
-</div>
-    <div class="card">
-    <h2>💼 ¿Cuánto dinero necesito para dejar de trabajar?</h2>
-    <p>Calcula cuánto patrimonio podrías necesitar para cubrir tus gastos y alcanzar la independencia financiera.</p>
-    <a class="boton" href="cuanto-dinero-necesito-para-dejar-de-trabajar.html">Leer artículo</a>
-</div>
-<div class="card">
-    <h2>🔥 ¿Qué es el movimiento FIRE?</h2>
-    <p>Descubre qué significa FIRE, cómo funciona la regla del 4% y cómo alcanzar la independencia financiera.</p>
-    <a class="boton" href="que-es-fire.html">Leer artículo</a>
-</div>  
-    <div class="card">
-    <h2>📈 Cómo funciona el interés compuesto</h2>
-    <p>Aprende qué es el interés compuesto, por qué el tiempo importa y cómo puede ayudarte a construir patrimonio.</p>
-    <a class="boton" href="como-funciona-interes-compuesto.html">Leer artículo</a>
-</div>
-    <div class="card">
-    <h2>📊 La regla del 4%</h2>
-    <p>Descubre cómo funciona la regla del 4%, cuánto patrimonio necesitas para vivir de tus inversiones y cuáles son sus limitaciones.</p>
-    <a class="boton" href="regla-del-4.html">Leer artículo</a>
-</div>
-    <div class="card">
-    <h2>💰 ¿Qué es la libertad financiera?</h2>
-    <p>Aprende qué significa alcanzar la libertad financiera, cómo se calcula y qué pasos puedes seguir para acercarte a ella.</p>
-    <a class="boton" href="libertad-financiera.html">Leer artículo</a>
-</div>
-    <div class="card">
-    <h2>🏖️ ¿Cuánto dinero necesito para vivir de las inversiones?</h2>
-    <p>
-        Descubre cuánto patrimonio podrías necesitar para cubrir tus gastos y alcanzar la independencia financiera.
-    </p>
-    <a class="boton" href="cuanto-dinero-necesito-para-vivir-de-las-inversiones.html">Leer artículo</a>
-</div>
-    </section>
-
-<h2 id="inversion" style="text-align:center; margin-top:50px;">
-📈 Inversión
-</h2>
-
-<section class="grid">
-    <div class="card">
-    <h2>📈 ¿Qué es un ETF?</h2>
-    <p>Descubre qué son los ETF, cómo funcionan, sus ventajas, inconvenientes y por qué se han vuelto tan populares entre los inversores.</p>
-    <a class="boton" href="que-es-un-etf.html">Leer artículo</a>
-</div>
-    <div class="card">
-    <h2>📚 ¿Qué es un fondo indexado?</h2>
-    <p>Descubre qué son los fondos indexados, cómo funcionan y por qué se han convertido en una de las formas más populares de invertir a largo plazo.</p>
-    <a class="boton" href="que-es-un-fondo-indexado.html">Leer artículo</a>
-</div>
-    <div class="card">
-    <h2>⚔️ ETF vs Fondo Indexado</h2>
-    <p>Compara ETF y fondos indexados, descubre sus diferencias y aprende cuál puede encajar mejor con tus objetivos de inversión.</p>
-    <a class="boton" href="etf-vs-fondo-indexado.html">Leer artículo</a>
-</div>
-    <div class="card">
-    <h2>🚀 Cómo empezar a invertir</h2>
-    <p>Una guía paso a paso para quienes quieren comenzar a invertir desde cero y construir patrimonio a largo plazo.</p>
-    <a class="boton" href="como-empezar-a-invertir.html">Leer artículo</a>
-</div>
-    <div class="card">
-    <h2>📈 ¿Qué es el S&P 500?</h2>
-    <p>Descubre qué es el índice bursátil más famoso del mundo, cómo funciona y por qué millones de personas invierten en él.</p>
-    <a class="boton" href="que-es-el-sp500.html">Leer artículo</a>
-</div>
-    <div class="card">
-    <h2>🌍 ¿Qué es el MSCI World?</h2>
-    <p>Descubre cómo funciona uno de los índices más utilizados por los inversores pasivos y por qué muchos ETF y fondos indexados lo replican.</p>
-    <a class="boton" href="que-es-el-msci-world.html">Leer artículo</a>
-</div>
-    <div class="card">
-    <h2>⚔️ S&P 500 vs MSCI World</h2>
-    <p>Compara los dos índices más populares entre los inversores y descubre cuál puede encajar mejor con tu estrategia.</p>
-    <a class="boton" href="sp500-vs-msci-world.html">Leer artículo</a>
-</div>
-    <div class="card">
-    <h2>💸 Cómo invertir 100 € al mes</h2>
-    <p>Descubre cómo pequeñas aportaciones mensuales pueden ayudarte a construir patrimonio gracias al interés compuesto.</p>
-    <a class="boton" href="como-invertir-100-euros-al-mes.html">Leer artículo</a>
-</div>
-    <div class="card">
-    <h2>💶 ¿Cuánto tendría si invierto 200 € al mes?</h2>
-    <p>
-        Descubre cuánto dinero podrías acumular en 10, 20 o 30 años gracias al interés compuesto.
-    </p>
-    <a class="boton" href="cuanto-tendria-si-invierto-200-euros-al-mes.html">Leer artículo</a>
-</div>
-    <div class="card">
-    <h2>📊 Rentabilidad histórica del S&P 500</h2>
-    <p>Descubre cuál ha sido la rentabilidad histórica del S&P 500 y cómo el interés compuesto puede multiplicar una inversión a largo plazo.</p>
-    <a class="boton" href="rentabilidad-historica-sp500.html">Leer artículo</a>
-</div>
-    <div class="card">
-    <h2>💰 Cómo invertir en el S&P 500</h2>
-    <p>Aprende paso a paso cómo invertir en el S&P 500 mediante ETF o fondos indexados y qué aspectos debes tener en cuenta antes de empezar.</p>
-    <a class="boton" href="como-invertir-en-el-sp500.html">Leer artículo</a>
-</div>
-    <div class="card">
-    <h2>📊 ¿Qué es el DCA?</h2>
-    <p>Descubre cómo funciona la estrategia Dollar Cost Averaging y por qué tantos inversores realizan aportaciones periódicas a largo plazo.</p>
-    <a class="boton" href="que-es-el-dca.html">Leer artículo</a>
-</div>
-    <div class="card">
-    <h2>⚖️ DCA vs invertir todo de golpe</h2>
-    <p>Compara las dos estrategias más populares para invertir y descubre cuál puede encajar mejor contigo.</p>
-    <a class="boton" href="dca-vs-invertir-todo-de-golpe.html">Leer artículo</a>
-</div>
-    <div class="card">
-    <h2>🏛️ ¿Qué son los bonos?</h2>
-    <p>Aprende qué son los bonos, cómo funcionan y qué papel pueden desempeñar dentro de una cartera de inversión.</p>
-    <a class="boton" href="que-son-los-bonos.html">Leer artículo</a>
-</div>
-    <div class="card">
-    <h2>🇪🇸 ¿Qué es el IBEX 35?</h2>
-    <p>Descubre cómo funciona el principal índice bursátil de España y cómo se compara con el S&P 500 y el MSCI World.</p>
-    <a class="boton" href="que-es-el-ibex35.html">Leer artículo</a>
-</div>
-<div class="card">
-    <h2>📈 ¿Qué es la renta variable?</h2>
-    <p>Descubre qué significa invertir en renta variable, sus ventajas, riesgos y diferencias frente a la renta fija.</p>
-    <a class="boton" href="que-es-la-renta-variable.html">Leer artículo</a>
-</div>
-    <div class="card">
-    <h2>🏦 ¿Qué es la renta fija?</h2>
-    <p>
-        Descubre qué es la renta fija, cómo funciona y cuáles son sus ventajas y riesgos frente a la renta variable.
-    </p>
-    <a class="boton" href="que-es-la-renta-fija.html">Leer artículo</a>
-</div>
-    <div class="card">
-    <h2>📈 ¿Qué es la inflación?</h2>
-    <p>
-        Descubre cómo la inflación reduce el poder adquisitivo de tu dinero y qué puedes hacer para protegerte.
-    </p>
-    <a class="boton" href="que-es-la-inflacion.html">Leer artículo</a>
-</div>
-    <div class="card">
-    <h2>💰 ¿Cuánto generan 100.000 € invertidos?</h2>
-    <p>
-        Descubre cuánto podrían generar 100.000 € invertidos al año y al mes según distintas rentabilidades.
-    </p>
-    <a class="boton" href="cuanto-dinero-generan-100000-euros-invertidos.html">Leer artículo</a>
-</div>
 </section>
 
+<section class="section" id="calculadoras">
+    <div class="section-head">
+        <h2>🧮 Calculadoras financieras</h2>
+        <a href="#todas-calculadoras">Ver todas las calculadoras →</a>
+    </div>
 
+    <div class="grid">
+        <a class="card" href="interes-compuesto.html">
+            <div class="icon">📈</div>
+            <h3>Calculadora de interés compuesto</h3>
+            <p>Simula el crecimiento de tu dinero con el paso del tiempo.</p>
+        </a>
 
+        <a class="card" href="calculadora-inversion-mensual.html">
+            <div class="icon">🐷</div>
+            <h3>Calculadora de inversión mensual</h3>
+            <p>Descubre cuánto podrías acumular invirtiendo cada mes.</p>
+        </a>
+
+        <a class="card" href="calculadora-fire-avanzada.html">
+            <div class="icon">☂️</div>
+            <h3>Calculadora FIRE avanzada</h3>
+            <p>Calcula cuánto necesitas para alcanzar la libertad financiera.</p>
+        </a>
+
+        <a class="card" href="calculadora-inflacion.html">
+            <div class="icon">🪙</div>
+            <h3>Calculadora de inflación</h3>
+            <p>Comprueba cómo la inflación afecta al valor de tu dinero.</p>
+        </a>
+
+        <a class="card" href="calculadora-jubilacion.html">
+            <div class="icon">🏖️</div>
+            <h3>Calculadora de jubilación</h3>
+            <p>Estima cuánto necesitas para una jubilación tranquila.</p>
+        </a>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section-head">
+        <h2>🔥 Artículos más populares</h2>
+        <a href="#todos-articulos">Ver todos los artículos →</a>
+    </div>
+
+    <div class="grid">
+        <a class="card article-card" href="cuanto-dinero-necesito-para-vivir-de-las-inversiones.html">
+            <div class="thumb">🌱</div>
+            <div class="content">
+                <h3>¿Cuánto dinero necesito para vivir de las inversiones?</h3>
+                <p>Descubre el capital necesario para generar ingresos suficientes.</p>
+            </div>
+        </a>
+
+        <a class="card article-card" href="cuanto-dinero-generan-100000-euros-invertidos.html">
+            <div class="thumb">💰</div>
+            <div class="content">
+                <h3>¿Cuánto dinero generan 100.000 € invertidos?</h3>
+                <p>Calcula cuánto podrías ganar según la rentabilidad esperada.</p>
+            </div>
+        </a>
+
+        <a class="card article-card" href="cuanto-tendria-si-invierto-200-euros-al-mes.html">
+            <div class="thumb">📊</div>
+            <div class="content">
+                <h3>¿Cuánto tendría si invierto 200 € al mes?</h3>
+                <p>Simulación real del efecto del interés compuesto a largo plazo.</p>
+            </div>
+        </a>
+
+        <a class="card article-card" href="cuanto-dinero-necesito-para-dejar-de-trabajar.html">
+            <div class="thumb">✍️</div>
+            <div class="content">
+                <h3>¿Cuánto dinero necesito para dejar de trabajar?</h3>
+                <p>Guía práctica para calcular tu número de libertad financiera.</p>
+            </div>
+        </a>
+
+        <a class="card article-card" href="regla-del-4.html">
+            <div class="thumb">🏖️</div>
+            <div class="content">
+                <h3>Regla del 4 %</h3>
+                <p>La regla clave para retirar tu dinero de forma sostenible.</p>
+            </div>
+        </a>
+    </div>
+</section>
+
+<div class="quick">
+    <a href="guia-libertad-financiera-espana.html">⭐ Empieza por aquí</a>
+    <a href="que-es-fire.html">🔥 ¿Qué es FIRE?</a>
+    <a href="libertad-financiera.html">🎯 Libertad financiera</a>
+    <a href="como-empezar-a-invertir.html">📈 Cómo empezar a invertir</a>
+    <a href="herramientas-recomendadas.html">🛠️ Herramientas recomendadas</a>
 </div>
 
+<section class="more-sections" id="todos-articulos">
+    <div class="listbox" id="libertad">
+        <h2>🔥 Libertad financiera</h2>
+        <a href="que-es-fire.html">¿Qué es el movimiento FIRE?</a>
+        <a href="libertad-financiera.html">¿Qué es la libertad financiera?</a>
+        <a href="regla-del-4.html">La regla del 4 %</a>
+        <a href="cuanto-dinero-necesito-para-dejar-de-trabajar.html">¿Cuánto dinero necesito para dejar de trabajar?</a>
+        <a href="cuanto-dinero-necesito-para-vivir-de-las-inversiones.html">¿Cuánto dinero necesito para vivir de las inversiones?</a>
+        <a href="jubilacion-espana.html">Jubilación en España</a>
+    </div>
 
+    <div class="listbox" id="invertir">
+        <h2>📈 Inversión</h2>
+        <a href="que-es-un-etf.html">¿Qué es un ETF?</a>
+        <a href="que-es-un-fondo-indexado.html">¿Qué es un fondo indexado?</a>
+        <a href="que-es-el-dca.html">¿Qué es el DCA?</a>
+        <a href="que-es-la-renta-variable.html">¿Qué es la renta variable?</a>
+        <a href="que-es-la-renta-fija.html">¿Qué es la renta fija?</a>
+        <a href="que-es-la-inflacion.html">¿Qué es la inflación?</a>
+        <a href="que-son-los-bonos.html">¿Qué son los bonos?</a>
+    </div>
+
+    <div class="listbox">
+        <h2>🌍 Índices y simulaciones</h2>
+        <a href="que-es-el-sp500.html">¿Qué es el S&P 500?</a>
+        <a href="que-es-el-msci-world.html">¿Qué es el MSCI World?</a>
+        <a href="que-es-el-ibex35.html">¿Qué es el IBEX 35?</a>
+        <a href="cuanto-dinero-generan-100000-euros-invertidos.html">¿Cuánto generan 100.000 € invertidos?</a>
+        <a href="cuanto-tendria-si-invierto-200-euros-al-mes.html">¿Cuánto tendría si invierto 200 € al mes?</a>
+        <a href="herramientas-recomendadas.html">Herramientas recomendadas</a>
+    </div>
+</section>
+
+<section class="section" id="todas-calculadoras">
+    <div class="section-head">
+        <h2>🧰 Más herramientas</h2>
+    </div>
+
+    <div class="grid">
+        <a class="card" href="ahorro-mensual.html">
+            <div class="icon">💸</div>
+            <h3>Ahorro mensual necesario</h3>
+            <p>Calcula cuánto deberías ahorrar para alcanzar un objetivo.</p>
+        </a>
+
+        <a class="card" href="objetivos-financieros.html">
+            <div class="icon">🎯</div>
+            <h3>Objetivos financieros</h3>
+            <p>Visualiza el camino hacia tus metas financieras.</p>
+        </a>
+
+        <a class="card" href="fire.html">
+            <div class="icon">🔥</div>
+            <h3>Calculadora FIRE</h3>
+            <p>Calcula tu número FIRE con la regla del 4 %.</p>
+        </a>
+    </div>
+</section>
+
+<footer class="footer">
+    <p>Capital en Marcha · Educación financiera sencilla para tomar mejores decisiones.</p>
+    <p><a href="sobre.html">Sobre</a> · <a href="sobre-capital-en-marcha.html">Sobre Capital en Marcha</a></p>
+</footer>
 
 </body>
 </html>
