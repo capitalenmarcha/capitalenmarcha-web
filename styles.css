@@ -140,3 +140,83 @@ FOOTER
     }
 
 }
+.cookie-banner{
+position:fixed;
+left:0;
+right:0;
+bottom:0;
+z-index:9999;
+background:#0f172a;
+color:white;
+box-shadow:0 -8px 30px rgba(15,23,42,.18);
+}
+
+.cookie-banner-inner{
+max-width:1180px;
+margin:auto;
+padding:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:24px;
+}
+
+.cookie-text{
+max-width:760px;
+}
+
+.cookie-text strong{
+font-size:18px;
+}
+
+.cookie-text p{
+margin:8px 0 0;
+color:#cbd5e1;
+line-height:1.6;
+}
+
+.cookie-text a{
+color:white;
+text-decoration:underline;
+}
+
+.cookie-actions{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.cookie-btn{
+border:none;
+padding:12px 20px;
+border-radius:10px;
+font-weight:800;
+cursor:pointer;
+font-size:15px;
+}
+
+.cookie-btn-primary{
+background:white;
+color:#0f172a;
+}
+
+.cookie-btn-secondary{
+background:transparent;
+color:white;
+border:1px solid #64748b;
+}
+
+@media(max-width:700px){
+.cookie-banner-inner{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.cookie-actions{
+width:100%;
+}
+
+.cookie-btn{
+flex:1;
+}
+}
