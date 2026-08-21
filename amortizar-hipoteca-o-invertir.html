@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<script src="cookies.js" defer></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Amortizar hipoteca o invertir: calculadora comparativa | Capital en Marcha</title>
+
+<meta name="description" content="Compara si te conviene más amortizar hipoteca o invertir un capital disponible. Calcula ahorro de intereses, valor futuro de la inversión y diferencia estimada.">
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:#f8fafc;
+    margin:0;
+    color:#0f172a;
+}
+
+.container{
+    max-width:900px;
+    margin:50px auto;
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+.marca{
+    text-align:center;
+    color:#2563eb;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+h1{
+    text-align:center;
+    font-size:38px;
+}
+
+.sub{
+    text-align:center;
+    color:#64748b;
+    line-height:1.6;
+}
+
+label{
+    display:block;
+    margin-top:20px;
+    margin-bottom:8px;
+    font-weight:bold;
+}
+
+input,select{
+    width:100%;
+    padding:14px;
+    font-size:18px;
+    border:1px solid #cbd5e1;
+    border-radius:10px;
+    box-sizing:border-box;
+}
+
+button{
+    width:100%;
+    margin-top:30px;
+    padding:16px;
+    border:none;
+    border-radius:12px;
+    background:#2563eb;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.resultado{
+    margin-top:30px;
+    padding:25px;
+    background:#ecfdf5;
+    border-radius:12px;
+    line-height:1.8;
+    font-size:17px;
+}
+
+.tabla{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+.tabla th,
+.tabla td{
+    border:1px solid #e2e8f0;
+    padding:12px;
+    text-align:left;
+}
+
+.tabla th{
+    background:#f1f5f9;
+}
+
+.aviso{
+    background:#fff7ed;
+    padding:25px;
+    border-radius:14px;
+    margin:30px 0;
+}
+
+.cta{
+    background:#eff6ff;
+    padding:25px;
+    border-radius:14px;
+    margin-top:30px;
+}
+
+a{
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="marca">Capital en Marcha</div>
+
+<h1>🏠 Amortizar hipoteca o invertir</h1>
+
+<p class="sub">
+Compara qué podría ocurrir si utilizas un capital disponible para amortizar parte de tu hipoteca o si decides invertirlo durante el mismo plazo.
+</p>
+
+<label>Capital pendiente de la hipoteca (€)</label>
+<input type="number" id="deuda" value="150000" inputmode="decimal">
+
+<label>Tipo de interés anual de la hipoteca (%)</label>
+<input type="number" id="interesHipoteca" value="3" step="0.1" inputmode="decimal">
+
+<label>Años restantes de hipoteca</label>
+<input type="number" id="anos" value="20" inputmode="numeric">
+
+<label>Dinero disponible para amortizar o invertir (€)</label>
+<input type="number" id="capitalDisponible" value="10000" inputmode="decimal">
+<label>Si amortizas, ¿qué quieres reducir?</label>
+<select id="tipoAmortizacion">
+    <option value="cuota">Reducir cuota</option>
+    <option value="plazo">Reducir plazo</option>
+</select>
+<label>Rentabilidad anual estimada de la inversión (%)</label>
+<input type="number" id="rentabilidad" value="7" step="0.1" inputmode="decimal">
+
+<label>Tipo fiscal estimado sobre las ganancias (%)</label>
+<input type="number" id="impuestos" value="19" step="0.1" inputmode="decimal">
+
+<button onclick="comparar()">Comparar escenarios</button>
+
+<div class="resultado" id="resultado">
+Calculando escenarios...
+</div>
+
+<p style="font-size:13px;color:#64748b;line-height:1.6;">
+La herramienta realiza una simulación matemática simplificada. No tiene en cuenta posibles comisiones de amortización, deducciones fiscales por vivienda, cambios de tipo de interés, inflación ni otros factores personales.
+</p>
+
+<hr style="margin:40px 0;border:none;border-top:1px solid #e2e8f0;">
+
+<h2>¿Qué compara esta calculadora?</h2>
+
+<p>
+La herramienta analiza dos usos posibles para una misma cantidad de dinero:
+</p>
+
+<ul>
+<li><strong>Amortizar hipoteca:</strong> utilizar el capital disponible para reducir la deuda pendiente y estimar cuánto interés dejarías de pagar durante el plazo restante.</li>
+<li><strong>Invertir:</strong> mantener la hipoteca sin cambios e invertir ese mismo capital durante el número de años restantes.</li>
+</ul>
+
+<h2>¿Cómo calcula el ahorro por amortizar la hipoteca?</h2>
+
+<p>
+La calculadora utiliza como referencia un préstamo con cuotas constantes mediante el sistema de amortización francés.
+</p>
+
+<p>
+Primero estima los intereses totales que quedarían por pagar con la deuda actual. Después vuelve a realizar el cálculo suponiendo que reduces inmediatamente el capital pendiente con el dinero disponible.
+</p>
+
+<p>
+La diferencia entre ambos escenarios representa el <strong>ahorro estimado de intereses</strong>.
+</p>
+
+<h2>¿Cómo calcula el resultado de invertir?</h2>
+
+<p>
+El escenario de inversión aplica una rentabilidad anual constante al capital disponible durante los años restantes de hipoteca.
+</p>
+
+<p style="background:#f1f5f9;padding:20px;border-radius:12px;font-weight:bold;text-align:center;">
+Valor futuro = Capital inicial × (1 + rentabilidad anual)<sup>años</sup>
+</p>
+
+<p>
+Después se calcula la ganancia obtenida y se descuenta un porcentaje fiscal estimado únicamente sobre esa ganancia.
+</p>
+
+<h2>Ejemplo: 10.000 € disponibles y 20 años por delante</h2>
+
+<p>
+Imagina una hipoteca con 150.000 € pendientes, un tipo del 3 %, 20 años restantes y 10.000 € disponibles.
+</p>
+
+<p>
+Si esperases obtener una rentabilidad media hipotética del 7 % anual al invertir, la calculadora compararía el ahorro de intereses conseguido al amortizar con la ganancia neta estimada de mantener esos 10.000 € invertidos durante 20 años.
+</p>
+
+<div class="aviso">
+
+<strong>Importante:</strong>
+
+<p>
+La comparación matemática no determina necesariamente cuál es la mejor decisión para una persona concreta.
+</p>
+
+<p>
+Amortizar reduce deuda y ofrece un ahorro conocido sobre intereses futuros, mientras que una inversión implica incertidumbre y puede sufrir pérdidas.
+</p>
+
+</div>
+
+<h2>¿Cuándo puede tener más sentido amortizar?</h2>
+
+<p>
+Amortizar puede resultar especialmente atractivo cuando el tipo de interés de la hipoteca es elevado, cuando se busca reducir deuda o cuando se valora mucho la certeza de obtener un ahorro conocido.
+</p>
+
+<p>
+También pueden existir circunstancias fiscales o contractuales particulares que modifiquen el resultado.
+</p>
+
+<h2>¿Cuándo puede resultar más atractivo invertir?</h2>
+
+<p>
+Matemáticamente, invertir puede ofrecer un resultado esperado mayor cuando la rentabilidad neta obtenida supera de forma suficiente el coste de la deuda.
+</p>
+
+<p>
+Sin embargo, esa rentabilidad no está garantizada. Cuanto mayor sea el riesgo asumido para intentar superar el interés de la hipoteca, mayor puede ser también la variabilidad de los resultados.
+</p>
+
+<h2>El factor psicológico también importa</h2>
+
+<p>
+Una decisión financiera no depende únicamente de una hoja de cálculo.
+</p>
+
+<p>
+Hay personas que valoran especialmente reducir deuda y disponer de una vivienda menos hipotecada, aunque la rentabilidad esperada de invertir pudiera ser superior.
+</p>
+
+<p>
+Otras prefieren mantener una deuda asumible para conservar liquidez y patrimonio invertido.
+</p>
+
+<h2>Preguntas frecuentes</h2>
+
+<h3>¿La calculadora supone que reduzco cuota o plazo al amortizar?</h3>
+
+<p>
+La comparación se centra en estimar el ahorro de intereses suponiendo que reduces inmediatamente el capital pendiente y mantienes el mismo plazo restante. En una hipoteca real también podrías optar por reducir plazo, y los resultados podrían ser diferentes.
+</p>
+
+<h3>¿La rentabilidad de inversión está garantizada?</h3>
+
+<p>
+No. El porcentaje introducido es únicamente una hipótesis matemática. Una inversión real puede obtener una rentabilidad superior, inferior o negativa.
+</p>
+
+<h3>¿Incluye la deducción por vivienda habitual?</h3>
+
+<p>
+No. Algunas personas pueden conservar determinados beneficios fiscales relacionados con la adquisición de vivienda habitual bajo regímenes transitorios. Esta calculadora no incorpora esas circunstancias.
+</p>
+
+<h3>¿Incluye comisión por amortización anticipada?</h3>
+
+<p>
+No. Si tu hipoteca tiene alguna comisión o compensación por amortización anticipada, deberías tenerla en cuenta por separado.
+</p>
+
+<h3>¿Tiene en cuenta la inflación?</h3>
+
+<p>
+No. Los resultados se expresan en euros nominales y no ajustan automáticamente el poder adquisitivo futuro.
+</p>
+
+<div class="cta">
+
+<h2>Sigue haciendo números</h2>
+
+<p>
+También puedes utilizar nuestras otras herramientas:
+</p>
+
+<ul>
+<li><a href="interes-compuesto.html">Calculadora de interés compuesto</a></li>
+<li><a href="calculadora-fire-avanzada.html">Calculadora FIRE avanzada</a></li>
+<li><a href="calculadora-inflacion.html">Calculadora de inflación</a></li>
+</ul>
+
+</div>
+
+<br>
+
+<a href="index.html">← Volver a Capital en Marcha</a>
+
+</div>
+
+<script>
+function cuotaMensual(principal, tasaAnual, anos) {
+    const meses = anos * 12;
+
+    if (tasaAnual === 0) {
+        return principal / meses;
+    }
+
+    const tasaMensual = tasaAnual / 100 / 12;
+
+    return principal *
+        (tasaMensual * Math.pow(1 + tasaMensual, meses)) /
+        (Math.pow(1 + tasaMensual, meses) - 1);
+}
+
+function fmt(valor) {
+    return valor.toLocaleString("es-ES", { maximumFractionDigits: 0 }) + " €";
+}
+
+function comparar() {
+
+    const deuda = Number(document.getElementById("deuda").value);
+    const interesHipoteca = Number(document.getElementById("interesHipoteca").value);
+    const anos = Number(document.getElementById("anos").value);
+    const capitalDisponible = Number(document.getElementById("capitalDisponible").value);
+    const tipoAmortizacion = document.getElementById("tipoAmortizacion").value;const rentabilidad = Number(document.getElementById("rentabilidad").value) / 100;
+    const impuestos = Number(document.getElementById("impuestos").value) / 100;
+
+    if (
+        deuda <= 0 ||
+        anos <= 0 ||
+        capitalDisponible < 0 ||
+        capitalDisponible > deuda ||
+        interesHipoteca < 0 ||
+        rentabilidad < -1 ||
+        impuestos < 0
+    ) {
+        document.getElementById("resultado").innerHTML =
+            "<strong>Revisa los datos introducidos.</strong>";
+        return;
+    }
+
+    const meses = anos * 12;
+
+    const cuotaActual = cuotaMensual(deuda, interesHipoteca, anos);
+    const totalPagadoActual = cuotaActual * meses;
+    const interesesActuales = totalPagadoActual - deuda;
+
+   const nuevaDeuda = deuda - capitalDisponible;
+
+let nuevaCuota;
+let interesesNuevos;
+let ahorroIntereses;
+let nuevoPlazoMeses = meses;
+
+if (tipoAmortizacion === "cuota") {
+
+    nuevaCuota = cuotaMensual(nuevaDeuda, interesHipoteca, anos);
+
+    const totalPagadoNuevo = nuevaCuota * meses;
+    interesesNuevos = totalPagadoNuevo - nuevaDeuda;
+
+    ahorroIntereses = interesesActuales - interesesNuevos;
+
+} else {
+
+    // Reducir plazo manteniendo aproximadamente la misma cuota
+    const tasaMensual = interesHipoteca / 100 / 12;
+    let saldo = nuevaDeuda;
+    nuevoPlazoMeses = 0;
+    let totalPagadoReduciendoPlazo = 0;
+
+    while (saldo > 0 && nuevoPlazoMeses < 1000 * 12) {
+
+        let interesMes = saldo * tasaMensual;
+        let amortizacionMes = cuotaActual - interesMes;
+
+        if (amortizacionMes <= 0) {
+            break;
+        }
+
+        if (amortizacionMes > saldo) {
+            totalPagadoReduciendoPlazo += saldo + interesMes;
+            saldo = 0;
+        } else {
+            saldo -= amortizacionMes;
+            totalPagadoReduciendoPlazo += cuotaActual;
+        }
+
+        nuevoPlazoMeses++;
+    }
+
+    interesesNuevos = totalPagadoReduciendoPlazo - nuevaDeuda;
+    ahorroIntereses = interesesActuales - interesesNuevos;
+
+    nuevaCuota = cuotaActual;
+}
+    const valorFuturo =
+        capitalDisponible * Math.pow(1 + rentabilidad, anos);
+
+    const gananciaBruta = valorFuturo - capitalDisponible;
+    const impuestoEstimado = gananciaBruta > 0
+        ? gananciaBruta * impuestos
+        : 0;
+
+    const gananciaNeta = gananciaBruta - impuestoEstimado;
+
+    const diferencia = gananciaNeta - ahorroIntereses;
+
+const anosNuevoPlazo = Math.floor(nuevoPlazoMeses / 12);
+const mesesNuevoPlazo = nuevoPlazoMeses % 12;
+
+let conclusion;
+
+    if (diferencia > 0) {
+        conclusion =
+            "Con estos supuestos, <strong>invertir</strong> produciría aproximadamente " +
+            fmt(diferencia) +
+            " más que el ahorro estimado al amortizar.";
+    } else if (diferencia < 0) {
+        conclusion =
+            "Con estos supuestos, <strong>amortizar</strong> ofrecería aproximadamente " +
+            fmt(Math.abs(diferencia)) +
+            " más de resultado estimado.";
+    } else {
+        conclusion =
+            "Con estos supuestos, ambos escenarios ofrecerían un resultado muy similar.";
+    }
+
+    document.getElementById("resultado").innerHTML = `
+        <h3>Resultado de la comparación</h3>
+
+        <p>${conclusion}</p>
+
+        <table class="tabla">
+
+        <tr>
+            <th>Concepto</th>
+            <th>Amortizar</th>
+            <th>Invertir</th>
+        </tr>
+
+        <tr>
+            <td>Capital utilizado</td>
+            <td>${fmt(capitalDisponible)}</td>
+            <td>${fmt(capitalDisponible)}</td>
+        </tr>
+
+        <tr>
+            <td>Ahorro intereses / ganancia bruta</td>
+            <td>${fmt(ahorroIntereses)}</td>
+            <td>${fmt(gananciaBruta)}</td>
+        </tr>
+
+        <tr>
+            <td>Impuestos estimados</td>
+            <td>0 €</td>
+            <td>-${fmt(impuestoEstimado)}</td>
+        </tr>
+
+        <tr>
+            <td><strong>Resultado neto estimado</strong></td>
+            <td><strong>${fmt(ahorroIntereses)}</strong></td>
+            <td><strong>${fmt(gananciaNeta)}</strong></td>
+        </tr>
+
+        </table>
+
+        <br>
+
+        🏦 <strong>Cuota actual estimada:</strong> ${fmt(cuotaActual)}/mes<br>
+
+🏠 <strong>Cuota tras amortizar:</strong> ${fmt(nuevaCuota)}/mes<br>
+
+⏳ <strong>Plazo tras amortizar:</strong>
+${tipoAmortizacion === "cuota"
+    ? anos + " años"
+    : anosNuevoPlazo + " años y " + mesesNuevoPlazo + " meses"}<br>
+
+📈 <strong>Valor futuro estimado de la inversión:</strong> ${fmt(valorFuturo)}
+    `;
+}
+
+document.addEventListener("DOMContentLoaded", comparar);</script>
+
+</body>
