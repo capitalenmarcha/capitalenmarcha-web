@@ -12,112 +12,154 @@
 <meta name="description" content="Compara si te conviene más amortizar hipoteca o invertir un capital disponible. Calcula ahorro de intereses, valor futuro de la inversión y diferencia estimada.">
 
 <style>
-body{
-    font-family:Arial,sans-serif;
-    background:#f8fafc;
-    margin:0;
-    color:#0f172a;
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff;
+    margin: 0;
+    color: #0f172a;
+    line-height: 1.6;
 }
 
-.container{
-    max-width:900px;
-    margin:50px auto;
-    background:white;
-    padding:40px;
-    border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+.container {
+    max-width: 680px;
+    margin: 40px auto;
+    padding: 20px;
 }
 
-.marca{
-    text-align:center;
-    color:#2563eb;
-    font-weight:bold;
-    margin-bottom:15px;
+.marca {
+    text-align: center;
+    color: #2563eb;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
 }
 
-h1{
-    text-align:center;
-    font-size:38px;
+h1 {
+    text-align: center;
+    font-size: 32px;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
 }
 
-.sub{
-    text-align:center;
-    color:#64748b;
-    line-height:1.6;
+h2 {
+    margin-top: 45px;
+    margin-bottom: 12px;
+    font-size: 24px;
 }
 
-label{
-    display:block;
-    margin-top:20px;
-    margin-bottom:8px;
-    font-weight:bold;
+h3 {
+    margin-top: 28px;
 }
 
-input,select{
-    width:100%;
-    padding:14px;
-    font-size:18px;
-    border:1px solid #cbd5e1;
-    border-radius:10px;
-    box-sizing:border-box;
+.sub {
+    text-align: center;
+    color: #64748b;
+    font-size: 16px;
+    margin-bottom: 40px;
 }
 
-button{
-    width:100%;
-    margin-top:30px;
-    padding:16px;
-    border:none;
-    border-radius:12px;
-    background:#2563eb;
-    color:white;
-    font-size:18px;
-    cursor:pointer;
+label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #334155;
 }
 
-.resultado{
-    margin-top:30px;
-    padding:25px;
-    background:#ecfdf5;
-    border-radius:12px;
-    line-height:1.8;
-    font-size:17px;
+input,
+select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background: #f8fafc;
 }
 
-.tabla{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:20px;
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #2563eb;
+    background: #ffffff;
+}
+
+button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+.resultado {
+    margin-top: 35px;
+    padding: 20px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    background: #f8fafc;
+}
+
+.tabla {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 15px;
 }
 
 .tabla th,
-.tabla td{
-    border:1px solid #e2e8f0;
-    padding:12px;
-    text-align:left;
+.tabla td {
+    border-bottom: 1px solid #e2e8f0;
+    padding: 10px 0;
+    text-align: left;
 }
 
-.tabla th{
-    background:#f1f5f9;
+.tabla th {
+    color: #64748b;
+    font-weight: 600;
 }
 
-.aviso{
-    background:#fff7ed;
-    padding:25px;
-    border-radius:14px;
-    margin:30px 0;
+.aviso,
+.cta {
+    border-left: 3px solid #2563eb;
+    padding-left: 15px;
+    margin: 30px 0;
 }
 
-.cta{
-    background:#eff6ff;
-    padding:25px;
-    border-radius:14px;
-    margin-top:30px;
+a {
+    color: #2563eb;
+    text-decoration: none;
 }
 
-a{
-    color:#2563eb;
-    text-decoration:none;
-    font-weight:bold;
+a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .container {
+        margin: 20px auto;
+        padding: 16px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 21px;
+    }
 }
 </style>
 
