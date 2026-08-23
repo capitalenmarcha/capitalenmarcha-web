@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<script src="cookies.js" defer></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Calculadora de amortización anticipada de hipoteca | Capital en Marcha</title>
+
+<meta name="description" content="Calcula cuánto puedes ahorrar al amortizar anticipadamente tu hipoteca. Compara reducir cuota o reducir plazo y simula tu caso gratis.">
+
+<link rel="canonical" href="https://capitalenmarcha.github.io/capitalenmarcha-web/calculadora-amortizacion-hipoteca.html">
+
+<link rel="stylesheet" href="styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora de amortización anticipada de hipoteca",
+  "url": "https://capitalenmarcha.github.io/capitalenmarcha-web/calculadora-amortizacion-hipoteca.html",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "description": "Herramienta gratuita para estimar el ahorro de intereses y comparar la reducción de cuota o plazo al realizar una amortización anticipada de una hipoteca."
+}
+</script>
+
+<style>
+
+.calc-card {
+    background:#ffffff;
+    border:1px solid #e2e8f0;
+    border-radius:12px;
+    padding:24px;
+    margin-bottom:24px;
+}
+
+.calc-card h2 {
+    margin-top:0;
+}
+
+.input-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:16px;
+    margin-bottom:20px;
+}
+
+.input-group {
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.input-group label {
+    font-weight:600;
+    font-size:14px;
+    color:#334155;
+    margin:0;
+}
+
+.input-group input {
+    padding:12px;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
+    font-size:16px;
+    width:100%;
+}
+
+.input-group input:focus {
+    outline:none;
+    border-color:#2563eb;
+    background:#ffffff;
+}
+
+.error-box {
+    display:none;
+    margin:18px 0 0;
+    padding:14px 16px;
+    border-left:3px solid #dc2626;
+    background:#fef2f2;
+    color:#991b1b;
+    font-size:14px;
+}
+
+.results-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:16px;
+    margin-top:24px;
+}
+
+.res-box {
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    border-radius:10px;
+    padding:20px;
+    text-align:center;
+}
+
+.res-box h3 {
+    margin:0 0 10px;
+    color:#1e293b;
+    font-size:17px;
+}
+
+.res-icon {
+    display:flex;
+    justify-content:center;
+    margin-bottom:12px;
+}
+
+.res-icon svg {
+    width:25px;
+    height:25px;
+    stroke:#2563eb;
+    stroke-width:1.8;
+}
+
+.res-val {
+    font-size:25px;
+    font-weight:700;
+    color:#0f172a;
+    margin:10px 0;
+}
+
+.res-sub {
+    font-size:14px;
+    color:#64748b;
+    margin:7px 0;
+    text-align:center !important;
+}
+
+.res-badge {
+    display:inline-block;
+    background:#eff6ff;
+    color:#1d4ed8;
+    padding:5px 10px;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:600;
+    margin-top:8px;
+}
+
+.comparacion {
+    margin-top:20px;
+    padding:18px;
+    border-left:3px solid #2563eb;
+    background:#f8fafc;
+    line-height:1.7;
+}
+
+.comparacion p {
+    margin:0 !important;
+    text-align:left !important;
+}
+
+.nota-calculo {
+    margin-top:18px;
+    font-size:13px;
+    line-height:1.6;
+    color:#64748b;
+}
+
+@media(max-width:700px) {
+
+    .calc-card {
+        padding:18px;
+    }
+
+    .res-val {
+        font-size:22px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<header class="header">
+
+<nav class="nav">
+
+<a class="logo" href="index.html">
+<i data-lucide="trending-up"></i>
+Capital en <span>Marcha</span>
+</a>
+
+<div class="menu">
+<a href="index.html">Inicio</a>
+<a href="calculadoras.html">Calculadoras</a>
+<a href="invertir.html">Invertir</a>
+<a href="libertad-financiera-recursos.html">Libertad financiera</a>
+<a href="recursos.html">Recursos</a>
+<a href="sobre.html">Sobre</a>
+</div>
+
+</nav>
+
+</header>
+
+
+<div class="container">
+
+<div class="marca">Capital en Marcha</div>
+
+<h1>Calculadora de amortización anticipada de hipoteca</h1>
+
+<p class="sub">
+Simula cuánto podrías ahorrar en intereses al amortizar anticipadamente tu hipoteca y compara qué ocurre si utilizas ese dinero para reducir cuota o reducir plazo.
+</p>
+
+
+<div class="calc-card">
+
+<h2>Datos de tu hipoteca</h2>
+
+<div class="input-grid">
+
+<div class="input-group">
+<label for="capital">Capital pendiente (€)</label>
+<input
+type="number"
+id="capital"
+value="150000"
+step="1000"
+min="1"
+inputmode="decimal">
+</div>
+
+
+<div class="input-group">
+<label for="interes">Tipo de interés anual (%)</label>
+<input
+type="number"
+id="interes"
+value="3"
+step="0.1"
+min="0"
+inputmode="decimal">
+</div>
+
+
+<div class="input-group">
+<label for="plazoAnos">Años restantes</label>
+<input
+type="number"
+id="plazoAnos"
+value="20"
+step="1"
+min="1"
+max="50"
+inputmode="numeric">
+</div>
+
+
+<div class="input-group">
+<label for="amortizacion">Cantidad a amortizar (€)</label>
+<input
+type="number"
+id="amortizacion"
+value="10000"
+step="500"
+min="0"
+inputmode="decimal">
+</div>
+
+</div>
+
+
+<div class="error-box" id="errorBox"></div>
+
+
+<div class="results-grid">
+
+
+<div class="res-box">
+
+<div class="res-icon">
+<i data-lucide="landmark"></i>
+</div>
+
+<h3>Situación actual</h3>
+
+<div class="res-val" id="cuotaActual">
+832 €/mes
+</div>
+
+<p class="res-sub">
+Plazo restante:
+<strong id="plazoActual">20 años</strong>
+</p>
+
+<p class="res-sub">
+Intereses pendientes:
+<strong id="interesesActuales">49.655 €</strong>
+</p>
+
+</div>
+
+
+<div class="res-box">
+
+<div class="res-icon">
+<i data-lucide="wallet-cards"></i>
+</div>
+
+<h3>Reduciendo cuota</h3>
+
+<div class="res-val" id="nuevaCuota">
+776 €/mes
+</div>
+
+<p class="res-sub">
+Ahorras aproximadamente
+<strong><span id="ahorroMensual">56</span> €/mes</strong>
+</p>
+
+<p class="res-sub">
+El plazo se mantiene en
+<strong id="plazoCuota">20 años</strong>
+</p>
+
+<div class="res-badge">
+Intereses ahorrados:
+<span id="ahorroIntCuota">3.310 €</span>
+</div>
+
+</div>
+
+
+<div class="res-box">
+
+<div class="res-icon">
+<i data-lucide="calendar-clock"></i>
+</div>
+
+<h3>Reduciendo plazo</h3>
+
+<div class="res-val" id="nuevoPlazo">
+18 años y 3 meses
+</div>
+
+<p class="res-sub">
+Terminarías aproximadamente
+<strong><span id="mesesAhorrados">21</span> meses antes</strong>
+</p>
+
+<p class="res-sub">
+La cuota se mantiene cerca de
+<strong id="cuotaPlazo">832 €/mes</strong>
+</p>
+
+<div class="res-badge">
+Intereses ahorrados:
+<span id="ahorroIntPlazo">7.700 €</span>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="comparacion" id="comparacion">
+<p>
+Introduce tus datos para comparar ambas alternativas.
+</p>
+</div>
+
+
+<p class="nota-calculo">
+Los resultados son estimaciones matemáticas. La calculadora supone un préstamo con cuotas constantes y un tipo de interés que permanece sin cambios durante el periodo analizado. No incluye posibles comisiones o compensaciones por amortización anticipada, bonificaciones, seguros, gastos asociados ni efectos fiscales.
+</p>
+
+</div>
+
+
+<div class="cta">
+
+<h2>¿Dudas entre amortizar o invertir ese dinero?</h2>
+
+<p>
+Amortizar permite reducir intereses de la hipoteca, mientras que invertir ese capital ofrece una rentabilidad potencial pero implica riesgo. Puedes comparar ambos escenarios con otra de nuestras herramientas.
+</p>
+
+<a href="amortizar-hipoteca-o-invertir.html">
+Comparar amortizar vs. invertir →
+</a>
+
+</div>
+
+
+<h2>¿Cómo funciona esta calculadora?</h2>
+
+<p>
+Muchas hipotecas en España utilizan el denominado <strong>sistema de amortización francés</strong>, basado en cuotas periódicas constantes mientras no cambien el tipo de interés ni otras condiciones del préstamo.
+</p>
+
+<p>
+Cada cuota incluye una parte destinada al pago de intereses y otra destinada a reducir el capital pendiente. Al realizar una amortización anticipada, disminuyes directamente esa deuda pendiente.
+</p>
+
+<p>
+A partir de ahí pueden compararse dos escenarios principales.
+</p>
+
+
+<h3>Reducir cuota</h3>
+
+<p>
+La deuda pendiente disminuye, pero mantienes aproximadamente el mismo plazo de devolución.
+</p>
+
+<p>
+Como necesitas devolver menos capital durante el mismo periodo, la cuota mensual baja.
+</p>
+
+
+<h3>Reducir plazo</h3>
+
+<p>
+Utilizas igualmente la amortización para reducir el capital pendiente, pero mantienes una cuota similar a la actual.
+</p>
+
+<p>
+Eso permite terminar de pagar antes y, en igualdad de condiciones, suele producir un ahorro mayor de intereses totales.
+</p>
+
+
+<h2>¿Qué datos necesitas para hacer la simulación?</h2>
+
+<ul>
+<li><strong>Capital pendiente:</strong> la deuda que todavía queda por devolver.</li>
+<li><strong>Tipo de interés:</strong> el porcentaje anual aplicado a la hipoteca.</li>
+<li><strong>Años restantes:</strong> el tiempo que falta hasta la finalización prevista del préstamo.</li>
+<li><strong>Cantidad a amortizar:</strong> el dinero que quieres utilizar para reducir anticipadamente la deuda.</li>
+</ul>
+
+
+<h2>¿Cuánto puedes ahorrar amortizando hipoteca?</h2>
+
+<p>
+El ahorro depende principalmente del capital amortizado, el tipo de interés y el plazo restante.
+</p>
+
+<p>
+Una amortización realizada cuando todavía quedan muchos años de préstamo puede evitar más intereses futuros que la misma amortización realizada cerca del final de la hipoteca.
+</p>
+
+<p>
+También influye la opción elegida. Mantener una cuota similar y reducir plazo suele generar un ahorro mayor de intereses, mientras que reducir cuota libera más dinero cada mes.
+</p>
+
+
+<h2>¿Reducir cuota o reducir plazo?</h2>
+
+<p>
+La respuesta depende de lo que quieras conseguir.
+</p>
+
+<p>
+Si tu objetivo principal es disminuir tus gastos mensuales, reducir cuota puede darte más margen financiero.
+</p>
+
+<p>
+Si puedes seguir pagando cómodamente la cuota actual y quieres terminar antes con la deuda, reducir plazo suele producir un ahorro superior de intereses en condiciones equivalentes.
+</p>
+
+<p>
+Puedes profundizar con ejemplos de amortizaciones de 5.000 €, 10.000 € y 20.000 € en nuestra guía:
+</p>
+
+<p>
+<a href="amortizar-hipoteca-reducir-cuota-o-plazo.html">
+<strong>Amortizar hipoteca: ¿reducir cuota o reducir plazo?</strong>
+</a>
+</p>
+
+
+<h2>Antes de amortizar, revisa tu contrato</h2>
+
+<p>
+La simulación matemática no recoge todas las condiciones que puede tener una hipoteca real.
+</p>
+
+<p>
+Antes de realizar una amortización anticipada conviene comprobar si existen comisiones o compensaciones aplicables, así como posibles bonificaciones u otras condiciones vinculadas al préstamo.
+</p>
+
+<p>
+También pueden existir circunstancias fiscales particulares que afecten a la decisión.
+</p>
+
+
+<div class="cta">
+
+<h2>Compara también amortizar frente a invertir</h2>
+
+<p>
+Si ya sabes qué ocurre al reducir cuota o plazo, puedes dar el siguiente paso y comparar el ahorro de amortizar con el posible resultado de invertir ese mismo dinero.
+</p>
+
+<a href="amortizar-hipoteca-o-invertir.html">
+Abrir calculadora amortizar vs. invertir →
+</a>
+
+</div>
+
+
+<br>
+
+<a href="calculadoras.html">← Volver a todas las calculadoras</a>
+
+</div>
+
+
+<footer class="footer">
+
+<div class="footer-container">
+
+
+<div class="footer-column">
+
+<h3>
+<i data-lucide="trending-up"></i>
+Capital en Marcha
+</h3>
+
+<p>
+Educación financiera sencilla para aprender a invertir,
+construir patrimonio y alcanzar la libertad financiera.
+</p>
+
+</div>
+
+
+<div class="footer-column">
+
+<h3>
+<i data-lucide="calculator"></i>
+Calculadoras
+</h3>
+
+<a href="interes-compuesto.html">Interés compuesto</a>
+<a href="calculadora-fire-avanzada.html">Calculadora FIRE</a>
+<a href="calculadora-jubilacion.html">Jubilación</a>
+<a href="calculadora-inflacion.html">Inflación</a>
+
+</div>
+
+
+<div class="footer-column">
+
+<h3>
+<i data-lucide="book-open"></i>
+Aprender
+</h3>
+
+<a href="como-empezar-a-invertir.html">Cómo empezar a invertir</a>
+<a href="que-es-un-etf.html">¿Qué es un ETF?</a>
+<a href="que-es-un-fondo-indexado.html">Fondos indexados</a>
+<a href="que-es-fire.html">¿Qué es FIRE?</a>
+
+</div>
+
+
+<div class="footer-column">
+
+<h3>
+<i data-lucide="info"></i>
+Capital en Marcha
+</h3>
+
+<a href="guia-libertad-financiera-espana.html">Guía definitiva</a>
+<a href="herramientas-recomendadas.html">Herramientas</a>
+<a href="sobre-capital-en-marcha.html">Sobre el proyecto</a>
+<a href="sobre.html">Sobre mí</a>
+
+</div>
+
+
+</div>
+
+
+<div class="footer-bottom">
+© 2026 Capital en Marcha · Todos los derechos reservados.
+</div>
+
+</footer>
+
+
+<script>
+
+lucide.createIcons();
+
+
+function cuotaMensual(principal, tasaMensual, meses) {
+
+    if (principal <= 0 || meses <= 0) {
+        return 0;
+    }
+
+    if (tasaMensual === 0) {
+        return principal / meses;
+    }
+
+    return principal *
+        (tasaMensual * Math.pow(1 + tasaMensual, meses)) /
+        (Math.pow(1 + tasaMensual, meses) - 1);
+}
+
+
+function simularConCuota(principal, tasaMensual, cuota, limiteMeses = 1200) {
+
+    let saldo = principal;
+    let meses = 0;
+    let intereses = 0;
+    let totalPagado = 0;
+
+    while (saldo > 0.005 && meses < limiteMeses) {
+
+        const interesMes = saldo * tasaMensual;
+        const deudaMes = saldo + interesMes;
+
+        const pagoMes = Math.min(cuota, deudaMes);
+
+        intereses += interesMes;
+        totalPagado += pagoMes;
+
+        saldo = deudaMes - pagoMes;
+        meses++;
+    }
+
+    return {
+        meses,
+        intereses,
+        totalPagado
+    };
+}
+
+
+function formatoEuros(valor) {
+
+    return new Intl.NumberFormat(
+        "es-ES",
+        {
+            maximumFractionDigits: 0
+        }
+    ).format(valor) + " €";
+}
+
+
+function formatoPlazo(mesesTotales) {
+
+    mesesTotales = Math.max(0, Math.round(mesesTotales));
+
+    const anos = Math.floor(mesesTotales / 12);
+    const meses = mesesTotales % 12;
+
+    if (anos === 0) {
+        return meses + (meses === 1 ? " mes" : " meses");
+    }
+
+    if (meses === 0) {
+        return anos + (anos === 1 ? " año" : " años");
+    }
+
+    return anos +
+        (anos === 1 ? " año y " : " años y ") +
+        meses +
+        (meses === 1 ? " mes" : " meses");
+}
+
+
+function mostrarError(mensaje) {
+
+    const error = document.getElementById("errorBox");
+
+    error.innerText = mensaje;
+    error.style.display = "block";
+}
+
+
+function ocultarError() {
+
+    const error = document.getElementById("errorBox");
+
+    error.innerText = "";
+    error.style.display = "none";
+}
+
+
+function calcularHipoteca() {
+
+    const capital = Number(
+        document.getElementById("capital").value
+    );
+
+    const interesAnual = Number(
+        document.getElementById("interes").value
+    );
+
+    const anos = Number(
+        document.getElementById("plazoAnos").value
+    );
+
+    const amortizacion = Number(
+        document.getElementById("amortizacion").value
+    );
+
+
+    if (
+        !Number.isFinite(capital) ||
+        !Number.isFinite(interesAnual) ||
+        !Number.isFinite(anos) ||
+        !Number.isFinite(amortizacion)
+    ) {
+        mostrarError("Introduce valores válidos en todos los campos.");
+        return;
+    }
+
+
+    if (capital <= 0) {
+        mostrarError("El capital pendiente debe ser superior a 0 €.");
+        return;
+    }
+
+
+    if (interesAnual < 0) {
+        mostrarError("El tipo de interés no puede ser negativo.");
+        return;
+    }
+
+
+    if (anos <= 0) {
+        mostrarError("El plazo restante debe ser superior a 0 años.");
+        return;
+    }
+
+
+    if (amortizacion < 0) {
+        mostrarError("La cantidad a amortizar no puede ser negativa.");
+        return;
+    }
+
+
+    if (amortizacion > capital) {
+        mostrarError("La cantidad a amortizar no puede superar el capital pendiente.");
+        return;
+    }
+
+
+    ocultarError();
+
+
+    const mesesOriginales = Math.round(anos * 12);
+
+    const tasaMensual =
+        interesAnual / 100 / 12;
+
+
+    const cuotaActual =
+        cuotaMensual(
+            capital,
+            tasaMensual,
+            mesesOriginales
+        );
+
+
+    const situacionActual =
+        simularConCuota(
+            capital,
+            tasaMensual,
+            cuotaActual,
+            mesesOriginales + 2
+        );
+
+
+    const nuevoCapital =
+        capital - amortizacion;
+
+
+    /* =========================
+       OPCIÓN 1: REDUCIR CUOTA
+    ========================= */
+
+
+    const nuevaCuota =
+        cuotaMensual(
+            nuevoCapital,
+            tasaMensual,
+            mesesOriginales
+        );
+
+
+    let interesesReduciendoCuota = 0;
+
+
+    if (nuevoCapital > 0) {
+
+        const escenarioCuota =
+            simularConCuota(
+                nuevoCapital,
+                tasaMensual,
+                nuevaCuota,
+                mesesOriginales + 2
+            );
+
+        interesesReduciendoCuota =
+            escenarioCuota.intereses;
+
+    }
+
+
+    const ahorroInteresesCuota =
+        Math.max(
+            0,
+            situacionActual.intereses -
+            interesesReduciendoCuota
+        );
+
+
+    const ahorroMensual =
+        Math.max(
+            0,
+            cuotaActual - nuevaCuota
+        );
+
+
+    /* =========================
+       OPCIÓN 2: REDUCIR PLAZO
+    ========================= */
+
+
+    let mesesNuevoPlazo = 0;
+    let interesesReduciendoPlazo = 0;
+
+
+    if (nuevoCapital > 0) {
+
+        const escenarioPlazo =
+            simularConCuota(
+                nuevoCapital,
+                tasaMensual,
+                cuotaActual
+            );
+
+        mesesNuevoPlazo =
+            escenarioPlazo.meses;
+
+        interesesReduciendoPlazo =
+            escenarioPlazo.intereses;
+
+    }
+
+
+    const ahorroInteresesPlazo =
+        Math.max(
+            0,
+            situacionActual.intereses -
+            interesesReduciendoPlazo
+        );
+
+
+    const mesesAhorrados =
+        Math.max(
+            0,
+            mesesOriginales -
+            mesesNuevoPlazo
+        );
+
+
+    /* =========================
+       ACTUALIZAR RESULTADOS
+    ========================= */
+
+
+    document.getElementById("cuotaActual").innerText =
+        formatoEuros(cuotaActual) + "/mes";
+
+
+    document.getElementById("plazoActual").innerText =
+        formatoPlazo(mesesOriginales);
+
+
+    document.getElementById("interesesActuales").innerText =
+        formatoEuros(situacionActual.intereses);
+
+
+    document.getElementById("nuevaCuota").innerText =
+        formatoEuros(nuevaCuota) + "/mes";
+
+
+    document.getElementById("ahorroMensual").innerText =
+        new Intl.NumberFormat(
+            "es-ES",
+            { maximumFractionDigits: 0 }
+        ).format(ahorroMensual);
+
+
+    document.getElementById("plazoCuota").innerText =
+        formatoPlazo(mesesOriginales);
+
+
+    document.getElementById("ahorroIntCuota").innerText =
+        formatoEuros(ahorroInteresesCuota);
+
+
+    document.getElementById("nuevoPlazo").innerText =
+        nuevoCapital === 0
+        ? "Hipoteca cancelada"
+        : formatoPlazo(mesesNuevoPlazo);
+
+
+    document.getElementById("mesesAhorrados").innerText =
+        mesesAhorrados;
+
+
+    document.getElementById("cuotaPlazo").innerText =
+        nuevoCapital === 0
+        ? "0 €"
+        : formatoEuros(cuotaActual) + "/mes";
+
+
+    document.getElementById("ahorroIntPlazo").innerText =
+        formatoEuros(ahorroInteresesPlazo);
+
+
+    /* =========================
+       CONCLUSIÓN DINÁMICA
+    ========================= */
+
+
+    const diferenciaAhorro =
+        ahorroInteresesPlazo -
+        ahorroInteresesCuota;
+
+
+    let textoComparacion = "";
+
+
+    if (amortizacion === 0) {
+
+        textoComparacion =
+            "Introduce una cantidad a amortizar superior a 0 € para comparar cómo cambiarían la cuota y el plazo.";
+
+    } else if (nuevoCapital === 0) {
+
+        textoComparacion =
+            "Con esta amortización cancelarías completamente la deuda pendiente.";
+
+    } else if (diferenciaAhorro > 1) {
+
+        textoComparacion =
+            "<strong>En esta simulación, reducir plazo ahorra aproximadamente " +
+            formatoEuros(diferenciaAhorro) +
+            " más en intereses que reducir cuota.</strong> " +
+            "Reducir cuota, en cambio, libera aproximadamente " +
+            formatoEuros(ahorroMensual) +
+            " al mes.";
+
+    } else {
+
+        textoComparacion =
+            "En esta simulación, ambas alternativas generan un ahorro de intereses similar.";
+
+    }
+
+
+    document.getElementById("comparacion").innerHTML =
+        "<p>" + textoComparacion + "</p>";
+
+}
+
+
+[
+    "capital",
+    "interes",
+    "plazoAnos",
+    "amortizacion"
+].forEach(function(id) {
+
+    document
+        .getElementById(id)
+        .addEventListener(
+            "input",
+            calcularHipoteca
+        );
+
+});
+
+
+calcularHipoteca();
+
+</script>
+
+
+</body>
+
+</html>
