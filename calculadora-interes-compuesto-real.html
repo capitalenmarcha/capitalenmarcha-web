@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<script src="cookies.js" defer></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Calculadora de Interés Compuesto Real (Neto e Inflación) | Capital en Marcha</title>
+<meta name="description" content="Calcula cuánto crecerá tu dinero ajustado a los impuestos de Hacienda (IRPF España) y la inflación real. La única calculadora de interés compuesto 100% realista.">
+
+<style>
+body{font-family:Arial,sans-serif;background:#f8fafc;margin:0;color:#0f172a;}
+.container{max-width:900px;margin:50px auto;background:white;padding:40px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,0.08);}
+.marca{text-align:center;color:#2563eb;font-weight:bold;margin-bottom:15px;}
+h1{text-align:center;font-size:32px;margin-bottom:10px;}
+p.subtitulo{text-align:center;color:#64748b;margin-bottom:35px;}
+
+.grid-calc{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:30px;}
+@media(max-width:700px){.grid-calc{grid-template-columns:1fr;}}
+
+.campo{display:flex;flex-direction:column;gap:8px;}
+.campo label{font-weight:bold;font-size:14px;color:#334155;}
+.campo input{padding:12px;border:1px solid #cbd5e1;border-radius:10px;font-size:16px;outline:none;transition:border 0.2s;}
+.campo input:focus{border-color:#2563eb;}
+
+.resultados-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:15px;margin-top:30px;}
+.card-resultado{padding:20px;border-radius:14px;text-align:center;}
+.card-bruto{background:#f1f5f9;border:1px solid #e2e8f0;}
+.card-neto{background:#e0f2fe;border:1px solid #bae6fd;}
+.card-real{background:#ecfdf5;border:1px solid #a7f3d0;}
+
+.card-resultado .titulo{font-size:13px;font-weight:bold;text-transform:uppercase;margin-bottom:8px;color:#475569;}
+.card-resultado .monto{font-size:26px;font-weight:bold;margin-bottom:5px;}
+.card-resultado .detalle{font-size:12px;color:#64748b;}
+
+.card-bruto .monto{color:#1e293b;}
+.card-neto .monto{color:#0284c7;}
+.card-real .monto{color:#059669;}
+
+.tabla{width:100%;border-collapse:collapse;margin-top:30px;}
+.tabla th,.tabla td{border:1px solid #e2e8f0;padding:10px;text-align:center;font-size:14px;}
+.tabla th{background:#f8fafc;color:#334155;}
+
+.explicacion{background:#fff7ed;padding:25px;border-radius:14px;margin-top:40px;line-height:1.7;color:#334155;}
+.explicacion h2{margin-top:0;font-size:20px;}
+
+a{color:#2563eb;text-decoration:none;font-weight:bold;}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="marca">Capital en Marcha</div>
+
+<h1>Calculadora de Interés Compuesto Real</h1>
+<p class="subtitulo">Descubre cuánto valdrá tu patrimonio ajustado a <strong>Impuestos (IRPF España)</strong> e <strong>Inflación</strong>.</p>
+
+<div class="grid-calc">
+    <div class="campo">
+        <label for="capital">Capital Inicial (€)</label>
+        <input type="number" id="capital" value="10000" step="500" oninput="calcular()">
+    </div>
+    <div class="campo">
+        <label for="aportacion">Aportación Mensual (€)</label>
+        <input type="number" id="aportacion" value="200" step="50" oninput="calcular()">
+    </div>
+    <div class="campo">
+        <label for="anos">Años de Inversión</label>
+        <input type="number" id="anos" value="20" min="1" max="50" oninput="calcular()">
+    </div>
+    <div class="campo">
+        <label for="rentabilidad">Rentabilidad Anual Estimada (%)</label>
+        <input type="number" id="rentabilidad" value="7" step="0.5" oninput="calcular()">
+    </div>
+    <div class="campo">
+        <label for="inflacion">Inflación Anual Estimada (%)</label>
+        <input type="number" id="inflacion" value="2" step="0.1" oninput="calcular()">
+    </div>
+</div>
+
+<div class="resultados-grid">
+    <div class="card-resultado card-bruto">
+        <div class="titulo">Capital Final Bruto</div>
+        <div class="monto" id="res-bruto">0 €</div>
+        <div class="detalle" id="det-bruto">Sin impuestos ni inflación</div>
+    </div>
+    <div class="card-resultado card-neto">
+        <div class="titulo">Neto Tras Hacienda</div>
+        <div class="monto" id="res-neto">0 €</div>
+        <div class="detalle" id="det-neto">Aplicando IRPF del Ahorro</div>
+    </div>
+    <div class="card-resultado card-real">
+        <div class="titulo">Poder Adquisitivo Real</div>
+        <div class="monto" id="res-real">0 €</div>
+        <div class="detalle" id="det-real">Neto + Inflación descontada</div>
+    </div>
+</div>
+
+<h2 style="margin-top:40px;">Evolución año a año</h2>
+<div style="overflow-x:auto;">
+    <table class="tabla">
+        <thead>
+            <tr>
+                <th>Año</th>
+                <th>Aportado</th>
+                <th>Bruto</th>
+                <th>Neto (IRPF)</th>
+                <th>Real (Poder Adquisitivo)</th>
+            </tr>
+        </thead>
+        <tbody id="cuerpo-tabla">
+        </tbody>
+    </table>
+</div>
+
+<div class="explicacion">
+    <h2>¿Cómo hace los cálculos esta herramienta?</h2>
+    <p>A diferencia de otras calculadoras, este simulador tiene en cuenta dos factores destructores de patrimonio a largo plazo:</p>
+    <ul>
+        <li><strong>Impuestos de Hacienda en España:</strong> Al rescatar tus ganancias, tributas en el IRPF por tramos (del 19% hasta el 28% sobre las plusvalías generadas).</li>
+        <li><strong>Efecto de la Inflación:</strong> Aunque dentro de 20 años tengas 100.000 €, las cosas costarán más. El "Poder Adquisitivo Real" refleja lo que podrías comprar hoy con esa cifra.</li>
+    </ul>
+</div>
+
+<br>
+<a href="index.html">← Volver a Capital en Marcha</a>
+
+</div>
+
+<script>
+function calcularIRPF(ganancia) {
+    if (ganancia <= 0) return 0;
+    let impuesto = 0;
+    
+    // Tramos IRPF del ahorro en España
+    if (ganancia > 300000) { impuesto += (ganancia - 300000) * 0.28; ganancia = 300000; }
+    if (ganancia > 200000) { impuesto += (ganancia - 200000) * 0.27; ganancia = 200000; }
+    if (ganancia > 50000)  { impuesto += (ganancia - 50000)  * 0.23; ganancia = 50000; }
+    if (ganancia > 6000)   { impuesto += (ganancia - 6000)   * 0.21; ganancia = 6000; }
+    if (ganancia > 0)      { impuesto += ganancia * 0.19; }
+    
+    return impuesto;
+}
+
+function calcular() {
+    const capitalInicial = parseFloat(document.getElementById('capital').value) || 0;
+    const aportacionMensual = parseFloat(document.getElementById('aportacion').value) || 0;
+    const anos = parseInt(document.getElementById('anos').value) || 0;
+    const rAnual = (parseFloat(document.getElementById('rentabilidad').value) || 0) / 100;
+    const infAnual = (parseFloat(document.getElementById('inflacion').value) || 0) / 100;
+
+    const rMensual = Math.pow(1 + rAnual, 1/12) - 1;
+    
+    let saldoBruto = capitalInicial;
+    let totalAportado = capitalInicial;
+    let cuerpoTabla = "";
+
+    for (let i = 1; i <= anos; i++) {
+        for (let m = 0; m < 12; m++) {
+            saldoBruto = (saldoBruto + aportacionMensual) * (1 + rMensual);
+            totalAportado += aportacionMensual;
+        }
+
+        let plusvalia = Math.max(0, saldoBruto - totalAportado);
+        let impuesto = calcularIRPF(plusvalia);
+        let saldoNeto = saldoBruto - impuesto;
+        let saldoReal = saldoNeto / Math.pow(1 + infAnual, i);
+
+        cuerpoTabla += `<tr>
+            <td>${i}</td>
+            <td>${Math.round(totalAportado).toLocaleString('es-ES')} €</td>
+            <td>${Math.round(saldoBruto).toLocaleString('es-ES')} €</td>
+            <td>${Math.round(saldoNeto).toLocaleString('es-ES')} €</td>
+            <td><strong>${Math.round(saldoReal).toLocaleString('es-ES')} €</strong></td>
+        </tr>`;
+    }
+
+    let gananciaFinal = Math.max(0, saldoBruto - totalAportado);
+    let impuestoFinal = calcularIRPF(gananciaFinal);
+    let netoFinal = saldoBruto - impuestoFinal;
+    let realFinal = netoFinal / Math.pow(1 + infAnual, anos);
+
+    document.getElementById('res-bruto').innerText = Math.round(saldoBruto).toLocaleString('es-ES') + " €";
+    document.getElementById('res-neto').innerText = Math.round(netoFinal).toLocaleString('es-ES') + " €";
+    document.getElementById('res-real').innerText = Math.round(realFinal).toLocaleString('es-ES') + " €";
+    
+    document.getElementById('det-bruto').innerText = `Ganancia bruta: +${Math.round(gananciaFinal).toLocaleString('es-ES')} €`;
+    document.getElementById('det-neto').innerText = `Hacienda se lleva: ${Math.round(impuestoFinal).toLocaleString('es-ES')} €`;
+    document.getElementById('det-real').innerText = `Aportado total: ${Math.round(totalAportado).toLocaleString('es-ES')} €`;
+
+    document.getElementById('cuerpo-tabla').innerHTML = cuerpoTabla;
+}
+
+// Ejecutar al cargar la página
+window.onload = calcular;
+</script>
+
+</body>
+</html>
