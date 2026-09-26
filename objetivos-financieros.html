@@ -4,103 +4,95 @@
 <script src="cookies.js" defer></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Objetivos financieros | Capital en Marcha</title>
 
-<style>
-body{
-    font-family:Arial,sans-serif;
-    background:#f8fafc;
-    margin:0;
-    color:#0f172a;
-}
-
-.container{
-    max-width:820px;
-    margin:50px auto;
-    background:white;
-    padding:40px;
-    border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.08);
-}
-
-.marca{
-    text-align:center;
-    color:#2563eb;
-    font-weight:bold;
-    margin-bottom:15px;
-}
-
-h1{
-    text-align:center;
-}
-
-.sub{
-    text-align:center;
-    color:#64748b;
-    line-height:1.6;
-}
-
-label{
-    display:block;
-    margin-top:20px;
-    margin-bottom:8px;
-    font-weight:bold;
-}
-
-input{
-    width:100%;
-    padding:14px;
-    border:1px solid #cbd5e1;
-    border-radius:10px;
-    font-size:18px;
-    box-sizing:border-box;
-}
-
-button{
-    width:100%;
-    margin-top:25px;
-    padding:16px;
-    border:none;
-    border-radius:12px;
-    background:#2563eb;
-    color:white;
-    font-size:18px;
-    cursor:pointer;
-}
-
-.resultado{
-    margin-top:30px;
-    background:#ecfdf5;
-    padding:25px;
-    border-radius:12px;
-    line-height:1.8;
-}
-
-a{
-    color:#2563eb;
-    text-decoration:none;
-    font-weight:bold;
-}
-</style>
+<title>¿Cuánto tardarás en llegar a 100.000 €, 500.000 € o un millón? Calculadora</title>
+<meta name="description" content="Calcula cuántos años tardarás en reunir 100.000 €, 250.000 €, 500.000 € o un millón de euros según lo que ahorras al mes, y a qué edad llegarías. Con tablas de ejemplo.">
 
 <!-- Canonical -->
 <link rel="canonical" href="https://capitalenmarcha.com/objetivos-financieros.html">
 
+<style>
+body{font-family:Arial,sans-serif;background:#f8fafc;margin:0;color:#0f172a;}
+.container{max-width:820px;margin:50px auto;background:white;padding:40px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,0.08);}
+h1{text-align:center;font-size:34px;line-height:1.25;}
+h2{margin-top:40px;}
+h3{margin-top:28px;}
+.sub{text-align:center;color:#64748b;line-height:1.6;}
+p,li{line-height:1.8;color:#334155;}
+.calc{background:#f8fafc;border:1px solid #e2e8f0;border-radius:16px;padding:10px 25px 25px;margin-top:25px;}
+.fila{display:grid;grid-template-columns:1fr 1fr;gap:0 20px;}
+label{display:block;margin-top:18px;margin-bottom:6px;font-weight:bold;}
+.ayuda{display:block;font-weight:normal;font-size:13px;color:#64748b;margin-top:2px;}
+input{width:100%;padding:12px;font-size:17px;border:1px solid #cbd5e1;border-radius:10px;box-sizing:border-box;background:white;}
+input:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid #2563eb;outline-offset:2px;}
+button{width:100%;margin-top:26px;padding:16px;border:none;border-radius:12px;background:#2563eb;color:white;font-size:18px;cursor:pointer;}
+button:hover{background:#1d4ed8;}
+.resultado{margin-top:25px;padding:25px;background:#ecfdf5;border-radius:12px;line-height:1.8;font-size:17px;}
+.tabla{width:100%;border-collapse:collapse;margin-top:15px;}
+.tabla th,.tabla td{border:1px solid #e2e8f0;padding:10px 12px;text-align:left;}
+.tabla th{background:#f1f5f9;}
+.resultado .tabla th{background:#d1fae5;}
+.scroll{overflow-x:auto;}
+.aviso{background:#fff7ed;padding:20px 25px;border-radius:14px;margin:30px 0;}
+.cta{background:#eff6ff;padding:20px 25px;border-radius:14px;margin-top:30px;}
+.nota{font-size:13px;color:#64748b;line-height:1.5;}
+a{color:#2563eb;text-decoration:none;font-weight:bold;}
+a:hover{text-decoration:underline;}
+.pie{margin-top:40px;font-size:14px;}
+.pie a{margin-right:16px;display:inline-block;margin-bottom:6px;}
+@media (max-width:640px){
+  .container{margin:0;border-radius:0;padding:22px;}
+  h1{font-size:27px;}
+  .fila{grid-template-columns:1fr;}
+  .calc{padding:5px 16px 20px;}
+  .tabla th,.tabla td{padding:8px;font-size:15px;}
+}
+</style>
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://capitalenmarcha.com/objetivos-financieros.html">
-<meta property="og:title" content="Objetivos financieros | Capital en Marcha">
-<meta property="og:description" content="Educación financiera sencilla para aprender a invertir, construir patrimonio y alcanzar la libertad financiera.">
+<meta property="og:title" content="¿Cuánto tardarás en llegar a 100.000 €, 500.000 € o un millón?">
+<meta property="og:description" content="Cuántos años tardarás en reunir cada cifra según lo que ahorras al mes, y a qué edad llegarías.">
 <meta property="og:image" content="https://capitalenmarcha.com/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Objetivos financieros | Capital en Marcha">
-<meta name="twitter:description" content="Educación financiera sencilla para aprender a invertir, construir patrimonio y alcanzar la libertad financiera.">
+<meta name="twitter:title" content="¿Cuánto tardarás en llegar a 100.000 €, 500.000 € o un millón?">
+<meta name="twitter:description" content="Cuántos años tardarás en reunir cada cifra según lo que ahorras al mes, y a qué edad llegarías.">
 <meta name="twitter:image" content="https://capitalenmarcha.com/og-image.jpg">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora de objetivos financieros: cuánto tardarás en llegar a cada cifra",
+      "url": "https://capitalenmarcha.com/objetivos-financieros.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Cualquiera",
+      "inLanguage": "es-ES",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+      "publisher": {"@type": "Organization", "name": "Capital en Marcha", "url": "https://capitalenmarcha.com/"}
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "¿Cuánto se tarda en llegar a un millón de euros invirtiendo 500 € al mes?",
+         "acceptedAnswer": {"@type": "Answer", "text": "Partiendo de cero, unos 37 años con una rentabilidad media del 7 % anual y unos 45 años con un 5 %. Si además subes la aportación un 3 % cada año, con un 7 % el plazo baja a unos 33 años."}},
+        {"@type": "Question", "name": "¿Cuánto se tarda en llegar a 100.000 € ahorrando 300 € al mes?",
+         "acceptedAnswer": {"@type": "Answer", "text": "Partiendo de cero, unos 16 años con un 7 % anual y unos 18 años con un 5 %. Sin rentabilidad, harían falta casi 28 años."}},
+        {"@type": "Question", "name": "¿Por qué el segundo tramo se alcanza más rápido que el primero?",
+         "acceptedAnswer": {"@type": "Answer", "text": "Por el interés compuesto: cuanto mayor es el patrimonio, más rentabilidad genera cada año, así que el crecimiento se acelera con el tiempo aunque aportes lo mismo."}}
+      ]
+    }
+  ]
+}
+</script>
 
 <style>
 .cm-nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 20px;padding-bottom:18px;margin-bottom:24px;border-bottom:1px solid #e2e8f0;font-family:Arial,sans-serif;}
@@ -128,69 +120,216 @@ a{
 </div>
 </nav>
 
-<h1>🎯 Objetivos financieros</h1>
+<h1>¿Cuánto tardarás en llegar a 100.000 €, 500.000 € o un millón?</h1>
 
 <p class="sub">
-Descubre cuánto tiempo podrías tardar en alcanzar distintos objetivos financieros gracias al ahorro periódico y al interés compuesto.
+Indica lo que ya tienes, lo que ahorras al mes y la rentabilidad que esperas. La calculadora te dice cuántos años tardarías en llegar a cada cifra y qué edad tendrías.
 </p>
 
-<label>Patrimonio actual (€)</label>
-<input type="number" id="patrimonio" value="1000">
+<div class="calc">
 
-<label>Ahorro mensual (€)</label>
-<input type="number" id="ahorro" value="300">
+<div class="fila">
+<div>
+<label for="patrimonio">Lo que ya tienes invertido (€)</label>
+<input type="number" id="patrimonio" value="10000" min="0" inputmode="numeric">
+</div>
+<div>
+<label for="ahorro">Lo que inviertes al mes (€)</label>
+<input type="number" id="ahorro" value="300" min="0" inputmode="numeric">
+</div>
+</div>
 
-<label>Rentabilidad anual esperada (%)</label>
-<input type="number" id="rentabilidad" value="8">
+<div class="fila">
+<div>
+<label for="rentabilidad">Rentabilidad anual esperada (%)</label>
+<input type="number" id="rentabilidad" value="7" step="0.1" inputmode="decimal">
+</div>
+<div>
+<label for="subida">Subida anual de tu aportación (%)
+<span class="ayuda">Pon 0 si aportarás siempre lo mismo</span></label>
+<input type="number" id="subida" value="0" step="0.5" min="0" inputmode="decimal">
+</div>
+</div>
 
-<button onclick="calcular()">Calcular mi camino</button>
+<div class="fila">
+<div>
+<label for="edad">Tu edad actual
+<span class="ayuda">Opcional: para ver a qué edad llegarías</span></label>
+<input type="number" id="edad" value="30" min="0" max="100" inputmode="numeric">
+</div>
+<div>
+<label for="personal">Tu propio objetivo (€)
+<span class="ayuda">Opcional: se añade a la tabla</span></label>
+<input type="number" id="personal" value="" placeholder="Ej.: 300000" min="0" inputmode="numeric">
+</div>
+</div>
 
-<div id="resultado" class="resultado">
+<button type="button" onclick="calcular()">Calcular cuánto tardaré</button>
+
+<div class="resultado" id="resultado" aria-live="polite">
 Introduce tus datos y pulsa calcular.
 </div>
 
-<p style="font-size:13px;color:#64748b;margin-top:20px;">
-Esta herramienta ofrece una estimación orientativa. No constituye asesoramiento financiero ni garantiza resultados futuros.
+</div>
+
+<p class="nota">
+Resultado orientativo en euros nominales. No tiene en cuenta impuestos, comisiones ni inflación. Las rentabilidades son supuestos, no garantías. No es una recomendación de inversión.
 </p>
 
-<br>
+<h2>Cuánto se tarda en llegar a cada cifra: tabla de referencia</h2>
 
-<a href="/">← Volver a Capital en Marcha</a>
+<p>
+Años aproximados para llegar a cada cifra <strong>partiendo de cero</strong> y aportando siempre lo mismo. En cada casilla, el primer número corresponde a una rentabilidad media del 5 % anual y el segundo a un 7 %.
+</p>
+
+<div class="scroll">
+<table class="tabla">
+<tr><th>Aportación mensual</th><th>100.000 €</th><th>250.000 €</th><th>500.000 €</th><th>1 millón</th></tr>
+<tr><td>200 €</td><td>23 / 20</td><td>37 / 31</td><td>50 / 40</td><td>63 / 50</td></tr>
+<tr><td>300 €</td><td>18 / 16</td><td>30 / 26</td><td>42 / 35</td><td>55 / 44</td></tr>
+<tr><td>500 €</td><td>12 / 11</td><td>23 / 20</td><td>33 / 28</td><td>45 / 37</td></tr>
+<tr><td>1.000 €</td><td>7 / 7</td><td>14 / 13</td><td>23 / 20</td><td>33 / 28</td></tr>
+</table>
+</div>
+
+<p>
+La tabla deja dos conclusiones claras. La primera: la cantidad que aportas pesa mucho más que la rentabilidad cuando empiezas. La segunda: una vez superado el primer tramo, el patrimonio crece cada vez más rápido. Con 500 € al mes y un 7 %, pasar de 0 a 250.000 € lleva unos 20 años, pero pasar de 500.000 € a un millón solo lleva unos 9 más.
+</p>
+
+<h2>Por qué los primeros 100.000 € son los más difíciles</h2>
+
+<p>
+Al principio, casi todo el crecimiento sale de tu bolsillo: con 10.000 € invertidos, un 7 % son 700 € al año, poco más de dos meses de aportaciones de 300 €. Pero con 300.000 € invertidos, ese mismo 7 % son 21.000 € al año, mucho más de lo que ahorras. A partir de cierto punto, el dinero trabaja más que tú. Es el efecto del <a href="interes-compuesto.html">interés compuesto</a>, y por eso los tramos se acortan con el tiempo.
+</p>
+
+<p>
+Con los valores por defecto de la calculadora (10.000 € invertidos, 300 € al mes y un 7 %), llegarías a 100.000 € en unos 13 años, a 250.000 € en unos 23, a 500.000 € en unos 32 y al millón en unos 42.
+</p>
+
+<h2>La palanca que más acelera: subir la aportación cada año</h2>
+
+<p>
+El campo <strong>"subida anual de tu aportación"</strong> simula algo muy habitual: aportar un poco más cada año, a medida que suben tus ingresos. El efecto es mayor de lo que parece. Con 500 € al mes y un 7 %, llegar al millón lleva unos 37 años aportando siempre lo mismo, pero si subes la aportación un 3 % cada año, el plazo baja a unos 33 años.
+</p>
+
+<p>
+Si prefieres ver la pregunta al revés, es decir, cuánto necesitas ahorrar al mes para llegar a una cifra en un plazo concreto, usa la <a href="ahorro-mensual.html">calculadora de ahorro mensual</a>.
+</p>
+
+<h2>Cómo elegir la rentabilidad</h2>
+
+<p>
+Para plazos de 15 años o más, muchos inversores usan como referencia entre un 5 % y un 7 % anual para una cartera diversificada en renta variable, por ejemplo con <a href="que-es-un-fondo-indexado.html">fondos indexados</a>. Es una media a largo plazo: habrá años con pérdidas y años muy buenos. Si quieres ver cómo se ha comportado el mercado en el pasado, consulta la <a href="rentabilidad-historica-sp500.html">rentabilidad histórica del S&amp;P 500</a>.
+</p>
+
+<div class="aviso">
+<strong>Importante:</strong>
+<p>
+Un millón de euros dentro de 40 años no tendrá el poder de compra de un millón de hoy. Con una inflación del 2 % anual, equivaldría a unos 450.000 € actuales. Si quieres ver tus cifras descontando la inflación y los impuestos, usa la <a href="calculadora-interes-compuesto-real.html">calculadora de interés compuesto real</a>.
+</p>
+</div>
+
+<h2>Preguntas frecuentes</h2>
+
+<h3>¿Cuánto se tarda en llegar a un millón de euros invirtiendo 500 € al mes?</h3>
+<p>
+Partiendo de cero, unos 37 años con una rentabilidad del 7 % y unos 45 años con un 5 %. Si subes la aportación un 3 % cada año, con un 7 % el plazo baja a unos 33 años.
+</p>
+
+<h3>¿Cuánto se tarda en llegar a 100.000 € ahorrando 300 € al mes?</h3>
+<p>
+Partiendo de cero, unos 16 años con un 7 % y unos 18 años con un 5 %. Sin ninguna rentabilidad harían falta casi 28 años. En <a href="cuanto-tardaria-en-llegar-a-100000-euros-invirtiendo-cada-mes.html">cuánto tardarías en llegar a 100.000 € invirtiendo cada mes</a> tienes este caso analizado con más detalle.
+</p>
+
+<h3>¿Y cuánto necesito para dejar de trabajar?</h3>
+<p>
+Depende de tus gastos, no de una cifra redonda. Con la <a href="regla-del-4.html">regla del 4 %</a> como referencia, necesitarías unas 25 veces tus gastos anuales. Calcula tu cifra con la <a href="calculadora-fire-avanzada.html">calculadora FIRE avanzada</a>.
+</p>
+
+<div class="cta">
+<h2 style="margin-top:0;">¿Qué rentas daría ese patrimonio?</h2>
+<p>
+Mira cuánto podrían generar <a href="cuanto-dinero-generan-100000-euros-invertidos.html">100.000 € invertidos</a> o <a href="cuanto-dinero-generan-200000-euros-invertidos.html">200.000 € invertidos</a>, y <a href="cuanto-dinero-necesito-invertido-para-generar-1000-euros-al-mes.html">cuánto necesitas para cobrar 1.000 € al mes</a>.
+</p>
+</div>
+
+<p class="nota" style="margin-top:30px;">
+Este contenido es educativo e informativo. No constituye asesoramiento financiero ni recomendación de inversión. Las rentabilidades utilizadas son supuestos y no garantizan resultados futuros. Consulta <a href="sobre.html">cómo hacemos los cálculos</a>.
+</p>
+
+<div class="pie">
+<a href="https://capitalenmarcha.com/">Inicio</a>
+<a href="calculadoras.html">Calculadoras</a>
+<a href="articulos.html">Artículos</a>
+<a href="sobre.html">Sobre</a>
+</div>
 
 </div>
 
 <script>
-function calcular(){
-
-let patrimonio = Number(document.getElementById("patrimonio").value);
-let ahorro = Number(document.getElementById("ahorro").value);
-let rentabilidad = Number(document.getElementById("rentabilidad").value)/100;
-
-let objetivos = [100000,250000,500000,1000000];
-
-let texto = "";
-
-for(let objetivo of objetivos){
-
-let capital = patrimonio;
-let meses = 0;
-
-while(capital < objetivo && meses < 1000){
-
-capital = capital * (1 + rentabilidad/12) + ahorro;
-
-meses++;
-
+function euros(n) {
+    return Math.round(n).toLocaleString("es-ES") + " €";
 }
 
-let anos = Math.floor(meses/12);
-
-texto += "🎯 " + objetivo.toLocaleString("es-ES") + " € → " + anos + " años<br>";
-
+function plazo(meses) {
+    const a = Math.floor(meses / 12), m = meses % 12;
+    let t = a + (a === 1 ? " año" : " años");
+    if (m > 0) t += " y " + m + (m === 1 ? " mes" : " meses");
+    return t;
 }
 
-document.getElementById("resultado").innerHTML = texto;
+function calcular() {
+    const v = id => Number(document.getElementById(id).value);
+    const patrimonio = v("patrimonio");
+    const ahorro = v("ahorro");
+    const R = v("rentabilidad") / 100;
+    const subida = v("subida") / 100;
+    const edadTexto = document.getElementById("edad").value;
+    const edad = edadTexto === "" ? null : Number(edadTexto);
+    const personal = v("personal");
+    const out = document.getElementById("resultado");
 
+    if (ahorro <= 0 && (patrimonio <= 0 || R <= 0)) {
+        out.innerHTML = "Con estos datos el patrimonio no crece. Introduce una aportación mensual o una rentabilidad mayor que cero.";
+        return;
+    }
+
+    let objetivos = [100000, 250000, 500000, 1000000];
+    if (personal > 0 && !objetivos.includes(personal)) objetivos.push(personal);
+    objetivos.sort((a, b) => a - b);
+
+    const rm = Math.pow(1 + R, 1 / 12) - 1;
+    const LIMITE = 100 * 12;
+    let capital = patrimonio, aportado = patrimonio, aportacion = ahorro, mes = 0;
+    const filas = [];
+
+    for (const objetivo of objetivos) {
+        while (capital < objetivo && mes < LIMITE) {
+            capital = capital * (1 + rm) + aportacion;
+            aportado += aportacion;
+            mes++;
+            if (mes % 12 === 0) aportacion *= 1 + subida;
+        }
+        const destacado = objetivo === personal ? " (tu objetivo)" : "";
+        if (capital < objetivo) {
+            filas.push("<tr><td>" + euros(objetivo) + destacado + "</td><td colspan='3'>Más de 100 años</td></tr>");
+            continue;
+        }
+        const yaCubierto = patrimonio >= objetivo;
+        const edadCelda = edad === null ? "" : "<td>" + (yaCubierto ? "Ya" : Math.floor(edad + mes / 12) + " años") + "</td>";
+        const pctRent = Math.max(0, Math.round((1 - aportado / capital) * 100));
+        filas.push("<tr><td>" + euros(objetivo) + destacado + "</td><td>" +
+            (yaCubierto ? "Ya lo tienes" : plazo(mes)) + "</td>" + edadCelda +
+            "<td>" + (yaCubierto ? "—" : pctRent + " %") + "</td></tr>");
+    }
+
+    const cabeceraEdad = edad === null ? "" : "<th>Edad</th>";
+    out.innerHTML =
+        "<strong>Cuánto tardarías en llegar a cada cifra</strong>" +
+        "<div class='scroll'><table class='tabla'>" +
+        "<tr><th>Objetivo</th><th>Tiempo</th>" + cabeceraEdad + "<th>Parte que pone la rentabilidad</th></tr>" +
+        filas.join("") +
+        "</table></div>";
 }
 </script>
 
