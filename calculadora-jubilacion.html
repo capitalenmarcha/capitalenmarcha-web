@@ -4,40 +4,95 @@
 <script src="cookies.js" defer></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calculadora de jubilación | Capital en Marcha</title>
 
-<style>
-body{font-family:Arial,sans-serif;background:#f8fafc;margin:0;color:#0f172a;}
-.container{max-width:820px;margin:50px auto;background:white;padding:40px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,0.08);}
-.marca{text-align:center;color:#2563eb;font-weight:bold;margin-bottom:15px;}
-h1{text-align:center;}
-.sub{text-align:center;color:#64748b;line-height:1.5;}
-label{display:block;margin-top:20px;margin-bottom:8px;font-weight:bold;}
-input{width:100%;padding:14px;font-size:18px;border:1px solid #cbd5e1;border-radius:10px;box-sizing:border-box;}
-button{width:100%;margin-top:30px;padding:16px;border:none;border-radius:12px;background:#2563eb;color:white;font-size:18px;cursor:pointer;}
-.resultado{margin-top:30px;padding:25px;background:#ecfdf5;border-radius:12px;line-height:1.8;font-size:17px;}
-.aviso{margin-top:20px;font-size:13px;color:#64748b;line-height:1.5;}
-a{color:#2563eb;text-decoration:none;font-weight:bold;}
-</style>
+<title>Calculadora de jubilación: cuánto ahorrar para complementar la pensión</title>
+<meta name="description" content="Calcula cuánto te faltará cada mes entre tu pensión y el ingreso que quieres al jubilarte, y cuánto necesitas ahorrar desde hoy para cubrirlo. Gratis y sin registro.">
 
 <!-- Canonical -->
 <link rel="canonical" href="https://capitalenmarcha.com/calculadora-jubilacion.html">
 
+<style>
+body{font-family:Arial,sans-serif;background:#f8fafc;margin:0;color:#0f172a;}
+.container{max-width:820px;margin:50px auto;background:white;padding:40px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,0.08);}
+.marca{text-align:center;margin-bottom:15px;}
+.marca a{color:#2563eb;font-weight:bold;}
+h1{text-align:center;font-size:34px;line-height:1.25;}
+h2{margin-top:40px;}
+h3{margin-top:28px;}
+.sub{text-align:center;color:#64748b;line-height:1.6;}
+p,li{line-height:1.8;color:#334155;}
+.calc{background:#f8fafc;border:1px solid #e2e8f0;border-radius:16px;padding:10px 25px 25px;margin-top:25px;}
+.fila{display:grid;grid-template-columns:1fr 1fr;gap:0 20px;}
+label{display:block;margin-top:18px;margin-bottom:6px;font-weight:bold;}
+.ayuda{display:block;font-weight:normal;font-size:13px;color:#64748b;margin-top:2px;}
+input{width:100%;padding:12px;font-size:17px;border:1px solid #cbd5e1;border-radius:10px;box-sizing:border-box;background:white;}
+input:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid #2563eb;outline-offset:2px;}
+button{width:100%;margin-top:26px;padding:16px;border:none;border-radius:12px;background:#2563eb;color:white;font-size:18px;cursor:pointer;}
+button:hover{background:#1d4ed8;}
+.resultado{margin-top:25px;padding:25px;background:#ecfdf5;border-radius:12px;line-height:1.8;font-size:17px;}
+.resultado .grande{font-size:26px;font-weight:bold;color:#065f46;display:block;margin:4px 0 12px;}
+.tabla{width:100%;border-collapse:collapse;margin-top:15px;}
+.tabla th,.tabla td{border:1px solid #e2e8f0;padding:10px 12px;text-align:left;}
+.tabla th{background:#f1f5f9;}
+.aviso{background:#fff7ed;padding:20px 25px;border-radius:14px;margin:30px 0;}
+.cta{background:#eff6ff;padding:20px 25px;border-radius:14px;margin-top:30px;}
+.nota{font-size:13px;color:#64748b;line-height:1.5;}
+a{color:#2563eb;text-decoration:none;font-weight:bold;}
+a:hover{text-decoration:underline;}
+.pie{margin-top:40px;font-size:14px;}
+.pie a{margin-right:16px;display:inline-block;margin-bottom:6px;}
+@media (max-width:640px){
+  .container{margin:0;border-radius:0;padding:22px;}
+  h1{font-size:27px;}
+  .fila{grid-template-columns:1fr;}
+  .calc{padding:5px 16px 20px;}
+}
+</style>
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://capitalenmarcha.com/calculadora-jubilacion.html">
-<meta property="og:title" content="Calculadora de jubilación | Capital en Marcha">
-<meta property="og:description" content="Educación financiera sencilla para aprender a invertir, construir patrimonio y alcanzar la libertad financiera.">
+<meta property="og:title" content="Calculadora de jubilación: cuánto ahorrar para complementar la pensión">
+<meta property="og:description" content="Descubre cuánto te faltará entre tu pensión y el ingreso que quieres, y cuánto ahorrar cada mes para cubrirlo.">
 <meta property="og:image" content="https://capitalenmarcha.com/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Calculadora de jubilación | Capital en Marcha">
-<meta name="twitter:description" content="Educación financiera sencilla para aprender a invertir, construir patrimonio y alcanzar la libertad financiera.">
+<meta name="twitter:title" content="Calculadora de jubilación: cuánto ahorrar para complementar la pensión">
+<meta name="twitter:description" content="Descubre cuánto te faltará entre tu pensión y el ingreso que quieres, y cuánto ahorrar cada mes para cubrirlo.">
 <meta name="twitter:image" content="https://capitalenmarcha.com/og-image.jpg">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora de jubilación: complemento a la pensión",
+      "url": "https://capitalenmarcha.com/calculadora-jubilacion.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Cualquiera",
+      "inLanguage": "es-ES",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+      "publisher": {"@type": "Organization", "name": "Capital en Marcha", "url": "https://capitalenmarcha.com/"}
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "¿Cómo sé cuánta pensión voy a cobrar?",
+         "acceptedAnswer": {"@type": "Answer", "text": "La estimación más fiable es la del simulador oficial de la Seguridad Social, que usa tus bases de cotización reales. Si no quieres consultarlo ahora, puedes probar varias cifras en la calculadora y ver cómo cambia el resultado."}},
+        {"@type": "Question", "name": "¿Por qué la calculadora usa euros de hoy?",
+         "acceptedAnswer": {"@type": "Answer", "text": "Porque 1.800 € dentro de 30 años no comprarán lo mismo que hoy. La calculadora descuenta la inflación para que todas las cifras se puedan comparar con tu nivel de vida actual."}},
+        {"@type": "Question", "name": "¿Qué pasa si mi pensión acaba siendo más baja?",
+         "acceptedAnswer": {"@type": "Answer", "text": "Basta con introducir una pensión menor para ver el efecto. En el ejemplo de esta página, una pensión un 20 % más baja hace que el ahorro necesario pase de unos 119 € a unos 202 € al mes."}}
+      ]
+    }
+  ]
+}
+</script>
 
 </head>
 
@@ -45,78 +100,257 @@ a{color:#2563eb;text-decoration:none;font-weight:bold;}
 
 <div class="container">
 
-<div class="marca">Capital en Marcha</div>
+<div class="marca"><a href="https://capitalenmarcha.com/">Capital en Marcha</a></div>
 
-<h1>👴 Calculadora de jubilación</h1>
+<h1>Calculadora de jubilación: ¿cuánto necesitas ahorrar para complementar tu pensión?</h1>
 
 <p class="sub">
-Estima cuánto patrimonio podrías acumular hasta tu jubilación según tu edad actual, tus aportaciones mensuales y una rentabilidad anual esperada.
+Introduce el ingreso que te gustaría tener al jubilarte y tu pensión estimada. La calculadora te dice cuánto te faltará cada mes, qué capital necesitas para cubrirlo y cuánto tendrías que ahorrar desde hoy.
 </p>
 
-<label>Edad actual</label>
-<input type="number" id="edadActual" value="30">
+<div class="calc">
 
-<label>Edad de jubilación</label>
-<input type="number" id="edadJubilacion" value="67">
+<div class="fila">
+<div>
+<label for="edadActual">Edad actual</label>
+<input type="number" id="edadActual" value="35" min="16" max="80" inputmode="numeric">
+</div>
+<div>
+<label for="edadJubilacion">Edad de jubilación</label>
+<input type="number" id="edadJubilacion" value="67" min="50" max="80" inputmode="numeric">
+</div>
+</div>
 
-<label>Patrimonio actual (€)</label>
-<input type="number" id="patrimonio" value="10000">
+<div class="fila">
+<div>
+<label for="ingreso">Ingreso mensual deseado (€)
+<span class="ayuda">Neto, en euros de hoy</span></label>
+<input type="number" id="ingreso" value="1800" min="0" inputmode="numeric">
+</div>
+<div>
+<label for="pension">Pensión pública estimada (€/mes)
+<span class="ayuda">Neta, en euros de hoy. <a href="https://prestaciones.seg-social.es/simulador-servicio/simulador-pension-jubilacion.html" target="_blank" rel="noopener">Consúltala aquí</a></span></label>
+<input type="number" id="pension" value="1300" min="0" inputmode="numeric">
+</div>
+</div>
 
-<label>Aportación mensual (€)</label>
-<input type="number" id="aportacion" value="300">
+<div class="fila">
+<div>
+<label for="patrimonio">Ahorro que ya tienes invertido (€)</label>
+<input type="number" id="patrimonio" value="10000" min="0" inputmode="numeric">
+</div>
+<div>
+<label for="edadFinal">Cubrir hasta la edad de
+<span class="ayuda">Cuanto más alta, más prudente</span></label>
+<input type="number" id="edadFinal" value="90" min="60" max="110" inputmode="numeric">
+</div>
+</div>
 
-<label>Rentabilidad anual esperada (%)</label>
-<input type="number" id="rentabilidad" value="7">
+<div class="fila">
+<div>
+<label for="rentabilidad">Rentabilidad anual esperada (%)</label>
+<input type="number" id="rentabilidad" value="5" step="0.1" inputmode="decimal">
+</div>
+<div>
+<label for="inflacion">Inflación anual (%)</label>
+<input type="number" id="inflacion" value="2" step="0.1" inputmode="decimal">
+</div>
+</div>
 
-<button onclick="calcularJubilacion()">Calcular jubilación</button>
+<button type="button" onclick="calcularJubilacion()">Calcular cuánto ahorrar</button>
 
-<div class="resultado" id="resultado">
+<div class="resultado" id="resultado" aria-live="polite">
 Introduce tus datos y pulsa calcular.
 </div>
 
-<p class="aviso">
-Esta herramienta ofrece una estimación orientativa. No tiene en cuenta impuestos, inflación, pensión pública ni cambios futuros en ingresos o gastos.
+</div>
+
+<p class="nota">
+Resultado orientativo en euros de hoy. No tiene en cuenta los impuestos al rescatar el ahorro, las comisiones ni la variabilidad de los mercados. No es una recomendación de inversión.
 </p>
 
-<br>
+<h2>Cómo funciona esta calculadora</h2>
 
-<a href="index.html">← Volver a Capital en Marcha</a>
+<p>
+La mayoría de simuladores de jubilación responden a una sola pregunta: cuánta pensión vas a cobrar. Esta calculadora da el paso siguiente, que es el que de verdad te permite planificar: <strong>cuánto te faltará y qué tienes que hacer hoy para cubrirlo</strong>. Lo hace en tres pasos.
+</p>
+
+<ol>
+<li><strong>La brecha mensual.</strong> Es la diferencia entre el ingreso que quieres tener y tu pensión. Si quieres 1.800 € y tu pensión será de 1.300 €, te faltan 500 € al mes.</li>
+<li><strong>El capital necesario.</strong> Es el dinero que necesitas tener invertido el día que te jubilas para poder retirar esa brecha cada mes hasta la edad que elijas, mientras el resto sigue invertido.</li>
+<li><strong>El ahorro mensual.</strong> Es lo que tendrías que invertir cada mes desde hoy, teniendo en cuenta lo que ya tienes ahorrado, para llegar a ese capital.</li>
+</ol>
+
+<p>
+Todas las cifras se muestran en <strong>euros de hoy</strong>: la calculadora descuenta la inflación para que puedas compararlas con tu nivel de vida actual. Por eso el ahorro mensual que te propone debería subir cada año al ritmo de la inflación. Si quieres ver cómo erosiona la inflación tus ahorros, prueba la <a href="calculadora-inflacion.html">calculadora de inflación</a>.
+</p>
+
+<h2>Ejemplo: 35 años, pensión de 1.300 € y un objetivo de 1.800 €</h2>
+
+<p>
+Con los valores que aparecen por defecto en la calculadora (35 años, jubilación a los 67, 10.000 € ya ahorrados, un 5 % de rentabilidad, un 2 % de inflación y cubrir hasta los 90 años), estos son los resultados:
+</p>
+
+<table class="tabla">
+<tr><th>Concepto</th><th>Resultado</th></tr>
+<tr><td>Brecha mensual a cubrir</td><td>500 €</td></tr>
+<tr><td>Capital necesario al jubilarte (euros de hoy)</td><td>≈ 100.600 €</td></tr>
+<tr><td>Valor de tus 10.000 € a los 67 años (euros de hoy)</td><td>≈ 25.300 €</td></tr>
+<tr><td>Ahorro mensual necesario desde hoy</td><td>≈ 119 €</td></tr>
+</table>
+
+<p>
+Lo interesante es ver cómo cambia el resultado al modificar un solo dato:
+</p>
+
+<table class="tabla">
+<tr><th>Escenario</th><th>Ahorro mensual necesario</th></tr>
+<tr><td>Caso base (empiezas a los 35)</td><td>≈ 119 €</td></tr>
+<tr><td>La pensión es un 20 % más baja (1.040 €)</td><td>≈ 202 €</td></tr>
+<tr><td>Empiezas a los 45 en lugar de a los 35</td><td>≈ 221 €</td></tr>
+</table>
+
+<p>
+Retrasar diez años el inicio casi duplica el esfuerzo mensual. Es el efecto del <a href="interes-compuesto.html">interés compuesto</a>: cuanto antes empiezas, más trabajo hace la rentabilidad por ti.
+</p>
+
+<h2>Qué supuestos usa (y cómo ajustarlos)</h2>
+
+<h3>La pensión pública</h3>
+<p>
+Es el dato más importante y el más incierto. La estimación más fiable es la del <a href="https://prestaciones.seg-social.es/simulador-servicio/simulador-pension-jubilacion.html" target="_blank" rel="noopener">simulador oficial de la Seguridad Social</a>, que usa tus bases de cotización reales. Si prefieres ser prudente, prueba también con una pensión un 10 % o un 20 % más baja y compara.
+</p>
+
+<h3>La rentabilidad</h3>
+<p>
+Un 5 % anual es un supuesto moderado para una cartera diversificada a largo plazo, pero no está garantizado. Una cartera más conservadora puede rendir menos, y el resultado cambia mucho con pequeñas diferencias: prueba con un 3 % y con un 7 % para ver el rango.
+</p>
+
+<h3>Hasta qué edad cubrir</h3>
+<p>
+Por defecto, la calculadora asume que gastarás el capital poco a poco hasta los 90 años. Si quieres más margen, sube la edad. Si prefieres no tocar nunca el capital y vivir solo de sus rentas, el enfoque es otro: la <a href="regla-del-4.html">regla del 4 %</a>, que exige bastante más dinero (en el ejemplo, unos 150.000 € en lugar de 100.600 €).
+</p>
+
+<h3>La edad de jubilación</h3>
+<p>
+En España la edad ordinaria de jubilación llega a los 67 años en 2027, aunque quienes acrediten al menos 38 años y 6 meses cotizados pueden jubilarse a los 65. Si piensas jubilarte antes, tienes menos años para ahorrar y más años que cubrir, y además la pensión suele reducirse. Tenlo en cuenta al introducir la cifra.
+</p>
+
+<div class="aviso">
+<strong>Importante:</strong>
+<p>
+El dinero que retires en la jubilación puede tributar en el IRPF, según dónde lo tengas invertido. Por eso conviene dejar un margen sobre el resultado de la calculadora, o usar como ingreso deseado una cifra algo superior a la que necesitas.
+</p>
+</div>
+
+<h2>Preguntas frecuentes</h2>
+
+<h3>¿Cómo sé cuánta pensión voy a cobrar?</h3>
+<p>
+La Seguridad Social ofrece un simulador oficial al que puedes acceder con Cl@ve o certificado digital, y también una versión sin identificarte en la que introduces tú los datos. Si todavía te quedan muchos años para jubilarte, cualquier estimación será aproximada, así que es buena idea probar varias cifras.
+</p>
+
+<h3>¿Por qué los resultados están en euros de hoy?</h3>
+<p>
+Porque 1.800 € dentro de 30 años no comprarán lo mismo que hoy. Trabajar en euros de hoy te permite pensar en términos de nivel de vida, no de cifras nominales que engañan. En el ejemplo, los 100.600 € de hoy equivalen a unos 189.600 € nominales dentro de 32 años con un 2 % de inflación.
+</p>
+
+<h3>¿Qué pasa si no me falta nada?</h3>
+<p>
+Si tu pensión estimada cubre el ingreso que quieres, la calculadora te lo indicará. Aun así, puede tener sentido ahorrar algo como colchón frente a imprevistos o para poder jubilarte antes.
+</p>
+
+<h3>¿Dónde invertir ese ahorro?</h3>
+<p>
+Esta calculadora no recomienda productos concretos. Si quieres entender las opciones más habituales para el largo plazo, empieza por <a href="que-es-un-fondo-indexado.html">qué es un fondo indexado</a> y <a href="que-es-un-etf.html">qué es un ETF</a>.
+</p>
+
+<div class="cta">
+<h2 style="margin-top:0;">¿Y si quieres jubilarte mucho antes?</h2>
+<p>
+Si tu objetivo es dejar de depender de un sueldo antes de la edad legal, sin contar con la pensión, usa la <a href="calculadora-fire-avanzada.html">calculadora FIRE avanzada</a> o lee <a href="jubilacion-espana.html">cuánto dinero necesitas para jubilarte en España</a>.
+</p>
+</div>
+
+<p class="nota" style="margin-top:30px;">
+Este contenido es educativo e informativo. No constituye asesoramiento financiero ni recomendación de inversión. Las rentabilidades utilizadas son supuestos y no garantizan resultados futuros. Consulta <a href="sobre.html">cómo hacemos los cálculos</a>.
+</p>
+
+<div class="pie">
+<a href="https://capitalenmarcha.com/">Inicio</a>
+<a href="calculadoras.html">Calculadoras</a>
+<a href="articulos.html">Artículos</a>
+<a href="sobre.html">Sobre</a>
+</div>
 
 </div>
 
 <script>
+function euros(n) {
+    return Math.round(n).toLocaleString("es-ES") + " €";
+}
+
 function calcularJubilacion() {
-    let edadActual = Number(document.getElementById("edadActual").value);
-    let edadJubilacion = Number(document.getElementById("edadJubilacion").value);
-    let patrimonio = Number(document.getElementById("patrimonio").value);
-    let aportacion = Number(document.getElementById("aportacion").value);
-    let rentabilidad = Number(document.getElementById("rentabilidad").value) / 100;
+    const v = id => Number(document.getElementById(id).value);
+    const edadActual = v("edadActual");
+    const edadJubilacion = v("edadJubilacion");
+    const edadFinal = v("edadFinal");
+    const ingreso = v("ingreso");
+    const pension = v("pension");
+    const patrimonio = v("patrimonio");
+    const R = v("rentabilidad") / 100;
+    const inf = v("inflacion") / 100;
+    const out = document.getElementById("resultado");
 
-    let anos = edadJubilacion - edadActual;
+    const T = edadJubilacion - edadActual;
+    const N = edadFinal - edadJubilacion;
 
-    if (anos <= 0) {
-        document.getElementById("resultado").innerHTML =
-            "⚠️ La edad de jubilación debe ser mayor que la edad actual.";
+    if (T <= 0) { out.innerHTML = "La edad de jubilación debe ser mayor que tu edad actual."; return; }
+    if (N <= 0) { out.innerHTML = "La edad hasta la que quieres cubrir debe ser mayor que la edad de jubilación."; return; }
+
+    const brecha = ingreso - pension;
+    if (brecha <= 0) {
+        out.innerHTML = "<strong>Tu pensión estimada ya cubre el ingreso que quieres.</strong><br>" +
+            "Con estos datos no necesitas un ahorro adicional para mantener ese nivel de ingresos. Prueba con una pensión algo más baja para ver cuánto margen tienes.";
         return;
     }
 
-    let meses = anos * 12;
-    let rentabilidadMensual = rentabilidad / 12;
-    let capitalFinal = patrimonio;
+    // Rentabilidad real (descontando inflación), anual y mensual
+    const r = (1 + R) / (1 + inf) - 1;
+    const rm = Math.pow(1 + r, 1 / 12) - 1;
 
-    for (let i = 0; i < meses; i++) {
-        capitalFinal = capitalFinal * (1 + rentabilidadMensual) + aportacion;
+    // Capital necesario al jubilarse para retirar la brecha cada mes durante N años
+    const mesesRetiro = N * 12;
+    const capital = Math.abs(rm) < 1e-9
+        ? brecha * mesesRetiro
+        : brecha * (1 - Math.pow(1 + rm, -mesesRetiro)) / rm;
+
+    // Valor futuro (real) del patrimonio actual
+    const mesesAhorro = T * 12;
+    const valorPatrimonio = patrimonio * Math.pow(1 + rm, mesesAhorro);
+
+    const falta = capital - valorPatrimonio;
+    let ahorroTexto;
+    if (falta <= 0) {
+        ahorroTexto = "<span class='grande'>0 €</span>Lo que ya tienes ahorrado debería bastar si mantienes esa rentabilidad.";
+    } else {
+        const ahorro = Math.abs(rm) < 1e-9
+            ? falta / mesesAhorro
+            : falta * rm / (Math.pow(1 + rm, mesesAhorro) - 1);
+        ahorroTexto = "<span class='grande'>" + euros(ahorro) + " al mes</span>" +
+            "durante " + T + " años, actualizando la cantidad cada año con la inflación.";
     }
 
-    let totalAportado = patrimonio + (aportacion * meses);
-    let ganancias = capitalFinal - totalAportado;
+    const nominal = capital * Math.pow(1 + inf, T);
 
-    document.getElementById("resultado").innerHTML =
-        "<h3>Resultado estimado</h3>" +
-        "⏳ <strong>Años hasta la jubilación:</strong> " + anos + " años<br>" +
-        "📥 <strong>Total aportado:</strong> " + totalAportado.toLocaleString("es-ES", {maximumFractionDigits: 0}) + " €<br>" +
-        "📈 <strong>Capital estimado al jubilarte:</strong> " + capitalFinal.toLocaleString("es-ES", {maximumFractionDigits: 0}) + " €<br>" +
-        "🚀 <strong>Ganancias estimadas:</strong> " + ganancias.toLocaleString("es-ES", {maximumFractionDigits: 0}) + " €";
+    out.innerHTML =
+        "<strong>Ahorro mensual necesario desde hoy</strong>" + ahorroTexto +
+        "<table class='tabla'>" +
+        "<tr><td>Te faltarán cada mes</td><td><strong>" + euros(brecha) + "</strong></td></tr>" +
+        "<tr><td>Capital necesario al jubilarte (euros de hoy)</td><td><strong>" + euros(capital) + "</strong></td></tr>" +
+        "<tr><td>Ese capital en euros de dentro de " + T + " años</td><td>" + euros(nominal) + "</td></tr>" +
+        "<tr><td>Valor de lo que ya tienes al jubilarte (euros de hoy)</td><td>" + euros(valorPatrimonio) + "</td></tr>" +
+        "</table>";
 }
 </script>
 
