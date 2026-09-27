@@ -66,7 +66,7 @@ a{color:#2563eb;text-decoration:none;font-weight:bold;}
 </div>
 </nav>
 
-<h1>📉 Calculadora de inflación</h1>
+<h1>Calculadora de inflación</h1>
 
 <p class="sub">
 Calcula cómo puede perder poder adquisitivo tu dinero con el paso del tiempo debido a la inflación.
@@ -109,10 +109,10 @@ function calcularInflacion() {
 
     document.getElementById("resultado").innerHTML =
         "<h3>Resultado</h3>" +
-        "💰 <strong>Dinero actual:</strong> " + dinero.toLocaleString("es-ES", {maximumFractionDigits: 0}) + " €<br>" +
-        "📉 <strong>Poder adquisitivo estimado dentro de " + anos + " años:</strong> " + poderAdquisitivo.toLocaleString("es-ES", {maximumFractionDigits: 0}) + " € actuales<br>" +
-        "⚠️ <strong>Pérdida aproximada de poder adquisitivo:</strong> " + perdida.toLocaleString("es-ES", {maximumFractionDigits: 0}) + " €<br>" +
-        "📊 <strong>Porcentaje de pérdida:</strong> " + porcentajePerdido.toLocaleString("es-ES", {maximumFractionDigits: 1}) + "%";
+        "<strong>Dinero actual:</strong> " + dinero.toLocaleString("es-ES", {maximumFractionDigits: 0}) + " €<br>" +
+        "<strong>Poder adquisitivo estimado dentro de " + anos + " años:</strong> " + poderAdquisitivo.toLocaleString("es-ES", {maximumFractionDigits: 0}) + " € actuales<br>" +
+        "<strong>Pérdida aproximada de poder adquisitivo:</strong> " + perdida.toLocaleString("es-ES", {maximumFractionDigits: 0}) + " €<br>" +
+        "<strong>Porcentaje de pérdida:</strong> " + porcentajePerdido.toLocaleString("es-ES", {maximumFractionDigits: 1}) + "%";
 }
 </script>
 

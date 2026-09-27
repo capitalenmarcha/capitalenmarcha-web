@@ -233,7 +233,7 @@ a:hover {
 </div>
 </nav>
 
-<h1>🏠 Amortizar hipoteca o invertir</h1>
+<h1>Amortizar hipoteca o invertir</h1>
 
 <p class="sub">
 Compara qué podría ocurrir si utilizas un capital disponible para amortizar parte de tu hipoteca o si decides invertirlo durante el mismo plazo.
@@ -594,16 +594,16 @@ let conclusion;
 
         <br>
 
-        🏦 <strong>Cuota actual estimada:</strong> ${fmt(cuotaActual)}/mes<br>
+        <strong>Cuota actual estimada:</strong> ${fmt(cuotaActual)}/mes<br>
 
-🏠 <strong>Cuota tras amortizar:</strong> ${fmt(nuevaCuota)}/mes<br>
+<strong>Cuota tras amortizar:</strong> ${fmt(nuevaCuota)}/mes<br>
 
-⏳ <strong>Plazo tras amortizar:</strong>
+<strong>Plazo tras amortizar:</strong>
 ${tipoAmortizacion === "cuota"
     ? anos + " años"
     : anosNuevoPlazo + " años y " + mesesNuevoPlazo + " meses"}<br>
 
-📈 <strong>Valor futuro estimado de la inversión:</strong> ${fmt(valorFuturo)}
+<strong>Valor futuro estimado de la inversión:</strong> ${fmt(valorFuturo)}
     `;
 }
 
