@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<script src="cookies.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Patrimonio medio por edad en España (2024): ¿estás por encima?</title>
+<meta name="description" content="Compara el patrimonio de tu hogar con la mediana y la media de los hogares españoles de tu edad, según la Encuesta Financiera de las Familias 2024 del Banco de España.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://capitalenmarcha.com/patrimonio-medio-por-edad.html">
+
+<style>
+body{font-family:Arial,sans-serif;background:#f8fafc;margin:0;color:#0f172a;}
+.container{max-width:820px;margin:50px auto;background:white;padding:40px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,0.08);}
+h1{text-align:center;font-size:34px;line-height:1.25;}
+h2{margin-top:40px;}
+h3{margin-top:28px;}
+.sub{text-align:center;color:#64748b;line-height:1.6;}
+p,li{line-height:1.8;color:#334155;}
+.calc{background:#f8fafc;border:1px solid #e2e8f0;border-radius:16px;padding:10px 25px 25px;margin-top:25px;}
+.fila{display:grid;grid-template-columns:1fr 1fr;gap:0 20px;}
+label{display:block;margin-top:18px;margin-bottom:6px;font-weight:bold;}
+.ayuda{display:block;font-weight:normal;font-size:13px;color:#64748b;margin-top:2px;}
+input{width:100%;padding:12px;font-size:17px;border:1px solid #cbd5e1;border-radius:10px;box-sizing:border-box;background:white;}
+input:focus-visible,button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid #2563eb;outline-offset:2px;}
+details{margin-top:16px;background:white;border:1px solid #e2e8f0;border-radius:12px;padding:6px 16px 14px;}
+summary{cursor:pointer;font-weight:bold;color:#2563eb;padding:8px 0;}
+.suma{margin-top:12px;font-size:15px;color:#334155;}
+button{width:100%;margin-top:26px;padding:16px;border:none;border-radius:12px;background:#2563eb;color:white;font-size:18px;cursor:pointer;}
+button:hover{background:#1d4ed8;}
+button.sec{width:auto;margin-top:16px;padding:10px 16px;font-size:15px;background:white;color:#2563eb;border:1px solid #2563eb;}
+button.sec:hover{background:#eff6ff;}
+.resultado{margin-top:25px;padding:25px;background:#ecfdf5;border-radius:12px;line-height:1.7;font-size:17px;}
+.resultado .grande{font-size:26px;font-weight:bold;color:#065f46;display:block;margin:4px 0 10px;line-height:1.3;}
+.resultado .grande.bajo{color:#9a3412;}
+.barras{margin-top:18px;display:flex;flex-direction:column;gap:14px;}
+.barra .lbl{display:flex;justify-content:space-between;font-size:15px;font-weight:bold;margin-bottom:5px;gap:10px;}
+.barra .lbl span:last-child{white-space:nowrap;}
+.barra .pista{height:22px;background:#e2e8f0;border-radius:8px;overflow:hidden;}
+.barra .relleno{height:100%;border-radius:8px;background:#94a3b8;}
+.barra.tu .relleno{background:#2563eb;}
+.tabla{width:100%;border-collapse:collapse;margin-top:15px;}
+.tabla th,.tabla td{border:1px solid #e2e8f0;padding:10px 12px;text-align:left;}
+.tabla th{background:#f1f5f9;}
+.tabla tr.actual td{background:#dbeafe;font-weight:bold;}
+.scroll{overflow-x:auto;}
+.aviso{background:#fff7ed;padding:20px 25px;border-radius:14px;margin:30px 0;}
+.cta{background:#eff6ff;padding:20px 25px;border-radius:14px;margin-top:30px;}
+.nota{font-size:13px;color:#64748b;line-height:1.5;}
+a{color:#2563eb;text-decoration:none;font-weight:bold;}
+a:hover{text-decoration:underline;}
+.pie{margin-top:40px;font-size:14px;}
+.pie a{margin-right:16px;display:inline-block;margin-bottom:6px;}
+@media (max-width:640px){
+  .container{margin:0;border-radius:0;padding:22px;}
+  h1{font-size:27px;}
+  .fila{grid-template-columns:1fr;}
+  .calc{padding:5px 16px 20px;}
+  .tabla th,.tabla td{padding:8px;font-size:15px;}
+}
+</style>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://capitalenmarcha.com/patrimonio-medio-por-edad.html">
+<meta property="og:title" content="Patrimonio medio por edad en España: ¿estás por encima?">
+<meta property="og:description" content="Compara el patrimonio de tu hogar con el de los hogares españoles de tu edad, con datos del Banco de España.">
+<meta property="og:image" content="https://capitalenmarcha.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Patrimonio medio por edad en España: ¿estás por encima?">
+<meta name="twitter:description" content="Compara el patrimonio de tu hogar con el de los hogares españoles de tu edad, con datos del Banco de España.">
+<meta name="twitter:image" content="https://capitalenmarcha.com/og-image.jpg">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora de patrimonio por edad en España",
+      "url": "https://capitalenmarcha.com/patrimonio-medio-por-edad.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Cualquiera",
+      "inLanguage": "es-ES",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+      "publisher": {"@type": "Organization", "name": "Capital en Marcha", "url": "https://capitalenmarcha.com/"}
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "¿Cuál es el patrimonio medio de los hogares en España?",
+         "acceptedAnswer": {"@type": "Answer", "text": "Según la Encuesta Financiera de las Familias 2024 del Banco de España, la riqueza neta mediana de los hogares españoles es de 160.800 € y la media, de 344.700 €, con datos a finales de 2024."}},
+        {"@type": "Question", "name": "¿Cuál es el patrimonio mediano de un hogar menor de 35 años?",
+         "acceptedAnswer": {"@type": "Answer", "text": "En los hogares cuyo cabeza de familia tiene menos de 35 años, la riqueza neta mediana es de 22.900 € y la media, de 90.100 €, según la EFF 2024."}},
+        {"@type": "Question", "name": "¿Por qué la media es mucho mayor que la mediana?",
+         "acceptedAnswer": {"@type": "Answer", "text": "Porque unos pocos hogares con mucho patrimonio elevan la media. La mediana es el valor del hogar que queda justo en el centro y representa mejor al hogar típico."}}
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+.cm-nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 20px;padding-bottom:18px;margin-bottom:24px;border-bottom:1px solid #e2e8f0;font-family:Arial,sans-serif;}
+.cm-logo{color:#2563eb;font-weight:bold;font-size:17px;text-decoration:none;}
+.cm-menu{display:flex;flex-wrap:wrap;gap:6px 18px;}
+.cm-menu a{color:#334155;font-weight:bold;font-size:15px;text-decoration:none;}
+.cm-menu a:hover{color:#2563eb;text-decoration:underline;}
+.cm-nav a:focus-visible{outline:2px solid #2563eb;outline-offset:2px;}
+@media (max-width:640px){.cm-nav{justify-content:center;text-align:center;}.cm-menu{justify-content:center;}}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<nav class="cm-nav" aria-label="Menú principal">
+<a class="cm-logo" href="/">Capital en Marcha</a>
+<div class="cm-menu">
+<a href="calculadoras.html">Calculadoras</a>
+<a href="invertir.html">Invertir</a>
+<a href="libertad-financiera-recursos.html">Libertad financiera</a>
+<a href="articulos.html">Artículos</a>
+<a href="sobre.html">Sobre</a>
+</div>
+</nav>
+
+<h1>Patrimonio medio por edad en España: ¿estás por encima o por debajo?</h1>
+
+<p class="sub">
+Compara el patrimonio de tu hogar con el de los hogares españoles de tu edad, con los datos oficiales más recientes del Banco de España (Encuesta Financiera de las Familias 2024).
+</p>
+
+<div class="calc">
+
+<div class="fila">
+<div>
+<label for="edad">Edad
+<span class="ayuda">De la persona de referencia del hogar</span></label>
+<input type="number" id="edad" value="35" min="18" max="110" inputmode="numeric">
+</div>
+<div>
+<label for="patrimonio">Patrimonio neto del hogar (€)
+<span class="ayuda">Todo lo que tenéis menos lo que debéis</span></label>
+<input type="number" id="patrimonio" value="60000" inputmode="numeric">
+</div>
+</div>
+
+<details id="desglose">
+<summary>No sé mi patrimonio: calcúlalo por partes</summary>
+<div class="fila">
+<div><label for="d-vivienda">Valor de tu vivienda (€)<span class="ayuda">Si eres propietario; si no, 0</span></label><input type="number" id="d-vivienda" value="0" min="0" inputmode="numeric"></div>
+<div><label for="d-inmuebles">Otros inmuebles (€)</label><input type="number" id="d-inmuebles" value="0" min="0" inputmode="numeric"></div>
+</div>
+<div class="fila">
+<div><label for="d-ahorro">Cuentas y depósitos (€)</label><input type="number" id="d-ahorro" value="0" min="0" inputmode="numeric"></div>
+<div><label for="d-inversiones">Inversiones y planes de pensiones (€)<span class="ayuda">Fondos, acciones, ETF…</span></label><input type="number" id="d-inversiones" value="0" min="0" inputmode="numeric"></div>
+</div>
+<div class="fila">
+<div><label for="d-hipoteca">Hipoteca pendiente (€)</label><input type="number" id="d-hipoteca" value="0" min="0" inputmode="numeric"></div>
+<div><label for="d-deudas">Otras deudas (€)<span class="ayuda">Préstamos personales, tarjetas…</span></label><input type="number" id="d-deudas" value="0" min="0" inputmode="numeric"></div>
+</div>
+<p class="suma" id="suma">Patrimonio neto: 0 €. No incluyas el valor de los coches: el Banco de España tampoco los cuenta.</p>
+<button type="button" class="sec" onclick="usarDesglose()">Usar esta cifra</button>
+</details>
+
+<button type="button" onclick="comparar()">Comparar con mi grupo de edad</button>
+
+<div class="resultado" id="resultado" aria-live="polite">
+Introduce tus datos y pulsa comparar.
+</div>
+
+</div>
+
+<p class="nota">
+Datos: Banco de España, Encuesta Financiera de las Familias 2024, cuadro 1.B. Cifras de finales de 2024, por hogar. La comparación es orientativa y no guarda ningún dato: todo se calcula en tu navegador.
+</p>
+
+<h2>Patrimonio medio y mediano por edad en España (2024)</h2>
+
+<p>
+Esta es la riqueza neta de los hogares españoles según la edad de la persona de referencia del hogar, con datos a finales de 2024:
+</p>
+
+<div class="scroll">
+<table class="tabla" id="tabla-edades">
+<tr><th>Edad</th><th>Mediana</th><th>Media</th></tr>
+<tr data-grupo="0"><td>Menos de 35 años</td><td>22.900 €</td><td>90.100 €</td></tr>
+<tr data-grupo="1"><td>De 35 a 44 años</td><td>80.200 €</td><td>218.300 €</td></tr>
+<tr data-grupo="2"><td>De 45 a 54 años</td><td>145.900 €</td><td>267.100 €</td></tr>
+<tr data-grupo="3"><td>De 55 a 64 años</td><td>214.500 €</td><td>450.400 €</td></tr>
+<tr data-grupo="4"><td>De 65 a 74 años</td><td>249.200 €</td><td>463.800 €</td></tr>
+<tr data-grupo="5"><td>75 años o más</td><td>214.500 €</td><td>469.300 €</td></tr>
+<tr><td><strong>Todos los hogares</strong></td><td><strong>160.800 €</strong></td><td><strong>344.700 €</strong></td></tr>
+</table>
+</div>
+
+<p>
+El patrimonio crece con la edad hasta el tramo de 65 a 74 años, cuando alcanza su máximo, y después se estabiliza. Es lo esperable: a lo largo de la vida laboral se ahorra, se paga la hipoteca y las inversiones tienen tiempo para crecer.
+</p>
+
+<h2>¿Por qué la media es mucho mayor que la mediana?</h2>
+
+<p>
+Si pones en fila a todos los hogares de menos de 35 años, del que menos tiene al que más, el que queda justo en el centro tiene 22.900 €: esa es la <strong>mediana</strong>. La <strong>media</strong>, en cambio, es de 90.100 €, casi cuatro veces más.
+</p>
+
+<p>
+La diferencia se debe a que unos pocos hogares con mucho patrimonio elevan la media, aunque la mayoría esté lejos de esa cifra. Por eso la mediana representa mucho mejor al hogar típico. Si tu patrimonio está por debajo de la media de tu edad, es de lo más normal: la mayoría de los hogares lo están.
+</p>
+
+<h2>La vivienda lo cambia todo</h2>
+
+<p>
+El dato más llamativo de la encuesta es la diferencia entre propietarios y no propietarios de su vivienda principal:
+</p>
+
+<div class="scroll">
+<table class="tabla">
+<tr><th>Hogares</th><th>Mediana</th><th>Media</th></tr>
+<tr><td>Propietarios de su vivienda</td><td>239.300 €</td><td>451.700 €</td></tr>
+<tr><td>Otros regímenes (alquiler, cesión…)</td><td>6.400 €</td><td>87.600 €</td></tr>
+</table>
+</div>
+
+<p>
+En España, la vivienda es el principal activo de la mayoría de los hogares. Por eso un hogar joven que vive de alquiler puede tener un patrimonio bajo en la comparación aunque ahorre de forma constante. Si ese es tu caso, lo relevante no es la foto de hoy, sino tu ritmo de ahorro: con la <a href="ahorro-mensual.html">calculadora de ahorro mensual</a> puedes ver cuánto necesitas apartar para llegar a una cifra concreta.
+</p>
+
+<h2>Qué cuenta como patrimonio neto</h2>
+
+<p>
+El Banco de España define la riqueza neta como el valor de todos los activos del hogar, reales y financieros, menos sus deudas. Para compararte bien, incluye lo mismo:
+</p>
+
+<ul>
+<li><strong>Suma:</strong> el valor de mercado de tu vivienda y otros inmuebles, el dinero en cuentas y depósitos, y tus inversiones (fondos, acciones, planes de pensiones…).</li>
+<li><strong>Resta:</strong> la hipoteca pendiente y cualquier otra deuda.</li>
+<li><strong>No incluyas:</strong> el valor de los coches y otros vehículos, que la encuesta no cuenta.</li>
+</ul>
+
+<p>
+Las cifras son <strong>por hogar</strong>, no por persona. Si vives en pareja, compara el patrimonio de los dos juntos, y usa como edad la de la persona que consideréis de referencia en el hogar.
+</p>
+
+<div class="aviso">
+<strong>Ten en cuenta</strong>
+<p>
+La encuesta se refiere a finales de 2024 y a los hogares españoles en su conjunto. Tu situación depende de muchos factores que la comparación no recoge, como tus ingresos, la ciudad en la que vives o si has recibido una herencia. Úsala como referencia, no como examen.
+</p>
+</div>
+
+<h2>Preguntas frecuentes</h2>
+
+<h3>¿Cuál es el patrimonio medio de los hogares en España?</h3>
+<p>
+Según la Encuesta Financiera de las Familias 2024, la riqueza neta mediana de los hogares españoles es de 160.800 € y la media, de 344.700 €, con datos a finales de 2024.
+</p>
+
+<h3>¿Cuánto patrimonio tiene un hogar joven en España?</h3>
+<p>
+En los hogares cuya persona de referencia tiene menos de 35 años, la mediana es de 22.900 € y la media, de 90.100 €. Entre 35 y 44 años, la mediana sube a 80.200 €.
+</p>
+
+<h3>¿Cómo puedo aumentar mi patrimonio?</h3>
+<p>
+Las dos palancas principales son ahorrar de forma constante y dar tiempo a que ese ahorro crezca. Mira <a href="objetivos-financieros.html">cuánto tardarías en llegar a 100.000 €, 500.000 € o un millón</a> con tu ritmo actual, y cómo funciona el <a href="interes-compuesto.html">interés compuesto</a>.
+</p>
+
+<div class="cta">
+<h2 style="margin-top:0;">¿Y cuánto necesitarías para dejar de trabajar?</h2>
+<p>
+Compararte con los demás es solo el punto de partida. Si quieres saber qué patrimonio necesitarías para vivir de tus inversiones, usa la <a href="calculadora-fire-avanzada.html">calculadora FIRE avanzada</a> o lee sobre la <a href="regla-del-4.html">regla del 4 %</a>.
+</p>
+</div>
+
+<p class="nota" style="margin-top:30px;">
+Fuente: Banco de España, <a href="https://www.bde.es/f/webbe/SES/Secciones/Publicaciones/PublicacionesSeriadas/DocumentosOcasionales/26/Fich/do2610.pdf" target="_blank" rel="noopener">Encuesta Financiera de las Familias (EFF) 2024: métodos, resultados y cambios desde 2022</a>, cuadro 1.B "Riqueza neta de los hogares. Distribución por características de los hogares", en miles de euros de 2024. Este contenido es educativo e informativo y no constituye asesoramiento financiero. Consulta <a href="sobre.html">cómo hacemos los cálculos</a>.
+</p>
+
+<div class="pie">
+<a href="https://capitalenmarcha.com/">Inicio</a>
+<a href="calculadoras.html">Calculadoras</a>
+<a href="articulos.html">Artículos</a>
+<a href="sobre.html">Sobre</a>
+</div>
+
+</div>
+
+<script>
+// Banco de España, EFF 2024, cuadro 1.B (euros de 2024)
+const GRUPOS = [
+    {nombre: "menos de 35 años", hasta: 34, mediana: 22900, media: 90100},
+    {nombre: "35 a 44 años", hasta: 44, mediana: 80200, media: 218300},
+    {nombre: "45 a 54 años", hasta: 54, mediana: 145900, media: 267100},
+    {nombre: "55 a 64 años", hasta: 64, mediana: 214500, media: 450400},
+    {nombre: "65 a 74 años", hasta: 74, mediana: 249200, media: 463800},
+    {nombre: "75 años o más", hasta: 200, mediana: 214500, media: 469300},
+];
+const CAMPOS = ["d-vivienda", "d-inmuebles", "d-ahorro", "d-inversiones", "d-hipoteca", "d-deudas"];
+
+function euros(n) {
+    return Math.round(n).toLocaleString("es-ES") + " €";
+}
+function veces(x) {
+    return x.toLocaleString("es-ES", {maximumFractionDigits: 1});
+}
+
+function totalDesglose() {
+    const v = id => Number(document.getElementById(id).value) || 0;
+    return v("d-vivienda") + v("d-inmuebles") + v("d-ahorro") + v("d-inversiones") - v("d-hipoteca") - v("d-deudas");
+}
+CAMPOS.forEach(id => document.getElementById(id).addEventListener("input", () => {
+    document.getElementById("suma").textContent = "Patrimonio neto: " + euros(totalDesglose()) +
+        ". No incluyas el valor de los coches: el Banco de España tampoco los cuenta.";
+}));
+function usarDesglose() {
+    document.getElementById("patrimonio").value = Math.round(totalDesglose());
+    document.getElementById("desglose").open = false;
+    comparar();
+}
+
+function barra(etiqueta, valor, max, clase) {
+    const ancho = max > 0 ? Math.max(0, valor) / max * 100 : 0;
+    return "<div class='barra " + clase + "'><div class='lbl'><span>" + etiqueta + "</span><span>" + euros(valor) + "</span></div>" +
+        "<div class='pista'><div class='relleno' style='width:" + ancho.toFixed(1) + "%'></div></div></div>";
+}
+
+let textoCompartir = "";
+
+function comparar() {
+    const edad = Number(document.getElementById("edad").value);
+    const patrimonio = Number(document.getElementById("patrimonio").value);
+    const out = document.getElementById("resultado");
+
+    if (!edad || edad < 18) { out.innerHTML = "Introduce una edad de 18 años o más."; return; }
+    if (document.getElementById("patrimonio").value === "") { out.innerHTML = "Introduce el patrimonio neto de tu hogar."; return; }
+
+    const i = GRUPOS.findIndex(g => edad <= g.hasta);
+    const g = GRUPOS[i];
+
+    document.querySelectorAll("#tabla-edades tr[data-grupo]").forEach(tr => {
+        tr.classList.toggle("actual", Number(tr.dataset.grupo) === i);
+    });
+
+    let titular, clase = "";
+    if (patrimonio <= 0) {
+        titular = "Tu patrimonio neto es de " + euros(patrimonio) + ".";
+        clase = "bajo";
+        textoCompartir = "";
+    } else if (patrimonio >= g.mediana) {
+        const r = patrimonio / g.mediana;
+        titular = r >= 1.05
+            ? "Tu hogar tiene " + veces(r) + " veces el patrimonio del hogar típico de tu edad."
+            : "Tu hogar está justo en la mediana de tu edad.";
+        textoCompartir = r >= 1.05
+            ? "Mi hogar tiene " + veces(r) + " veces el patrimonio del hogar típico de mi edad en España."
+            : "Mi hogar está justo en el patrimonio mediano de mi edad en España.";
+    } else {
+        const pct = Math.round(patrimonio / g.mediana * 100);
+        titular = "Tu hogar tiene el " + pct + " % del patrimonio del hogar típico de tu edad.";
+        clase = "bajo";
+        textoCompartir = "Mi hogar tiene el " + pct + " % del patrimonio del hogar típico de mi edad en España.";
+    }
+
+    let explicacion;
+    if (patrimonio <= 0) {
+        explicacion = "Tus deudas superan o igualan a lo que tienes. Es frecuente al principio de una hipoteca o al empezar a trabajar. " +
+            "La mediana de los hogares de " + g.nombre + " es de " + euros(g.mediana) + ".";
+    } else if (patrimonio >= g.mediana) {
+        explicacion = (patrimonio / g.mediana < 1.05 ? "Estás prácticamente en la mediana" : "Estás por encima de la mediana") +
+            " de los hogares de " + g.nombre + " (" + euros(g.mediana) + "). " +
+            (patrimonio >= g.media
+                ? "También superas la media (" + euros(g.media) + "), que está inflada por los hogares con más patrimonio."
+                : "La media es más alta (" + euros(g.media) + ") porque la elevan unos pocos hogares con mucho patrimonio.");
+    } else {
+        explicacion = "Te faltan " + euros(g.mediana - patrimonio) + " para llegar a la mediana de los hogares de " + g.nombre +
+            " (" + euros(g.mediana) + "). Recuerda que la vivienda pesa mucho: si vives de alquiler, es normal estar por debajo.";
+    }
+
+    const max = Math.max(patrimonio, g.mediana, g.media);
+    out.innerHTML =
+        "<strong>Resultado para hogares de " + g.nombre + "</strong>" +
+        "<span class='grande " + clase + "'>" + titular + "</span>" +
+        explicacion +
+        "<div class='barras'>" +
+        barra("Tu hogar", patrimonio, max, "tu") +
+        barra("Hogar típico de tu edad (mediana)", g.mediana, max, "") +
+        barra("Media de tu edad", g.media, max, "") +
+        "</div>" +
+        (textoCompartir ? "<button type='button' class='sec' onclick='copiar(this)'>Copiar resultado para compartir</button>" : "");
+}
+
+function copiar(boton) {
+    const texto = textoCompartir + " Compruébalo aquí: https://capitalenmarcha.com/patrimonio-medio-por-edad.html";
+    const hecho = () => { boton.textContent = "Copiado"; };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(texto).then(hecho, () => { prompt("Copia este texto:", texto); });
+    } else {
+        prompt("Copia este texto:", texto);
+    }
+}
+</script>
+
+</body>
+</html>
