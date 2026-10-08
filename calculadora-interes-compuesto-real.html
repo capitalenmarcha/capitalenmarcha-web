@@ -7,8 +7,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculadora de Interés Compuesto Real (Neto e Inflación) | Capital en Marcha</title>
-<meta name="description" content="Calcula cuánto crecerá tu dinero ajustado a los impuestos de Hacienda (IRPF España) y la inflación real. La única calculadora de interés compuesto 100% realista.">
+<title>Calculadora de interés compuesto con impuestos (IRPF) e inflación</title>
+<meta name="description" content="Calcula cuánto crecerá tu inversión después de pagar el IRPF del ahorro y descontar la inflación: lo que de verdad te quedará en euros de hoy. Con tramos de 2025-2026.">
 
 <!-- Canonical -->
 <link rel="canonical" href="https://capitalenmarcha.com/calculadora-interes-compuesto-real.html">
@@ -56,16 +56,16 @@ a{color:#2563eb;text-decoration:none;font-weight:bold;}
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://capitalenmarcha.com/calculadora-interes-compuesto-real.html">
-<meta property="og:title" content="Calculadora de Interés Compuesto Real (Neto e Inflación) | Capital en Marcha">
-<meta property="og:description" content="Calcula cuánto crecerá tu dinero ajustado a los impuestos de Hacienda (IRPF España) y la inflación real. La única calculadora de interés compuesto 100% realista.">
+<meta property="og:title" content="Calculadora de interés compuesto con impuestos (IRPF) e inflación">
+<meta property="og:description" content="Calcula cuánto crecerá tu inversión después de pagar el IRPF del ahorro y descontar la inflación: lo que de verdad te quedará en euros de hoy. Con tramos de 2025-2026.">
 <meta property="og:image" content="https://capitalenmarcha.com/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Calculadora de Interés Compuesto Real (Neto e Inflación) | Capital en Marcha">
-<meta name="twitter:description" content="Calcula cuánto crecerá tu dinero ajustado a los impuestos de Hacienda (IRPF España) y la inflación real. La única calculadora de interés compuesto 100% realista.">
+<meta name="twitter:title" content="Calculadora de interés compuesto con impuestos (IRPF) e inflación">
+<meta name="twitter:description" content="Calcula cuánto crecerá tu inversión después de pagar el IRPF del ahorro y descontar la inflación: lo que de verdad te quedará en euros de hoy. Con tramos de 2025-2026.">
 <meta name="twitter:image" content="https://capitalenmarcha.com/og-image.jpg">
 
 <style>
@@ -77,6 +77,20 @@ a{color:#2563eb;text-decoration:none;font-weight:bold;}
 .cm-nav a:focus-visible{outline:2px solid #2563eb;outline-offset:2px;}
 @media (max-width:640px){.cm-nav{justify-content:center;text-align:center;}.cm-menu{justify-content:center;}}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "¿Cuánto tributan las ganancias de las inversiones en España?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Las ganancias tributan en la base del ahorro del IRPF por tramos: 19 % hasta 6.000 €, 21 % de 6.000 a 50.000 €, 23 % de 50.000 a 200.000 €, 27 % de 200.000 a 300.000 € y 30 % a partir de 300.000 €."}},
+    {"@type": "Question", "name": "¿Se paga IRPF por toda la inversión o solo por la ganancia?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Solo por la ganancia: la diferencia entre lo que obtienes al vender y lo que aportaste. El dinero que pusiste de tu bolsillo no tributa al recuperarlo."}},
+    {"@type": "Question", "name": "¿Qué significa poder adquisitivo real?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Es lo que podrías comprar hoy con el dinero que tendrás en el futuro, una vez descontada la inflación. Sirve para comparar el resultado con tu nivel de vida actual."}}
+  ]
+}
+</script>
 </head>
 
 <body>
@@ -94,7 +108,7 @@ a{color:#2563eb;text-decoration:none;font-weight:bold;}
 </div>
 </nav>
 
-<h1>Calculadora de Interés Compuesto Real</h1>
+<h1>Calculadora de interés compuesto con impuestos e inflación</h1>
 <p class="subtitulo">Descubre cuánto valdrá tu patrimonio ajustado a <strong>Impuestos (IRPF España)</strong> e <strong>Inflación</strong>.</p>
 
 <div class="grid-calc">
@@ -159,10 +173,98 @@ a{color:#2563eb;text-decoration:none;font-weight:bold;}
     <h2>¿Cómo hace los cálculos esta herramienta?</h2>
     <p>A diferencia de otras calculadoras, este simulador tiene en cuenta dos factores destructores de patrimonio a largo plazo:</p>
     <ul>
-        <li><strong>Impuestos de Hacienda en España:</strong> Al rescatar tus ganancias, tributas en el IRPF por tramos (del 19% hasta el 28% sobre las plusvalías generadas).</li>
+        <li><strong>Impuestos de Hacienda en España:</strong> Al rescatar tus ganancias, tributas en el IRPF por tramos (del 19 % hasta el 30 % sobre las plusvalías generadas).</li>
         <li><strong>Efecto de la Inflación:</strong> Aunque dentro de 20 años tengas 100.000 €, las cosas costarán más. El "Poder Adquisitivo Real" refleja lo que podrías comprar hoy con esa cifra.</li>
     </ul>
 </div>
+
+<h2>Ejemplo: 10.000 € y 200 € al mes durante 20 años</h2>
+
+<p>
+Con los valores que aparecen por defecto (10.000 € iniciales, 200 € al mes, 20 años, un 7 % de rentabilidad anual y un 2 % de inflación), estos son los resultados:
+</p>
+
+<div style="overflow-x:auto;">
+<table class="tabla">
+<tr><th>Concepto</th><th>Importe</th></tr>
+<tr><td>Dinero aportado de tu bolsillo</td><td>58.000 €</td></tr>
+<tr><td>Capital final bruto</td><td>140.778 €</td></tr>
+<tr><td>Ganancia antes de impuestos</td><td>82.778 €</td></tr>
+<tr><td>IRPF si vendes todo al final</td><td>17.919 €</td></tr>
+<tr><td>Capital neto tras impuestos</td><td>122.859 €</td></tr>
+<tr><td><strong>Poder adquisitivo real (euros de hoy)</strong></td><td><strong>82.681 €</strong></td></tr>
+</table>
+</div>
+
+<p>
+La diferencia es enorme: de los 140.778 € que muestra una calculadora de interés compuesto normal, en poder de compra de hoy te quedan unos 82.700 €, un 41 % menos. Aun así, sigues teniendo bastante más que los 58.000 € que aportaste, también en euros de hoy. Invertir sigue mereciendo la pena, pero conviene hacer los planes con la cifra real, no con la bruta.
+</p>
+
+<h2>Tramos del IRPF del ahorro (2025 y 2026)</h2>
+
+<p>
+Las ganancias de fondos, acciones y ETF tributan en la base del ahorro del IRPF. Cada tramo se aplica solo a la parte de la ganancia que cae dentro de él:
+</p>
+
+<div style="overflow-x:auto;">
+<table class="tabla">
+<tr><th>Ganancia</th><th>Tipo</th></tr>
+<tr><td>Hasta 6.000 €</td><td>19 %</td></tr>
+<tr><td>De 6.000 € a 50.000 €</td><td>21 %</td></tr>
+<tr><td>De 50.000 € a 200.000 €</td><td>23 %</td></tr>
+<tr><td>De 200.000 € a 300.000 €</td><td>27 %</td></tr>
+<tr><td>Más de 300.000 €</td><td>30 %</td></tr>
+</table>
+</div>
+
+<p style="font-size:13px;color:#64748b;">
+El tramo del 30 % se aplica desde el 1 de enero de 2025, tras la Ley 7/2024, de 20 de diciembre. Consulta siempre la normativa vigente o a un asesor fiscal para tu caso concreto.
+</p>
+
+<h2>Qué supone esta calculadora</h2>
+
+<ul>
+<li><strong>Vendes toda la inversión de una vez al final del plazo.</strong> Por eso toda la ganancia tributa el mismo año. Si en la práctica vas retirando el dinero poco a poco a lo largo de varios años, cada año tributas solo por la ganancia de lo que vendes, y normalmente en tramos más bajos, así que pagarías menos.</li>
+<li><strong>Solo tributa la ganancia.</strong> Lo que aportaste de tu bolsillo no paga impuestos al recuperarlo.</li>
+<li><strong>Las aportaciones se hacen al principio de cada mes</strong> y la rentabilidad es constante cada año. En la realidad habrá años mejores y peores.</li>
+<li><strong>No incluye comisiones.</strong> Si tu producto cobra, por ejemplo, un 1 % anual, réstalo de la rentabilidad para ver el efecto.</li>
+</ul>
+
+<h2>Cómo pagar menos impuestos de forma legal</h2>
+
+<ul>
+<li><strong>No vender sin necesidad.</strong> Mientras no vendes, no tributas, y todo el dinero sigue generando rentabilidad. Este efecto, a largo plazo, es muy grande.</li>
+<li><strong>Usar fondos de inversión si piensas cambiar de producto.</strong> En España, el traspaso de un fondo de inversión a otro no tributa, mientras que vender un ETF para comprar otro sí. Lo explicamos en <a href="etf-vs-fondo-indexado.html">ETF vs fondo indexado</a>.</li>
+<li><strong>Repartir las ventas en varios años</strong>, para que la ganancia de cada año caiga en tramos más bajos.</li>
+</ul>
+
+<h2>Preguntas frecuentes</h2>
+
+<h3>¿Cuánto tributan las ganancias de las inversiones en España?</h3>
+<p>
+En la base del ahorro del IRPF, por tramos: 19 % hasta 6.000 €, 21 % de 6.000 a 50.000 €, 23 % de 50.000 a 200.000 €, 27 % de 200.000 a 300.000 € y 30 % a partir de 300.000 €.
+</p>
+
+<h3>¿Se paga IRPF por toda la inversión o solo por la ganancia?</h3>
+<p>
+Solo por la ganancia: la diferencia entre lo que obtienes al vender y lo que aportaste.
+</p>
+
+<h3>¿Qué significa poder adquisitivo real?</h3>
+<p>
+Es lo que podrías comprar hoy con el dinero que tendrás en el futuro, una vez descontada la inflación. Para ver solo el efecto de la inflación, prueba la <a href="calculadora-inflacion.html">calculadora de inflación</a>.
+</p>
+
+<div style="background:#eff6ff;padding:20px 25px;border-radius:14px;margin-top:30px;">
+<strong>Sigue calculando</strong>
+<p>
+¿Prefieres la versión sin impuestos, con periodos en meses? Usa la <a href="interes-compuesto.html">calculadora de interés compuesto mensual</a>. Y si quieres saber cuánto ahorrar para llegar a una cifra concreta, prueba la <a href="ahorro-mensual.html">calculadora de ahorro mensual</a>.
+</p>
+</div>
+
+<p style="font-size:13px;color:#64748b;margin-top:30px;">
+Este contenido es educativo e informativo. No constituye asesoramiento financiero ni fiscal. Las rentabilidades utilizadas son supuestos y no garantizan resultados futuros. Consulta <a href="sobre.html">cómo hacemos los cálculos</a>.
+</p>
 
 <br>
 <a href="/">← Volver a Capital en Marcha</a>
@@ -175,7 +277,7 @@ function calcularIRPF(ganancia) {
     let impuesto = 0;
     
     // Tramos IRPF del ahorro en España
-    if (ganancia > 300000) { impuesto += (ganancia - 300000) * 0.28; ganancia = 300000; }
+    if (ganancia > 300000) { impuesto += (ganancia - 300000) * 0.30; ganancia = 300000; }
     if (ganancia > 200000) { impuesto += (ganancia - 200000) * 0.27; ganancia = 200000; }
     if (ganancia > 50000)  { impuesto += (ganancia - 50000)  * 0.23; ganancia = 50000; }
     if (ganancia > 6000)   { impuesto += (ganancia - 6000)   * 0.21; ganancia = 6000; }
