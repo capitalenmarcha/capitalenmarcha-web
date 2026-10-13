@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>¿Tu sueldo es alto? Calcula qué % de España cobra menos que tú (INE 2024)</title>
+<meta name="description" content="Calculadora gratuita: introduce tu sueldo bruto y descubre a qué porcentaje de asalariados de España superas, con datos oficiales del INE (EPA 2024). Sin registro y sin guardar tus datos.">
+<link rel="canonical" href="https://capitalenmarcha.com/sueldo/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#2563eb">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Capital en Marcha">
+<meta property="og:title" content="¿Cobras más que la mayoría? Descúbrelo en 10 segundos">
+<meta property="og:description" content="Introduce tu sueldo y mira en qué escalón estás frente al resto de asalariados de España. Datos oficiales del INE.">
+<meta property="og:url" content="https://capitalenmarcha.com/sueldo/">
+<meta property="og:image" content="https://capitalenmarcha.com/sueldo/og.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Banner de cookies + Google Analytics (el mismo archivo que usa el resto de la web).
+     La página envía eventos a Analytics solo si el visitante acepta: calcular, adivinar, compartir, comparar, click_cta. -->
+<script src="/cookies.js" defer></script>
+<meta name="google-adsense-account" content="ca-pub-6776194473608247">
+
+<!-- ADSENSE: cuando tu cuenta esté aprobada, descomenta esta línea:
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6776194473608247" crossorigin="anonymous"></script>
+-->
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"WebApplication","name":"Calculadora de percentil salarial en España","url":"https://capitalenmarcha.com/sueldo/","applicationCategory":"FinanceApplication","operatingSystem":"Any","inLanguage":"es","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"publisher":{"@type":"Organization","name":"Capital en Marcha","url":"https://capitalenmarcha.com/"}},
+ {"@type":"FAQPage","mainEntity":[
+  {"@type":"Question","name":"¿Cuál es el salario mediano en España?","acceptedAnswer":{"@type":"Answer","text":"Según la EPA del INE, el salario mediano bruto mensual del empleo principal fue de 2.001,4 euros en 2024 (prorrateando pagas extra). La mitad de los asalariados cobra menos y la otra mitad más."}},
+  {"@type":"Question","name":"¿Cuánto hay que cobrar para estar en el 10% que más gana?","acceptedAnswer":{"@type":"Answer","text":"En 2024 el límite del décimo decil fue de 4.056,7 euros brutos al mes (unos 48.680 euros brutos al año), según la EPA del INE."}},
+  {"@type":"Question","name":"¿Por qué el salario medio es mayor que el mediano?","acceptedAnswer":{"@type":"Answer","text":"Porque unos pocos sueldos muy altos elevan la media. En 2024 el salario medio mensual fue de 2.385,6 euros y el mediano de 2.001,4 euros."}},
+  {"@type":"Question","name":"¿Se guarda mi sueldo?","acceptedAnswer":{"@type":"Answer","text":"No. El cálculo se hace en tu navegador y el sueldo no se envía a ningún servidor ni aparece en los enlaces para compartir."}}
+ ]}
+]}
+</script>
+
+<style>
+:root{
+  --bg:#f8fafc; --surface:#ffffff; --ink:#0f172a; --muted:#64748b; --line:#e2e8f0;
+  --brand:#2563eb; --brand-2:#2563eb; --accent:#dbeafe; --accent-ink:#1e3a8a;
+  --radius:14px; --shadow:none;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 Arial,sans-serif}
+p,li{color:#334155}
+a{color:#2563eb;text-decoration:none;font-weight:bold}
+a:hover{text-decoration:underline}
+.container{max-width:820px;margin:50px auto;background:#fff;padding:40px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,0.08)}
+@media (max-width:640px){.container{margin:0;border-radius:0;padding:24px}}
+.cm-nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 20px;padding-bottom:18px;margin-bottom:24px;border-bottom:1px solid #e2e8f0;font-family:Arial,sans-serif;}
+.cm-logo{color:#2563eb;font-weight:bold;font-size:17px;text-decoration:none;}
+.cm-menu{display:flex;flex-wrap:wrap;gap:6px 18px;}
+.cm-menu a{color:#334155;font-weight:bold;font-size:15px;text-decoration:none;}
+.cm-menu a:hover{color:#2563eb;text-decoration:underline;}
+.cm-nav a:focus-visible{outline:2px solid #2563eb;outline-offset:2px;}
+@media (max-width:640px){.cm-nav{justify-content:center;text-align:center;}.cm-menu{justify-content:center;}}
+.pie{margin-top:40px;font-size:14px;border-top:1px solid #e2e8f0;padding-top:20px}
+.pie a{margin-right:16px}
+.hero h1{text-align:center;font-size:34px;line-height:1.25;margin:12px 0 10px}
+@media (max-width:640px){.hero h1{font-size:27px}}
+.hero p{text-align:center;color:var(--muted);margin:0 0 24px;line-height:1.5}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+form.card{border:0;padding:0}
+#result{background:#ecfdf5;border:0}
+label{display:block;font-weight:bold;margin:0 0 8px}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.money{position:relative;flex:1 1 180px}
+.money input{width:100%;font-size:1.6rem;font-weight:700;padding:12px 44px 12px 14px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;color:var(--ink)}
+.money input:focus{outline:none;border-color:var(--brand-2)}
+.money::after{content:"€";position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:1.3rem;color:var(--muted)}
+select{flex:1 1 180px;font-size:1rem;padding:14px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;color:var(--ink)}
+.hint{font-size:.85rem;color:var(--muted);margin:8px 0 0}
+details.guess{margin-top:16px;border-top:1px dashed var(--line);padding-top:12px}
+details.guess summary{cursor:pointer;font-weight:600}
+input[type=range]{width:100%;accent-color:var(--brand-2)}
+.btn{appearance:none;border:0;border-radius:12px;padding:16px;font-weight:bold;font-size:18px;cursor:pointer;background:#2563eb;color:#fff;width:100%;margin-top:24px;font-family:Arial,sans-serif}
+.btn.ghost{background:#fff;border:1px solid #2563eb;color:#2563eb;margin-top:10px}
+.btn:focus-visible,select:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #2563eb;outline-offset:2px}
+#result{margin-top:20px}
+.big{font-size:clamp(3.4rem,15vw,5.5rem);font-weight:bold;color:#0f172a;letter-spacing:-.05em;line-height:1;margin:6px 0}
+.tag{display:inline-block;background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:4px 12px;font-weight:700;font-size:.9rem}
+.bar{position:relative;height:56px;margin:40px 0 8px;display:grid;grid-template-columns:repeat(10,1fr);gap:3px}
+.bar div{background:var(--line);border-radius:4px;align-self:end}
+.bar div.on{background:var(--brand-2)}
+.marker{position:absolute;top:-12px;width:2px;height:68px;background:var(--ink);transition:left .6s ease}
+.marker::after{content:"Tú";position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-size:.75rem;font-weight:800}
+.axis{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted)}
+.facts{display:grid;gap:10px;margin-top:18px}
+.fact{border-left:4px solid #2563eb;padding:8px 12px;background:#fff;border-radius:0 10px 10px 0}
+.compare{margin-top:18px}
+.compare .row select{flex:1 1 140px;font-size:.95rem;padding:10px}
+.cmpout{margin-top:10px;font-size:.95rem}
+.share{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.share .btn{margin:0}
+.friend{background:var(--accent);color:var(--accent-ink);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px;font-weight:600}
+.cta{margin-top:18px;background:#eff6ff;color:#0f172a;border-radius:var(--radius);padding:18px 20px;line-height:1.6}
+.cta a{color:#2563eb}
+.ad{margin:24px 0;min-height:100px;display:flex;align-items:center;justify-content:center;border:1px dashed var(--line);border-radius:12px;color:var(--muted);font-size:.75rem}
+article{margin:36px 0}
+article h2{margin:40px 0 10px}
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+th,td{padding:8px 6px;border-bottom:1px solid var(--line);text-align:left}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+.hidden{display:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="container">
+<nav class="cm-nav" aria-label="Menú principal">
+<a class="cm-logo" href="/">Capital en Marcha</a>
+<div class="cm-menu">
+<a href="/calculadoras.html">Calculadoras</a>
+<a href="/invertir.html">Invertir</a>
+<a href="/libertad-financiera-recursos.html">Libertad financiera</a>
+<a href="/articulos.html">Artículos</a>
+<a href="/sobre.html">Sobre</a>
+</div>
+</nav>
+
+<main>
+<section class="hero">
+  <div id="friend" class="friend hidden" role="status"></div>
+  <h1>¿Tu sueldo es alto o bajo?</h1>
+  <p>Escribe tu sueldo bruto y descubre a qué porcentaje de asalariados de España superas. Datos oficiales del INE. Tu sueldo no sale de tu móvil.</p>
+</section>
+
+<form class="card" id="form" novalidate>
+  <label for="salary">Tu sueldo bruto</label>
+  <div class="row">
+    <div class="money"><input id="salary" inputmode="decimal" autocomplete="off" placeholder="1.800" aria-describedby="h1"></div>
+    <select id="period" aria-label="Periodo del sueldo">
+      <option value="m12">al mes (12 pagas)</option>
+      <option value="m14">al mes (14 pagas)</option>
+      <option value="y">al año</option>
+    </select>
+  </div>
+  <p class="hint" id="h1">Bruto = antes de impuestos y Seguridad Social. Lo encontrarás en tu nómina o contrato.</p>
+
+  <details class="guess" id="guessBox">
+    <summary>Reto: adivina antes de ver el resultado 🎯</summary>
+    <label for="guess" style="margin-top:10px;font-weight:500">Creo que cobro más que el <strong><span id="guessVal">50</span>%</strong> de España</label>
+    <input type="range" id="guess" min="0" max="100" value="50">
+  </details>
+
+  <button class="btn" type="submit">Ver mi posición</button>
+  <p class="hint" id="err" role="alert"></p>
+</form>
+
+<section id="result" class="card hidden" aria-live="polite">
+  <span class="tag" id="rTag">Resultado</span>
+  <p style="margin:12px 0 0">Cobras más que el</p>
+  <div class="big" id="rPct">–</div>
+  <p style="margin:0" id="rSub">de los asalariados de España</p>
+
+  <div class="bar" id="bar" aria-hidden="true"></div>
+  <div class="axis" aria-hidden="true"><span>Cobran menos</span><span>Cobran más</span></div>
+
+  <div class="facts" id="facts"></div>
+
+  <div class="share">
+    <button class="btn" id="shareImg" type="button">📸 Compartir imagen</button>
+    <button class="btn ghost" id="shareLink" type="button">🔗 Retar a un amigo</button>
+  </div>
+  <p class="hint">La imagen y el enlace muestran solo tu porcentaje, nunca tu sueldo.</p>
+
+  <div class="compare">
+    <h2 style="font-size:1.1rem;margin:22px 0 8px">Compárate con tu grupo</h2>
+    <div class="row">
+      <select id="cCcaa" aria-label="Comunidad autónoma"></select>
+      <select id="cAge" aria-label="Edad"></select>
+      <select id="cEdu" aria-label="Nivel de estudios"></select>
+    </div>
+    <div class="cmpout" id="cmpOut"></div>
+  </div>
+
+  <div class="cta">
+    <strong>Ahora la pregunta importante:</strong> no es cuánto cobras, sino cuánto conservas y haces crecer.
+    <a href="/calculadoras.html" data-cta="calculadoras">Prueba nuestras calculadoras de interés compuesto y FIRE →</a>
+  </div>
+</section>
+
+<!-- Espacio publicitario 1 (debajo del resultado). Sustituir por bloque AdSense cuando esté aprobado:
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6776194473608247" data-ad-slot="0000000000" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+-->
+
+<article id="como">
+  <h2>¿Cuánto cobra la mayoría en España?</h2>
+  <p>El INE publica cada año la distribución de salarios del empleo principal a partir de la Encuesta de Población Activa (EPA), cruzada con registros de la Seguridad Social y Hacienda. Ordena a los 18,4 millones de asalariados de menor a mayor sueldo y los divide en diez grupos del mismo tamaño, llamados <strong>deciles</strong>. Estos son los límites de 2024, en euros brutos al mes con las pagas extra prorrateadas:</p>
+  <table>
+    <thead><tr><th>Para superar al…</th><th class="n">€/mes</th><th class="n">€/año aprox.</th></tr></thead>
+    <tbody id="decTable"></tbody>
+  </table>
+  <p class="hint">Fuente: INE, Decil de salarios del empleo principal (EPA), año 2024, publicado el 14/11/2025.</p>
+
+  <!-- Espacio publicitario 2 (en el contenido) -->
+
+  <h2>Media y mediana no son lo mismo</h2>
+  <p>En 2024 el salario medio fue de 2.385,6 € brutos al mes, pero el mediano —el del trabajador que queda justo en mitad de la fila— fue de 2.001,4 €. La diferencia existe porque unos pocos sueldos muy altos tiran de la media hacia arriba. Por eso, si comparas tu nómina con "el sueldo medio" de las noticias, probablemente te sientas peor de lo que estás: la referencia útil es la mediana.</p>
+
+  <h2>Cómo se calcula tu porcentaje</h2>
+  <p>Convertimos tu sueldo a euros brutos mensuales con pagas prorrateadas (si cobras 14 pagas, multiplicamos por 14 y dividimos entre 12). Después buscamos en qué decil cae y estimamos tu posición dentro de él suponiendo que los sueldos se reparten de forma uniforme entre sus dos límites. Es una aproximación: el INE solo publica los límites de cada decil, no todos los percentiles. Por debajo del primer decil o por encima del noveno límite solo podemos decir "menos del 10%" o "más del 90%".</p>
+  <p>Ojo con dos detalles: la estadística incluye a quienes trabajan a tiempo parcial (sin convertir su sueldo a jornada completa), y no incluye a autónomos. Por eso también te mostramos tu posición solo frente a quienes trabajan a jornada completa.</p>
+
+  <h2>Sueldo medio por comunidad autónoma (2024)</h2>
+  <table>
+    <thead><tr><th>Comunidad</th><th class="n">€ brutos/mes</th></tr></thead>
+    <tbody id="ccaaTable"></tbody>
+  </table>
+
+  <h2>Preguntas frecuentes</h2>
+  <h3>¿Cuánto hay que cobrar para estar en el 10% que más gana?</h3>
+  <p>Más de 4.056,7 € brutos al mes en 2024, unos 48.680 € al año.</p>
+  <h3>¿Es lo mismo que el salario anual de la Encuesta de Estructura Salarial?</h3>
+  <p>No exactamente. La Encuesta Anual de Estructura Salarial del INE da un salario mediano de 23.349 € brutos al año en 2023, con otra metodología (encuesta a empresas). Usamos la EPA porque publica la distribución completa por deciles con datos más recientes.</p>
+  <h3>¿Guardáis mi sueldo?</h3>
+  <p>No. Todo se calcula en tu navegador. La analítica solo registra que alguien ha usado la calculadora, nunca la cifra.</p>
+</article>
+</main>
+
+<p style="font-size:13px;color:#64748b;line-height:1.5">Fuentes: <a href="https://www.ine.es/dyngs/Prensa/dsEPA2024.htm" rel="noopener">INE – Decil de salarios del empleo principal 2024</a>; <a href="https://www.ine.es/dyngs/Prensa/EAES2023.htm" rel="noopener">INE – Encuesta Anual de Estructura Salarial 2023</a>. Herramienta orientativa con fines educativos; no es asesoramiento financiero.</p>
+
+<div class="pie">
+<a href="https://capitalenmarcha.com/">Inicio</a>
+<a href="/calculadoras.html">Calculadoras</a>
+<a href="/articulos.html">Artículos</a>
+<a href="/aviso-legal.html">Aviso legal</a>
+<a href="/politica-privacidad.html">Privacidad</a>
+</div>
+</div>
+
+<canvas id="cv" width="1080" height="1350" class="hidden" aria-hidden="true"></canvas>
+
+<script>
+(() => {
+"use strict";
+// ===== DATOS OFICIALES (INE, EPA decil de salarios 2024). Actualizar cada noviembre. =====
+const DATA = {
+  year: 2024,
+  cuts: [1068.9, 1392.7, 1582.2, 1780.1, 2001.4, 2265.4, 2659.8, 3199.8, 4056.7], // límites entre deciles, €/mes brutos
+  fullTimeShares: [1.0, 8.6, 10.8, 10.8, 11.2, 11.4, 11.5, 11.6, 11.5, 11.7],   // % de asalariados a jornada completa en cada decil nacional
+  mean: 2385.6, median: 2001.4,
+  ccaa: { "País Vasco":2809.9,"Madrid (Comunidad de)":2761.7,"Navarra":2589.1,"Cataluña":2529.9,"La Rioja":2365.9,"Aragón":2353.5,"Illes Balears":2342.2,"Cantabria":2327.2,"Asturias":2319.8,"Castilla y León":2299.1,"Galicia":2229.7,"Castilla-La Mancha":2221.5,"Comunitat Valenciana":2181.1,"Andalucía":2146.5,"Extremadura":2127.2,"Región de Murcia":2120.9,"Canarias":2051.7 },
+  age: { "16 a 24 años":1372.8,"25 a 34 años":2131.6,"35 a 44 años":2399.8,"45 a 54 años":2591.6,"55 años o más":2680.7 },
+  edu: { "Hasta ESO / secundaria 1ª etapa":1594.8,"Bachillerato / FP media":1869.5,"Estudios superiores":2982.6 }
+};
+
+const $ = id => document.getElementById(id);
+const fmt = (n, d=0) => n.toLocaleString("es-ES",{minimumFractionDigits:d,maximumFractionDigits:d,useGrouping:"always"});
+const track = (name, params={}) => { try { if (typeof window.gtag === "function") window.gtag("event", name, params); } catch(e){} };
+
+// Percentil aproximado (interpolación lineal dentro del decil). Devuelve {p, lo, hi} con lo/hi para extremos abiertos.
+function percentile(m, shares) {
+  const c = DATA.cuts;
+  const sh = shares || Array(10).fill(10);
+  const cum = [0]; sh.forEach(s => cum.push(cum[cum.length-1] + s));
+  const total = cum[10];
+  if (m < c[0]) return { p: cum[1] / total * 100, open: "low" };
+  if (m >= c[8]) return { p: cum[9] / total * 100, open: "high" };
+  for (let i = 1; i < 9; i++) {
+    if (m < c[i]) {
+      const f = (m - c[i-1]) / (c[i] - c[i-1]);
+      return { p: (cum[i] + f * sh[i]) / total * 100, open: null };
+    }
+  }
+}
+window.__percentile = percentile; // usado en tests
+
+function toMonthly(v, period) {
+  if (period === "y") return v / 12;
+  if (period === "m14") return v * 14 / 12;
+  return v;
+}
+function parseMoney(s) {
+  s = String(s).trim().replace(/\s|€/g, "");
+  if (/^\d{1,3}(\.\d{3})+(,\d+)?$/.test(s)) s = s.replace(/\./g, "").replace(",", ".");
+  else s = s.replace(",", ".");
+  const v = parseFloat(s);
+  return isFinite(v) ? v : NaN;
+}
+
+// ===== Tablas de contenido =====
+const labels = ["10%","20%","30%","40%","50% (mediana)","60%","70%","80%","90%"];
+$("decTable").innerHTML = DATA.cuts.map((c,i) =>
+  `<tr><td>${labels[i]}</td><td class="n">${fmt(c,1)}</td><td class="n">${fmt(Math.round(c*12/10)*10)}</td></tr>`).join("");
+$("ccaaTable").innerHTML = Object.entries(DATA.ccaa).map(([k,v]) =>
+  `<tr><td>${k}</td><td class="n">${fmt(v,1)}</td></tr>`).join("") +
+  `<tr><td><strong>España</strong></td><td class="n"><strong>${fmt(DATA.mean,1)}</strong></td></tr>`;
+
+const fillSel = (el, title, obj) => {
+  el.innerHTML = `<option value="">${title}</option>` + Object.keys(obj).map(k => `<option>${k}</option>`).join("");
+};
+fillSel($("cCcaa"), "Tu comunidad", DATA.ccaa);
+fillSel($("cAge"), "Tu edad", DATA.age);
+fillSel($("cEdu"), "Tus estudios", DATA.edu);
+
+// barras
+$("bar").innerHTML = Array.from({length:10},(_,i)=>`<div style="height:${30+i*7}%"></div>`).join("") + `<span class="marker" id="marker"></span>`;
+
+// ===== Reto de amigo (?r=73) — solo porcentaje, nunca sueldo =====
+const params = new URLSearchParams(location.search);
+const friendP = parseInt(params.get("r"), 10);
+if (friendP >= 0 && friendP <= 100) {
+  const f = $("friend");
+  f.textContent = `Te han retado: tu amigo/a cobra más que el ${friendP}% de España. ¿Le superas?`;
+  f.classList.remove("hidden");
+  track("llegada_reto");
+}
+
+$("guess").addEventListener("input", e => { $("guessVal").textContent = e.target.value; });
+let guessed = false;
+$("guessBox").addEventListener("toggle", e => { if (e.target.open) guessed = true; });
+$("guess").addEventListener("change", () => { guessed = true; });
+
+let current = null;
+
+$("form").addEventListener("submit", e => {
+  e.preventDefault();
+  const raw = parseMoney($("salary").value);
+  const period = $("period").value;
+  const m = toMonthly(raw, period);
+  if (!isFinite(m) || m <= 0) { $("err").textContent = "Escribe tu sueldo bruto en euros, por ejemplo 1.800"; $("salary").focus(); return; }
+  if (m < 100 || m > 100000) { $("err").textContent = "Revisa la cifra y el periodo (mensual o anual)."; return; }
+  $("err").textContent = "";
+  render(m);
+});
+
+function render(m) {
+  const all = percentile(m);
+  const ft = percentile(m, DATA.fullTimeShares);
+  const p = Math.round(all.p);
+  current = { p, open: all.open };
+
+  $("rPct").textContent = all.open === "low" ? "<10%" : all.open === "high" ? ">90%" : p + "%";
+  $("rTag").textContent = tagFor(all);
+  $("rSub").textContent = `de los asalariados de España (INE, ${DATA.year})`;
+
+  // barra y marcador
+  const decil = all.open === "low" ? 0 : all.open === "high" ? 9 : Math.min(9, Math.floor(all.p/10));
+  [...$("bar").children].forEach((d,i) => { if (d.tagName === "DIV") d.classList.toggle("on", i <= decil); });
+  const pos = all.open === "low" ? 4 : all.open === "high" ? 96 : all.p;
+  $("marker").style.left = `calc(${pos}% - 1px)`;
+
+  // datos
+  const facts = [];
+  facts.push(`Tu sueldo equivale a <strong>${fmt(m,0)} € brutos/mes</strong> (12 pagas) · <strong>${fmt(m*12,0)} €/año</strong>.`);
+  const vsMed = (m / DATA.median - 1) * 100;
+  facts.push(vsMed >= 0
+    ? `Cobras un <strong>${fmt(vsMed,0)}% más</strong> que la mediana (${fmt(DATA.median,0)} €/mes).`
+    : `Te faltan <strong>${fmt(DATA.median - m,0)} €/mes</strong> para llegar a la mediana (${fmt(DATA.median,0)} €).`);
+  const next = DATA.cuts.find(c => c > m);
+  if (next) {
+    const idx = DATA.cuts.indexOf(next);
+    facts.push(`Con <strong>${fmt(next - m,0)} €/mes más</strong> superarías al ${(idx+1)*10}% de los asalariados.`);
+  } else {
+    facts.push(`Estás en el <strong>10% que más cobra</strong>: superas el límite de ${fmt(DATA.cuts[8],0)} €/mes.`);
+  }
+  const ftTxt = ft.open === "low" ? "a menos del 1%" : ft.open === "high" ? "a más del 88%" : `al ${Math.round(ft.p)}%`;
+  facts.push(`Solo frente a quienes trabajan <strong>a jornada completa</strong>, superas ${ftTxt}.`);
+  if (guessed) {
+    const g = +$("guess").value, diff = p - g;
+    facts.push(Math.abs(diff) <= 5
+      ? `🎯 Tu intuición era buena: dijiste ${g}% y estás en ${p}%.`
+      : diff > 0 ? `🎯 Te infravalorabas: dijiste ${g}% y en realidad estás <strong>${diff} puntos más arriba</strong>.`
+                 : `🎯 Te sobreestimabas: dijiste ${g}% y estás <strong>${-diff} puntos por debajo</strong>.`);
+    track("adivinar", { diferencia: diff });
+  }
+  if (friendP >= 0 && friendP <= 100) {
+    facts.push(p > friendP ? `🏆 Superas a quien te retó (${friendP}%).` : p === friendP ? `🤝 Empate con quien te retó.` : `Quien te retó está ${friendP - p} puntos por encima.`);
+  }
+  $("facts").innerHTML = facts.map(f => `<div class="fact">${f}</div>`).join("");
+
+  $("result").classList.remove("hidden");
+  compare();
+  $("result").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+  track("calcular", { percentil_banda: decil * 10 }); // nunca enviamos el sueldo
+  window.__lastMonthly = m;
+}
+
+function tagFor(r) {
+  if (r.open === "high") return "Top 10% 🚀";
+  if (r.p >= 80) return "Top 20% 💪";
+  if (r.p >= 60) return "Por encima de la mayoría";
+  if (r.p >= 40) return "Justo en el centro";
+  if (r.p >= 20) return "Por debajo de la mediana";
+  return "En la parte baja";
+}
+
+function compare() {
+  const m = window.__lastMonthly; if (!m) return;
+  const out = [];
+  [["cCcaa", DATA.ccaa, "en tu comunidad"], ["cAge", DATA.age, "de tu edad"], ["cEdu", DATA.edu, "con tus estudios"]].forEach(([id, obj, txt]) => {
+    const k = $(id).value; if (!k) return;
+    const mean = obj[k], d = (m / mean - 1) * 100;
+    out.push(`Sueldo medio ${txt} (${k}): <strong>${fmt(mean,0)} €/mes</strong>. Tú: ${d >= 0 ? "+" : ""}${fmt(d,0)}%.`);
+  });
+  $("cmpOut").innerHTML = out.length ? out.map(t => `<div class="fact" style="margin-top:8px">${t}</div>`).join("") +
+    `<p class="hint">Comparamos con la media del grupo (el INE no publica sus deciles en la nota de prensa). La media suele estar por encima de lo que cobra la mayoría.</p>`
+    : `<p class="hint">Elige tu comunidad, edad o estudios para ver la media de tu grupo.</p>`;
+}
+["cCcaa","cAge","cEdu"].forEach(id => $(id).addEventListener("change", () => { compare(); track("comparar", { grupo: id }); }));
+
+// ===== Compartir =====
+const pageUrl = "https://capitalenmarcha.com/sueldo/";
+function shareText() {
+  const t = current.open === "high" ? "Estoy en el 10% que más cobra de España" :
+            current.open === "low" ? "Estoy en el 10% que menos cobra de España" :
+            `Cobro más que el ${current.p}% de los asalariados de España`;
+  return `${t} 👀 ¿Y tú? Compruébalo con datos del INE:`;
+}
+function challengeUrl() {
+  const r = current.open === "high" ? 90 : current.open === "low" ? 10 : current.p;
+  return `${pageUrl}?r=${r}&utm_source=reto&utm_medium=share`;
+}
+$("shareLink").addEventListener("click", async () => {
+  if (!current) return;
+  const url = challengeUrl(), text = shareText();
+  track("compartir", { tipo: "enlace" });
+  if (navigator.share) { try { await navigator.share({ title: "¿Tu sueldo es alto?", text, url }); return; } catch(e) { if (e.name === "AbortError") return; } }
+  try { await navigator.clipboard.writeText(`${text} ${url}`); toast("Enlace copiado. ¡Pégalo en WhatsApp!"); }
+  catch(e) { prompt("Copia este enlace:", url); }
+});
+
+function drawCard() {
+  const cv = $("cv"), x = cv.getContext("2d"), W = 1080, H = 1350;
+  x.fillStyle = "#2563eb"; x.fillRect(0,0,W,H);
+  x.fillStyle = "#ffffff"; x.font = "bold 44px Arial, sans-serif"; x.fillText("Capital en Marcha", 80, 130);
+  x.fillStyle = "#ffffff"; x.font = "600 64px Arial, sans-serif"; x.fillText("Cobro más que el", 80, 360);
+  const big = current.open === "high" ? ">90%" : current.open === "low" ? "<10%" : current.p + "%";
+  x.fillStyle = "#ffffff"; x.font = "bold 330px Arial, sans-serif"; x.fillText(big, 64, 680);
+  x.fillStyle = "#ffffff"; x.font = "600 60px Arial, sans-serif";
+  x.fillText("de los asalariados", 80, 790); x.fillText("de España", 80, 865);
+  // barras
+  const d = current.open === "low" ? 0 : current.open === "high" ? 9 : Math.min(9, Math.floor(current.p/10));
+  for (let i = 0; i < 10; i++) {
+    const h = 60 + i*16; x.fillStyle = i <= d ? "#ffffff" : "rgba(255,255,255,.25)";
+    x.fillRect(80 + i*92, 1110 - h, 78, h);
+  }
+  x.fillStyle = "rgba(255,255,255,.75)"; x.font = "500 40px Arial, sans-serif";
+  x.fillText("¿Y tú? capitalenmarcha.com/sueldo", 80, 1220);
+  x.font = "400 28px Arial, sans-serif"; x.fillText(`Datos: INE, EPA ${DATA.year}`, 80, 1275);
+  return new Promise(res => cv.toBlob(res, "image/png"));
+}
+$("shareImg").addEventListener("click", async () => {
+  if (!current) return;
+  track("compartir", { tipo: "imagen" });
+  const blob = await drawCard();
+  const file = new File([blob], "mi-sueldo-capitalenmarcha.png", { type: "image/png" });
+  if (navigator.canShare && navigator.canShare({ files: [file] })) {
+    try { await navigator.share({ files: [file], text: `${shareText()} ${pageUrl}` }); return; } catch(e) { if (e.name === "AbortError") return; }
+  }
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = file.name; a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+  toast("Imagen descargada. ¡Súbela a tus stories!");
+});
+
+document.querySelectorAll("[data-cta]").forEach(a => a.addEventListener("click", () => track("click_cta", { destino: a.dataset.cta })));
+
+function toast(msg) {
+  const t = document.createElement("div"); t.textContent = msg; t.setAttribute("role","status");
+  t.style.cssText = "position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#0f172a;color:#fff;padding:12px 18px;border-radius:12px;font-weight:600;z-index:9;max-width:90vw";
+  document.body.appendChild(t); setTimeout(() => t.remove(), 2600);
+}
+})();
+</script>
+</body>
+</html>
