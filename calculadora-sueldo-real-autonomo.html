@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<script src="cookies.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Calculadora del sueldo real del autónomo 2026: cuánto te queda de lo que facturas</title>
+<meta name="description" content="Calcula cuánto te queda de verdad como autónomo en 2026 después de IVA, IRPF y cuota de la Seguridad Social, en qué tramo cotizas y si te reclamarán dinero en la regularización.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://capitalenmarcha.com/calculadora-sueldo-real-autonomo.html">
+
+<style>
+body{font-family:Arial,sans-serif;background:#f8fafc;margin:0;color:#0f172a;}
+.container{max-width:820px;margin:50px auto;background:white;padding:40px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,0.08);}
+h1{text-align:center;font-size:34px;line-height:1.25;}
+h2{margin-top:40px;}
+h3{margin-top:28px;}
+.sub{text-align:center;color:#64748b;line-height:1.6;}
+p,li{line-height:1.8;color:#334155;}
+.calc{background:#f8fafc;border:1px solid #e2e8f0;border-radius:16px;padding:10px 25px 25px;margin-top:25px;}
+.fila{display:grid;grid-template-columns:1fr 1fr;gap:0 20px;}
+label{display:block;margin-top:18px;margin-bottom:6px;font-weight:bold;}
+.ayuda{display:block;font-weight:normal;font-size:13px;color:#64748b;margin-top:2px;}
+input,select{width:100%;padding:12px;font-size:17px;border:1px solid #cbd5e1;border-radius:10px;box-sizing:border-box;background:white;font-family:Arial,sans-serif;color:#0f172a;}
+input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid #2563eb;outline-offset:2px;}
+button{width:100%;margin-top:26px;padding:16px;border:none;border-radius:12px;background:#2563eb;color:white;font-size:18px;cursor:pointer;}
+button:hover{background:#1d4ed8;}
+.resultado{margin-top:25px;padding:25px;background:#ecfdf5;border-radius:12px;line-height:1.7;font-size:17px;}
+.resultado .grande{font-size:26px;font-weight:bold;color:#065f46;display:block;margin:4px 0 12px;line-height:1.3;}
+.reparto{display:flex;height:16px;border-radius:999px;overflow:hidden;margin:14px 0 10px;gap:2px;background:#e2e8f0;}
+.reparto span{display:block;height:100%;}
+.leyenda{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px;color:#334155;margin-bottom:6px;}
+.leyenda i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:middle;}
+.alerta{background:#fff7ed;border-radius:10px;padding:12px 16px;margin-top:14px;font-size:15px;line-height:1.6;color:#7c2d12;}
+.tabla{width:100%;border-collapse:collapse;margin-top:15px;}
+.tabla th,.tabla td{border:1px solid #e2e8f0;padding:10px 12px;text-align:left;}
+.tabla th{background:#f1f5f9;}
+.tabla td.num,.tabla th.num{text-align:right;font-variant-numeric:tabular-nums;}
+.scroll{overflow-x:auto;}
+.aviso{background:#fff7ed;padding:20px 25px;border-radius:14px;margin:30px 0;}
+.cta{background:#eff6ff;padding:20px 25px;border-radius:14px;margin-top:30px;}
+.nota{font-size:13px;color:#64748b;line-height:1.5;}
+a{color:#2563eb;text-decoration:none;font-weight:bold;}
+a:hover{text-decoration:underline;}
+.pie{margin-top:40px;font-size:14px;}
+.pie a{margin-right:16px;display:inline-block;margin-bottom:6px;}
+@media (max-width:640px){
+  .container{margin:0;border-radius:0;padding:22px;}
+  h1{font-size:27px;}
+  .fila{grid-template-columns:1fr;}
+  .calc{padding:5px 16px 20px;}
+  .tabla th,.tabla td{padding:8px;font-size:15px;}
+}
+</style>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://capitalenmarcha.com/calculadora-sueldo-real-autonomo.html">
+<meta property="og:title" content="Calculadora del sueldo real del autónomo 2026">
+<meta property="og:description" content="Cuánto te queda de lo que facturas después de IVA, IRPF y cuota de autónomos, y si te tocará pagar en la regularización.">
+<meta property="og:image" content="https://capitalenmarcha.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Calculadora del sueldo real del autónomo 2026">
+<meta name="twitter:description" content="Cuánto te queda de lo que facturas después de IVA, IRPF y cuota de autónomos, y si te tocará pagar en la regularización.">
+<meta name="twitter:image" content="https://capitalenmarcha.com/og-image.jpg">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora del sueldo real del autónomo",
+      "url": "https://capitalenmarcha.com/calculadora-sueldo-real-autonomo.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Cualquiera",
+      "inLanguage": "es-ES",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+      "publisher": {"@type": "Organization", "name": "Capital en Marcha", "url": "https://capitalenmarcha.com/"}
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "¿Cuánto le queda a un autónomo que factura 3.000 € al mes?",
+         "acceptedAnswer": {"@type": "Answer", "text": "Con 300 € de gastos al mes y retención del 15 %, en 2026 le quedan unos 1.870 € netos al mes tras pagar la cuota de autónomo que le corresponde (unos 427 €) y el IRPF. Además debe apartar el IVA que cobra, que no es suyo."}},
+        {"@type": "Question", "name": "¿Qué es la regularización de la cuota de autónomos?",
+         "acceptedAnswer": {"@type": "Answer", "text": "Desde 2023 la cuota depende de los rendimientos netos reales. Cuando acaba el año y se presenta la Renta, la Seguridad Social compara lo que pagaste con lo que te correspondía según tus ingresos reales y te reclama o devuelve la diferencia."}},
+        {"@type": "Question", "name": "¿El IVA que cobro es mío?",
+         "acceptedAnswer": {"@type": "Answer", "text": "No. El IVA que añades a tus facturas lo recaudas para Hacienda. Cada trimestre ingresas la diferencia entre el IVA que has cobrado y el que has pagado en gastos deducibles (modelo 303)."}}
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+.cm-nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 20px;padding-bottom:18px;margin-bottom:24px;border-bottom:1px solid #e2e8f0;font-family:Arial,sans-serif;}
+.cm-logo{color:#2563eb;font-weight:bold;font-size:17px;text-decoration:none;}
+.cm-menu{display:flex;flex-wrap:wrap;gap:6px 18px;}
+.cm-menu a{color:#334155;font-weight:bold;font-size:15px;text-decoration:none;}
+.cm-menu a:hover{color:#2563eb;text-decoration:underline;}
+.cm-nav a:focus-visible{outline:2px solid #2563eb;outline-offset:2px;}
+@media (max-width:640px){.cm-nav{justify-content:center;text-align:center;}.cm-menu{justify-content:center;}}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<nav class="cm-nav" aria-label="Menú principal">
+<a class="cm-logo" href="/">Capital en Marcha</a>
+<div class="cm-menu">
+<a href="calculadoras.html">Calculadoras</a>
+<a href="invertir.html">Invertir</a>
+<a href="libertad-financiera-recursos.html">Libertad financiera</a>
+<a href="articulos.html">Artículos</a>
+<a href="sobre.html">Sobre</a>
+</div>
+</nav>
+
+<h1>Calculadora del sueldo real del autónomo: ¿cuánto te queda de lo que facturas?</h1>
+
+<p class="sub">
+Tu cuenta bancaria te dice cuánto tienes, no cuánto es tuyo. Descubre tu sueldo real después de IVA, IRPF y cuota de autónomos, en qué tramo deberías cotizar en 2026 y si te tocará pagar en la regularización.
+</p>
+
+<div class="calc">
+
+<div class="fila">
+<div>
+<label for="facturacion">Facturas al mes, sin IVA (€)
+<span class="ayuda">La base imponible: lo que cobras antes de añadir el IVA</span></label>
+<input type="number" id="facturacion" value="3000" min="0" step="50" inputmode="decimal">
+</div>
+<div>
+<label for="gastos">Gastos del negocio al mes, sin IVA (€)
+<span class="ayuda">Gastos deducibles: software, material, gestoría…</span></label>
+<input type="number" id="gastos" value="300" min="0" step="10" inputmode="decimal">
+</div>
+</div>
+
+<div class="fila">
+<div>
+<label for="cuota">Cuota de autónomo que pagas al mes (€)
+<span class="ayuda">Lo que te cargan cada mes en el banco</span></label>
+<input type="number" id="cuota" value="300" min="0" step="1" inputmode="decimal">
+</div>
+<div>
+<label for="retencion">Retención de IRPF en tus facturas
+<span class="ayuda">15 % habitual, 7 % los primeros años</span></label>
+<select id="retencion">
+<option value="15">15 %</option>
+<option value="7">7 %</option>
+<option value="0">Sin retención (facturo a particulares)</option>
+</select>
+</div>
+</div>
+
+<div class="fila">
+<div>
+<label for="iva">IVA que aplicas
+<span class="ayuda">El general es el 21 %</span></label>
+<select id="iva">
+<option value="21">21 %</option>
+<option value="10">10 %</option>
+<option value="4">4 %</option>
+<option value="0">Exento (formación, sanidad…)</option>
+</select>
+</div>
+</div>
+
+<button type="button" onclick="calcularSueldo()">Calcular mi sueldo real</button>
+
+<div class="resultado" id="resultado" aria-live="polite">
+Introduce tus datos y pulsa calcular.
+</div>
+
+</div>
+
+<p class="nota">
+Estimación para 2026, régimen común y estimación directa simplificada, con la escala general de IRPF y sin deducciones personales, por lo que tiende a ser prudente. La parte autonómica del IRPF cambia según tu comunidad. No es válida para el IRPF de País Vasco y Navarra, aunque la cuota de autónomos sí es la misma. No es asesoramiento fiscal.
+</p>
+
+<h2>Por qué facturar 3.000 € no es cobrar 3.000 €</h2>
+
+<p>
+De cada factura, una parte no es tuya. Hay tres conceptos que se quedan por el camino:
+</p>
+
+<ul>
+<li><strong>El IVA.</strong> Lo cobras a tus clientes, pero es de Hacienda. Cada trimestre ingresas la diferencia entre el IVA que cobras y el que pagas en tus gastos.</li>
+<li><strong>El IRPF.</strong> La retención del 15 % es un adelanto, no el impuesto final. Si ganas bastante, la Renta puede salirte a pagar.</li>
+<li><strong>La cuota de autónomos.</strong> Desde 2023 depende de tus rendimientos reales. Si pagas menos de lo que te corresponde, te lo reclamarán después.</li>
+</ul>
+
+<p>
+El error más habitual es tratar el saldo del banco como dinero propio. Cuando llega el día 20 del mes siguiente al trimestre, el IVA ya se ha gastado.
+</p>
+
+<h2>Cuánto te queda según lo que facturas</h2>
+
+<p>
+Sueldo real aproximado en 2026 con 10 % de gastos, IVA del 21 % y retención del 15 %, pagando la cuota que corresponde a cada nivel de ingresos:
+</p>
+
+<div class="scroll">
+<table class="tabla" id="tablaEjemplos">
+<tr><th>Facturas al mes</th><th class="num">Cuota que te toca</th><th class="num">IRPF al año</th><th class="num">Sueldo real al mes</th></tr>
+</table>
+</div>
+
+<p>
+Fíjate en que el porcentaje que te queda baja a medida que facturas más: el IRPF es progresivo y la cuota sube por tramos.
+</p>
+
+<h2>La regularización de la cuota: la sorpresa que llega después</h2>
+
+<p>
+Al darte de alta eliges un tramo según los ingresos que prevés. Cuando acaba el año y presentas la Renta, la Seguridad Social compara lo que pagaste con lo que te correspondía. Si cotizaste por debajo, te reclama la diferencia; si cotizaste por encima, te la devuelve.
+</p>
+
+<p>
+No es un caso raro: en la primera regularización, la de 2023, unos 880.000 autónomos (el 24 %) habían cotizado por debajo y tuvieron que pagar la diferencia, y casi un millón (el 27 %) había pagado de más. Puedes cambiar tu base de cotización hasta seis veces al año desde Import@ss, así que si la calculadora te dice que cotizas por debajo, mejor ajustarlo cuanto antes.
+</p>
+
+<div class="aviso">
+<strong>La regla práctica para no llevarte sustos</strong>
+<p>
+Abre una cuenta aparte solo para impuestos. Cada vez que cobres una factura, mueve a esa cuenta el IVA y la diferencia entre la retención y tu tipo real de IRPF. Lo que queda en tu cuenta principal sí es tuyo. Si además esa cuenta está remunerada, ganarás algo mientras el dinero espera a Hacienda.
+</p>
+</div>
+
+<h2>Preguntas frecuentes</h2>
+
+<h3>¿Cuánto le queda a un autónomo que factura 3.000 € al mes?</h3>
+<p>
+Con 300 € de gastos y retención del 15 %, unos 1.870 € netos al mes en 2026, tras pagar la cuota que le corresponde (unos 427 €) y el IRPF. Aparte, tiene que apartar el IVA que cobra.
+</p>
+
+<h3>¿Qué tramo de cotización me corresponde?</h3>
+<p>
+Depende de tus rendimientos netos mensuales: ingresos menos gastos deducibles, con una reducción adicional del 7 % por gastos genéricos. La calculadora te indica el tramo y la cuota mínima de ese tramo.
+</p>
+
+<h3>¿Y si estoy en tarifa plana?</h3>
+<p>
+Durante la tarifa plana pagas 80 € al mes y no hay regularización. Para ver lo que pagarás cuando termine, pon en la cuota lo que te correspondería después.
+</p>
+
+<h3>¿Qué hago con el dinero que me queda?</h3>
+<p>
+Primero, un fondo de emergencia algo mayor que el de un asalariado, porque tus ingresos varían más. Después, invertir para el largo plazo. Con la <a href="interes-compuesto.html">calculadora de interés compuesto</a> puedes ver cuánto podría crecer lo que ahorras cada mes.
+</p>
+
+<div class="cta">
+<h2 style="margin-top:0;">Y si no hay jubilación de asalariado…</h2>
+<p>
+Muchos autónomos cotizan por la base mínima y su pensión será baja. Calcula cuánto necesitarías ahorrar por tu cuenta con la <a href="calculadora-jubilacion.html">calculadora de jubilación</a>.
+</p>
+</div>
+
+<p class="nota" style="margin-top:30px;">
+Este contenido es educativo e informativo. No constituye asesoramiento fiscal ni financiero. Tablas de cotización de 2026 según la Orden PJC/297/2026 (BOE de 31 de marzo de 2026), con un tipo total del 31,5 %, que incluye el 0,9 % del MEI. Consulta <a href="sobre.html">cómo hacemos los cálculos</a>.
+</p>
+
+<div class="pie">
+<a href="https://capitalenmarcha.com/">Inicio</a>
+<a href="calculadoras.html">Calculadoras</a>
+<a href="articulos.html">Artículos</a>
+<a href="sobre.html">Sobre</a>
+</div>
+
+</div>
+
+<script>
+// Tablas 2026. Revisar cada enero.
+var TIPO_COTIZACION = 0.315;
+var TRAMOS = [ // [límite superior del rendimiento mensual, base mínima, tabla, número]
+    [670, 653.59, "reducida", 1], [900, 718.95, "reducida", 2], [1166.70, 849.67, "reducida", 3],
+    [1300, 950.98, "general", 1], [1500, 960.78, "general", 2], [1700, 960.78, "general", 3],
+    [1850, 1143.79, "general", 4], [2030, 1209.15, "general", 5], [2330, 1274.51, "general", 6],
+    [2760, 1356.21, "general", 7], [3190, 1437.91, "general", 8], [3620, 1519.61, "general", 9],
+    [4050, 1601.31, "general", 10], [6000, 1732.03, "general", 11], [Infinity, 1928.10, "general", 12]
+];
+var ESCALA_IRPF = [[12450, 0.19], [20200, 0.24], [35200, 0.30], [60000, 0.37], [300000, 0.45], [Infinity, 0.47]];
+var MINIMO_PERSONAL = 5550;
+
+function escala(base) {
+    var cuota = 0, prev = 0, resto = Math.max(0, base);
+    for (var i = 0; i < ESCALA_IRPF.length && resto > 0; i++) {
+        var tramo = Math.min(resto, ESCALA_IRPF[i][0] - prev);
+        cuota += tramo * ESCALA_IRPF[i][1];
+        resto -= tramo;
+        prev = ESCALA_IRPF[i][0];
+    }
+    return cuota;
+}
+
+function calcularAutonomo(fact, gast, cuotaActual, retPct, ivaPct) {
+    var ingresos = fact * 12, gastos = gast * 12;
+    var rendSS = Math.max(0, (ingresos - gastos) * 0.93) / 12;
+    var t = TRAMOS.find(function (x) { return rendSS <= x[0]; });
+    var cuotaCorrecta = t[1] * TIPO_COTIZACION;
+    var regularizacion = (cuotaCorrecta - cuotaActual) * 12;
+    var previo = ingresos - gastos - cuotaCorrecta * 12;
+    var rendNeto = Math.max(0, previo - (previo > 0 ? Math.min(previo * 0.05, 2000) : 0));
+    var irpf = Math.max(0, escala(rendNeto) - escala(MINIMO_PERSONAL));
+    var retenciones = ingresos * retPct / 100;
+    // Sin retención: pagos fraccionados del 20 % (modelo 130).
+    var pagos130 = retPct === 0 ? Math.max(0, 0.2 * (ingresos - gastos - cuotaCorrecta * 12)) : 0;
+    var renta = irpf - retenciones - pagos130;
+    var ivaTrimestre = (fact * ivaPct / 100 - gast * 0.21) * 3;
+    var netoAnual = ingresos - gastos - cuotaCorrecta * 12 - irpf;
+    return {
+        tramo: t, cuotaCorrecta: cuotaCorrecta, regularizacion: regularizacion, irpf: irpf,
+        tipoMedio: rendNeto > 0 ? irpf / rendNeto : 0, renta: renta, ivaTrimestre: ivaTrimestre,
+        netoMes: netoAnual / 12, ingresos: ingresos, gastos: gastos
+    };
+}
+
+function euros(n) {
+    return Math.round(n).toLocaleString("es-ES") + " €";
+}
+
+function calcularSueldo() {
+    var v = function (id) { return Number(document.getElementById(id).value); };
+    var fact = v("facturacion"), gast = v("gastos"), cuota = v("cuota");
+    var ret = v("retencion"), iva = v("iva");
+    var out = document.getElementById("resultado");
+
+    if (!(fact > 0)) { out.innerHTML = "Introduce lo que facturas al mes, sin IVA."; return; }
+    if (gast < 0 || cuota < 0) { out.innerHTML = "Los gastos y la cuota no pueden ser negativos."; return; }
+    if (gast >= fact) { out.innerHTML = "Con gastos iguales o mayores que lo que facturas no hay beneficio. Revisa las cifras."; return; }
+
+    var r = calcularAutonomo(fact, gast, cuota, ret, iva);
+    var neto = Math.max(0, r.netoMes);
+    var irpfMes = r.irpf / 12, ssMes = r.cuotaCorrecta, gastosMes = gast;
+    var total = neto + irpfMes + ssMes + gastosMes;
+    var pct = function (x) { return (x / total * 100).toFixed(2) + "%"; };
+
+    var alertas = "";
+    if (r.regularizacion > 300) {
+        alertas += "<div class='alerta'><strong>Cotizas por debajo de lo que te corresponde.</strong> En la regularización podrían reclamarte unos " +
+            euros(r.regularizacion) + " por este año. Puedes subir tu base de cotización desde Import@ss.</div>";
+    } else if (r.regularizacion < -300) {
+        alertas += "<div class='alerta' style='background:#ecfdf5;color:#065f46'><strong>Pagas más cuota de la necesaria.</strong> Te devolverían unos " +
+            euros(-r.regularizacion) + " en la regularización, pero podrías bajar de tramo ya y tener ese dinero cada mes.</div>";
+    }
+    if (r.renta > 500) {
+        alertas += "<div class='alerta'><strong>Tus retenciones no cubren todo tu IRPF.</strong> Aparta unos " +
+            euros(r.renta) + " al año para la Renta.</div>";
+    }
+
+    out.innerHTML =
+        "Tu sueldo real" +
+        "<span class='grande'>" + euros(neto) + " al mes</span>" +
+        "De cada " + euros(fact) + " que facturas al mes, esto es lo que te queda tras gastos, cuota e IRPF." +
+        "<div class='reparto' role='img' aria-label='Reparto de lo que facturas'>" +
+        "<span style='width:" + pct(neto) + ";background:#059669'></span>" +
+        "<span style='width:" + pct(irpfMes) + ";background:#ea580c'></span>" +
+        "<span style='width:" + pct(ssMes) + ";background:#9a3412'></span>" +
+        "<span style='width:" + pct(gastosMes) + ";background:#94a3b8'></span>" +
+        "</div>" +
+        "<div class='leyenda'>" +
+        "<span><i style='background:#059669'></i>Tuyo " + euros(neto) + "</span>" +
+        "<span><i style='background:#ea580c'></i>IRPF " + euros(irpfMes) + "</span>" +
+        "<span><i style='background:#9a3412'></i>Cuota " + euros(ssMes) + "</span>" +
+        "<span><i style='background:#94a3b8'></i>Gastos " + euros(gastosMes) + "</span>" +
+        "</div>" +
+        "<table class='tabla'>" +
+        "<tr><td>Cuota que te corresponde</td><td class='num'><strong>" + euros(r.cuotaCorrecta) + "</strong>/mes · tramo " + r.tramo[3] + " de la tabla " + r.tramo[2] + "</td></tr>" +
+        "<tr><td>IRPF del año (tipo medio)</td><td class='num'>" + euros(r.irpf) + " (" + (r.tipoMedio * 100).toLocaleString("es-ES", {maximumFractionDigits: 1}) + " %)</td></tr>" +
+        "<tr><td>IVA a apartar cada trimestre</td><td class='num'>" + euros(Math.max(0, r.ivaTrimestre)) + "</td></tr>" +
+        "<tr><td>" + (r.renta >= 0 ? "La Renta te saldrá a pagar" : "La Renta te saldrá a devolver") + "</td><td class='num'>" + euros(Math.abs(r.renta)) + "</td></tr>" +
+        "</table>" + alertas;
+}
+
+// Tabla de ejemplos calculada con las mismas fórmulas.
+(function () {
+    var tabla = document.getElementById("tablaEjemplos");
+    [1500, 2000, 3000, 4000, 6000].forEach(function (f) {
+        var r = calcularAutonomo(f, f * 0.1, 0, 15, 21);
+        var fila = document.createElement("tr");
+        fila.innerHTML = "<td>" + euros(f) + "</td><td class='num'>" + euros(r.cuotaCorrecta) + "</td><td class='num'>" +
+            euros(r.irpf) + "</td><td class='num'><strong>" + euros(r.netoMes) + "</strong></td>";
+        tabla.appendChild(fila);
+    });
+})();
+</script>
+
+</body>
+</html>
