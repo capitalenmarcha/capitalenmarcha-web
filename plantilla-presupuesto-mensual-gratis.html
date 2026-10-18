@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<script src="cookies.js" defer></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Plantilla de presupuesto mensual gratis (Google Sheets) | Capital en Marcha</title>
+<meta name="description" content="Descarga gratis una plantilla de presupuesto mensual en Google Sheets: ingresos, gastos, tasa de ahorro, regla 50/30/20 y fondo de emergencia. Rellenas tus datos y se calcula solo.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://capitalenmarcha.com/plantilla-presupuesto-mensual-gratis.html">
+
+<style>
+body{font-family:Arial,sans-serif;background:#f8fafc;margin:0;color:#0f172a;}
+.container{max-width:900px;margin:50px auto;background:white;padding:40px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,0.08);}
+h1{text-align:center;font-size:38px;line-height:1.2;}
+h2{margin-top:35px;}
+p,li{line-height:1.8;color:#334155;}
+.tabla{width:100%;border-collapse:collapse;margin-top:20px;}
+.tabla th,.tabla td{border:1px solid #e2e8f0;padding:12px;text-align:left;}
+.tabla th{background:#f1f5f9;}
+.scroll{overflow-x:auto;}
+.destacado{background:#eff6ff;padding:25px;border-radius:14px;margin:30px 0;}
+.aviso{background:#fff7ed;padding:25px;border-radius:14px;margin:30px 0;}
+.cta{background:#ecfdf5;padding:25px;border-radius:14px;margin-top:30px;}
+a{color:#2563eb;text-decoration:none;font-weight:bold;}
+a:hover{text-decoration:underline;}
+@media (max-width:640px){
+  .container{margin:0;border-radius:0;padding:22px;}
+  h1{font-size:28px;}
+  .tabla th,.tabla td{padding:8px;font-size:15px;}
+}
+</style>
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://capitalenmarcha.com/plantilla-presupuesto-mensual-gratis.html">
+<meta property="og:title" content="Plantilla de presupuesto mensual gratis (Google Sheets)">
+<meta property="og:description" content="Ingresos, gastos, tasa de ahorro, regla 50/30/20 y fondo de emergencia. Gratis y en tu Google Drive.">
+<meta property="og:image" content="https://capitalenmarcha.com/presupuesto-gratis-portada.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Plantilla de presupuesto mensual gratis (Google Sheets)">
+<meta name="twitter:description" content="Ingresos, gastos, tasa de ahorro, regla 50/30/20 y fondo de emergencia. Gratis y en tu Google Drive.">
+<meta name="twitter:image" content="https://capitalenmarcha.com/presupuesto-gratis-portada.png">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Plantilla de presupuesto mensual gratis (Google Sheets)",
+      "description": "Plantilla gratuita de presupuesto mensual en Google Sheets y cómo hacer tu presupuesto paso a paso.",
+      "url": "https://capitalenmarcha.com/plantilla-presupuesto-mensual-gratis.html",
+      "mainEntityOfPage": "https://capitalenmarcha.com/plantilla-presupuesto-mensual-gratis.html",
+      "datePublished": "2026-10-18",
+      "dateModified": "2026-10-18",
+      "inLanguage": "es-ES",
+      "image": "https://capitalenmarcha.com/og-image.jpg",
+      "author": {"@type": "Organization", "name": "Capital en Marcha", "url": "https://capitalenmarcha.com/sobre.html"},
+      "publisher": {"@type": "Organization", "name": "Capital en Marcha", "url": "https://capitalenmarcha.com/"}
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "¿La plantilla de presupuesto es realmente gratis?",
+         "acceptedAnswer": {"@type": "Answer", "text": "Sí. Pones 0 € y tu email y recibes al momento un enlace para hacer tu copia en Google Drive. Es tuya para siempre."}},
+        {"@type": "Question", "name": "¿Qué es la regla 50/30/20?",
+         "acceptedAnswer": {"@type": "Answer", "text": "Una referencia orientativa para repartir los ingresos netos: un 50 % para necesidades, un 30 % para deseos y un 20 % para ahorro e inversión. Con 1.800 € al mes serían 900 €, 540 € y 360 €."}},
+        {"@type": "Question", "name": "¿Funciona en Excel?",
+         "acceptedAnswer": {"@type": "Answer", "text": "Está pensada para Google Sheets, que es gratis y funciona en el ordenador y el móvil. Desde Google Sheets puedes descargarla como archivo de Excel si lo prefieres."}}
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+.cm-nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 20px;padding-bottom:18px;margin-bottom:24px;border-bottom:1px solid #e2e8f0;font-family:Arial,sans-serif;}
+.cm-logo{color:#2563eb;font-weight:bold;font-size:17px;text-decoration:none;}
+.cm-menu{display:flex;flex-wrap:wrap;gap:6px 18px;}
+.cm-menu a{color:#334155;font-weight:bold;font-size:15px;text-decoration:none;}
+.cm-menu a:hover{color:#2563eb;text-decoration:underline;}
+.cm-nav a:focus-visible{outline:2px solid #2563eb;outline-offset:2px;}
+@media (max-width:640px){.cm-nav{justify-content:center;text-align:center;}.cm-menu{justify-content:center;}}
+</style>
+<style>
+.calc{background:#f8fafc;border:1px solid #e2e8f0;border-radius:16px;padding:10px 25px 25px;margin-top:20px;}
+.fila{display:grid;grid-template-columns:1fr 1fr;gap:0 20px;}
+.calc label{display:block;margin-top:16px;margin-bottom:6px;font-weight:bold;}
+.calc input{width:100%;padding:12px;font-size:17px;border:1px solid #cbd5e1;border-radius:10px;box-sizing:border-box;background:white;}
+.calc button{width:100%;margin-top:22px;padding:15px;border:none;border-radius:12px;background:#2563eb;color:white;font-size:18px;cursor:pointer;}
+.calc button:hover{background:#1d4ed8;}
+.resultado{margin-top:20px;padding:20px;background:#ecfdf5;border-radius:12px;line-height:1.7;}
+.resultado .grande{display:block;font-size:24px;font-weight:bold;color:#065f46;margin-top:12px;}
+.nota{font-size:13px;color:#64748b;line-height:1.5;}
+@media (max-width:640px){.fila{grid-template-columns:1fr;}.calc{padding:5px 16px 20px;}}
+.buy{display:inline-block;background:#059669;color:white!important;font-size:20px;font-weight:bold;padding:18px 34px;border-radius:14px;margin-top:10px;text-decoration:none!important;}
+.buy:hover{background:#047857;}
+.portada{width:100%;height:auto;border-radius:14px;border:1px solid #e2e8f0;margin:20px 0;}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<nav class="cm-nav" aria-label="Menú principal">
+<a class="cm-logo" href="/">Capital en Marcha</a>
+<div class="cm-menu">
+<a href="calculadoras.html">Calculadoras</a>
+<a href="invertir.html">Invertir</a>
+<a href="libertad-financiera-recursos.html">Libertad financiera</a>
+<a href="articulos.html">Artículos</a>
+<a href="sobre.html">Sobre</a>
+</div>
+</nav>
+
+<h1>Plantilla de presupuesto mensual gratis</h1>
+
+<p style="text-align:center;font-size:19px;">
+Una plantilla de Google Sheets para saber cuánto te sobra de verdad cada mes y cuándo tendrás tu fondo de emergencia. Rellenas tus ingresos y gastos y todo lo demás se calcula solo.
+</p>
+
+<img class="portada" src="presupuesto-gratis-portada.png" alt="Plantilla de presupuesto mensual: ingresos, gastos, ahorro y fondo de emergencia" width="1280" height="720">
+
+<div style="text-align:center;">
+<a class="buy" href="https://capitalenmarcha.gumroad.com/l/presupuesto-gratis" rel="noopener">Descargar gratis →</a>
+<p class="nota" style="margin-top:12px;">Pon 0 € y tu email en Gumroad y recibes el enlace al instante. Sin suscripciones.</p>
+</div>
+
+<h2>Qué incluye la plantilla</h2>
+
+<ul>
+<li><strong>Presupuesto mensual:</strong> tus ingresos y hasta 12 categorías de gastos, marcando cada uno como necesidad o deseo.</li>
+<li><strong>Cuánto te sobra y tu tasa de ahorro:</strong> calculados al momento, con aviso en rojo si gastas más de lo que ingresas.</li>
+<li><strong>Comparación con la regla 50/30/20:</strong> ves de un vistazo si tus gastos están equilibrados.</li>
+<li><strong>Fondo de emergencia:</strong> cuánto necesitas según tus gastos imprescindibles, cuánto te falta y en cuántos meses lo completarás.</li>
+</ul>
+
+<h2>Cómo hacer tu presupuesto mensual en 5 pasos</h2>
+
+<ol>
+<li><strong>Apunta tus ingresos netos:</strong> lo que entra en tu cuenta cada mes, no el bruto de la nómina.</li>
+<li><strong>Lista tus gastos fijos:</strong> alquiler o hipoteca, suministros, seguros, transporte, suscripciones. Mira tus últimos extractos bancarios para no olvidar ninguno.</li>
+<li><strong>Estima los variables:</strong> comida, ocio, ropa. Usa la media de los últimos tres meses, no lo que te gustaría gastar.</li>
+<li><strong>Clasifica cada gasto:</strong> necesidad (imprescindible) o deseo (prescindible). Es la base para decidir dónde recortar si hace falta.</li>
+<li><strong>Calcula lo que te sobra y decide qué hacer con ello:</strong> primero el fondo de emergencia, después invertir.</li>
+</ol>
+
+<h2>Ejemplo: un presupuesto con 1.800 € al mes</h2>
+
+<p>
+Es el ejemplo que viene en la plantilla, para que veas cómo funciona antes de poner tus números:
+</p>
+
+<div class="scroll">
+<table class="tabla">
+<tr><th>Concepto</th><th>Importe al mes</th></tr>
+<tr><td>Ingresos netos</td><td>1.800 €</td></tr>
+<tr><td>Necesidades (vivienda, suministros, comida, transporte, seguros)</td><td>1.160 €</td></tr>
+<tr><td>Deseos (ocio, ropa, suscripciones, otros)</td><td>275 €</td></tr>
+<tr><td><strong>Te sobra (ahorro)</strong></td><td><strong>365 € (20,3 %)</strong></td></tr>
+</table>
+</div>
+
+<p>
+En este ejemplo, la tasa de ahorro cumple el 20 % de referencia, pero las necesidades se llevan un 64 % de los ingresos, por encima del 50 % orientativo. Es lo habitual cuando el alquiler pesa mucho: la plantilla te lo enseña para que decidas con datos.
+</p>
+
+<h2>La regla 50/30/20, explicada</h2>
+
+<p>
+Es una referencia sencilla para repartir tus ingresos netos: un <strong>50 % para necesidades</strong>, un <strong>30 % para deseos</strong> y un <strong>20 % para ahorro e inversión</strong>.
+</p>
+
+<div class="scroll">
+<table class="tabla">
+<tr><th>Ingresos netos</th><th>Necesidades (50 %)</th><th>Deseos (30 %)</th><th>Ahorro (20 %)</th></tr>
+<tr><td>1.200 €</td><td>600 €</td><td>360 €</td><td>240 €</td></tr>
+<tr><td>1.800 €</td><td>900 €</td><td>540 €</td><td>360 €</td></tr>
+<tr><td>2.500 €</td><td>1.250 €</td><td>750 €</td><td>500 €</td></tr>
+</table>
+</div>
+
+<p>
+No es una ley: con alquileres altos es difícil quedarse en el 50 % de necesidades. Úsala como orientación para detectar dónde se te va el dinero. Si quieres saber cuánto ahorrar al mes para un objetivo concreto, usa la <a href="ahorro-mensual.html">calculadora de ahorro mensual</a>.
+</p>
+
+<h2>¿Y después del presupuesto?</h2>
+
+<p>
+Cuando sabes cuánto te sobra, el siguiente paso es completar tu fondo de emergencia (entre 3 y 6 meses de gastos) y empezar a invertir lo que sobra. Lo explicamos en <a href="como-empezar-a-invertir.html">cómo empezar a invertir desde cero</a>.
+</p>
+
+<div class="cta">
+<h2 style="margin-top:0;">¿Quieres el plan completo?</h2>
+<p>
+La <a href="plantilla-plan-financiero.html">plantilla de plan financiero completa</a> añade plan de inversión año a año, el año en que alcanzas tu objetivo, libertad financiera y seguimiento mensual del patrimonio. Precio de lanzamiento: 6,95 €.
+</p>
+</div>
+
+<h2>Preguntas frecuentes</h2>
+
+<h3>¿La plantilla es realmente gratis?</h3>
+<p>Sí. Pones 0 € y tu email en Gumroad y recibes al momento un enlace para hacer tu copia en Google Drive. Es tuya para siempre.</p>
+
+<h3>¿Funciona en Excel?</h3>
+<p>Está pensada para Google Sheets, que es gratis y funciona en el ordenador y el móvil. Desde Google Sheets puedes descargarla como archivo de Excel (Archivo → Descargar → Microsoft Excel) si lo prefieres.</p>
+
+<h3>¿Qué hacéis con mi email?</h3>
+<p>Lo usamos para enviarte la plantilla y, de vez en cuando, novedades de Capital en Marcha. Puedes darte de baja en cualquier momento.</p>
+
+<div style="text-align:center;margin-top:30px;">
+<a class="buy" href="https://capitalenmarcha.gumroad.com/l/presupuesto-gratis" rel="noopener">Descargar la plantilla gratis</a>
+</div>
+
+<p class="nota" style="margin-top:30px;">Herramienta educativa. No constituye asesoramiento financiero.</p>
+
+<br>
+
+<a href="/">← Volver a Capital en Marcha</a>
+
+</div>
+
+</body>
+</html>
