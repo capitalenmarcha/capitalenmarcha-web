@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<script src="cookies.js" defer></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Calculadora de fondo de emergencia: cuánto deberías tener ahorrado | Capital en Marcha</title>
+<meta name="description" content="Calcula cuánto debería tener tu fondo de emergencia según tus gastos y tu situación laboral, cuánto te falta y en cuántos meses lo completarás.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://capitalenmarcha.com/calculadora-fondo-de-emergencia.html">
+
+<style>
+body{font-family:Arial,sans-serif;background:#f8fafc;margin:0;color:#0f172a;}
+.container{max-width:900px;margin:50px auto;background:white;padding:40px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,0.08);}
+h1{text-align:center;font-size:38px;line-height:1.2;}
+h2{margin-top:35px;}
+p,li{line-height:1.8;color:#334155;}
+.tabla{width:100%;border-collapse:collapse;margin-top:20px;}
+.tabla th,.tabla td{border:1px solid #e2e8f0;padding:12px;text-align:left;}
+.tabla th{background:#f1f5f9;}
+.scroll{overflow-x:auto;}
+.destacado{background:#eff6ff;padding:25px;border-radius:14px;margin:30px 0;}
+.aviso{background:#fff7ed;padding:25px;border-radius:14px;margin:30px 0;}
+.cta{background:#ecfdf5;padding:25px;border-radius:14px;margin-top:30px;}
+a{color:#2563eb;text-decoration:none;font-weight:bold;}
+a:hover{text-decoration:underline;}
+@media (max-width:640px){
+  .container{margin:0;border-radius:0;padding:22px;}
+  h1{font-size:28px;}
+  .tabla th,.tabla td{padding:8px;font-size:15px;}
+}
+</style>
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://capitalenmarcha.com/calculadora-fondo-de-emergencia.html">
+<meta property="og:title" content="Calculadora de fondo de emergencia: cuánto deberías tener ahorrado">
+<meta property="og:description" content="Cuánto debería tener tu fondo de emergencia, cuánto te falta y cuándo lo completarás.">
+<meta property="og:image" content="https://capitalenmarcha.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Calculadora de fondo de emergencia: cuánto deberías tener ahorrado">
+<meta name="twitter:description" content="Cuánto debería tener tu fondo de emergencia, cuánto te falta y cuándo lo completarás.">
+<meta name="twitter:image" content="https://capitalenmarcha.com/og-image.jpg">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Calculadora de fondo de emergencia: cuánto deberías tener ahorrado",
+      "description": "Cuánto debería tener tu fondo de emergencia, cuánto te falta y cuándo lo completarás.",
+      "url": "https://capitalenmarcha.com/calculadora-fondo-de-emergencia.html",
+      "mainEntityOfPage": "https://capitalenmarcha.com/calculadora-fondo-de-emergencia.html",
+      "datePublished": "2026-10-18",
+      "dateModified": "2026-10-18",
+      "inLanguage": "es-ES",
+      "image": "https://capitalenmarcha.com/og-image.jpg",
+      "author": {"@type": "Organization", "name": "Capital en Marcha", "url": "https://capitalenmarcha.com/sobre.html"},
+      "publisher": {"@type": "Organization", "name": "Capital en Marcha", "url": "https://capitalenmarcha.com/"}
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "¿Cuánto debe tener un fondo de emergencia?",
+         "acceptedAnswer": {"@type": "Answer", "text": "La referencia más habitual es entre 3 y 6 meses de gastos imprescindibles. Más cerca de 6, o incluso más, si tus ingresos son variables, eres autónomo o en casa solo entra un sueldo."}},
+        {"@type": "Question", "name": "¿Dónde guardar el fondo de emergencia?",
+         "acceptedAnswer": {"@type": "Answer", "text": "En un sitio seguro y disponible al momento: una cuenta remunerada o un depósito sin penalización por cancelar, en una entidad adherida al Fondo de Garantía de Depósitos, que cubre hasta 100.000 € por titular y entidad."}},
+        {"@type": "Question", "name": "¿Hay que invertir el fondo de emergencia?",
+         "acceptedAnswer": {"@type": "Answer", "text": "No en bolsa: su función es estar disponible justo cuando algo va mal, que a menudo coincide con caídas de los mercados."}}
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+.cm-nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 20px;padding-bottom:18px;margin-bottom:24px;border-bottom:1px solid #e2e8f0;font-family:Arial,sans-serif;}
+.cm-logo{color:#2563eb;font-weight:bold;font-size:17px;text-decoration:none;}
+.cm-menu{display:flex;flex-wrap:wrap;gap:6px 18px;}
+.cm-menu a{color:#334155;font-weight:bold;font-size:15px;text-decoration:none;}
+.cm-menu a:hover{color:#2563eb;text-decoration:underline;}
+.cm-nav a:focus-visible{outline:2px solid #2563eb;outline-offset:2px;}
+@media (max-width:640px){.cm-nav{justify-content:center;text-align:center;}.cm-menu{justify-content:center;}}
+</style>
+<style>
+.calc{background:#f8fafc;border:1px solid #e2e8f0;border-radius:16px;padding:10px 25px 25px;margin-top:20px;}
+.fila{display:grid;grid-template-columns:1fr 1fr;gap:0 20px;}
+.calc label{display:block;margin-top:16px;margin-bottom:6px;font-weight:bold;}
+.calc input{width:100%;padding:12px;font-size:17px;border:1px solid #cbd5e1;border-radius:10px;box-sizing:border-box;background:white;}
+.calc button{width:100%;margin-top:22px;padding:15px;border:none;border-radius:12px;background:#2563eb;color:white;font-size:18px;cursor:pointer;}
+.calc button:hover{background:#1d4ed8;}
+.resultado{margin-top:20px;padding:20px;background:#ecfdf5;border-radius:12px;line-height:1.7;}
+.resultado .grande{display:block;font-size:24px;font-weight:bold;color:#065f46;margin-top:12px;}
+.nota{font-size:13px;color:#64748b;line-height:1.5;}
+@media (max-width:640px){.fila{grid-template-columns:1fr;}.calc{padding:5px 16px 20px;}}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<nav class="cm-nav" aria-label="Menú principal">
+<a class="cm-logo" href="/">Capital en Marcha</a>
+<div class="cm-menu">
+<a href="calculadoras.html">Calculadoras</a>
+<a href="invertir.html">Invertir</a>
+<a href="libertad-financiera-recursos.html">Libertad financiera</a>
+<a href="articulos.html">Artículos</a>
+<a href="sobre.html">Sobre</a>
+</div>
+</nav>
+
+<h1>Calculadora de fondo de emergencia</h1>
+
+<p style="text-align:center;font-size:19px;">
+Cuánto deberías tener ahorrado para imprevistos según tus gastos y tu situación, cuánto te falta y en cuántos meses lo tendrás completo.
+</p>
+
+<div class="calc">
+<div class="fila">
+<div>
+<label for="gas">Gastos imprescindibles al mes (€)</label>
+<input type="number" id="gas" value="1200" min="0" step="50" inputmode="decimal">
+</div>
+<div>
+<label for="sit">Tu situación</label>
+<select id="sit" style="width:100%;padding:12px;font-size:17px;border:1px solid #cbd5e1;border-radius:10px;background:white;">
+<option value="3">Contrato fijo y dos sueldos en casa (3 meses)</option>
+<option value="6" selected>Un solo sueldo en casa o contrato temporal (6 meses)</option>
+<option value="9">Autónomo o ingresos variables (9 meses)</option>
+</select>
+</div>
+</div>
+<div class="fila">
+<div>
+<label for="aho">Lo que ya tienes ahorrado para esto (€)</label>
+<input type="number" id="aho" value="2000" min="0" step="100" inputmode="decimal">
+</div>
+<div>
+<label for="men">Lo que puedes apartar cada mes (€)</label>
+<input type="number" id="men" value="200" min="0" step="10" inputmode="decimal">
+</div>
+</div>
+<button type="button" onclick="calc()">Calcular mi fondo</button>
+<div class="resultado" id="res" aria-live="polite"></div>
+</div>
+
+<h2>Qué gastos cuentan</h2>
+
+<p>
+Solo los <strong>imprescindibles</strong>: vivienda, suministros, comida, transporte, seguros y deudas. No el ocio ni las compras que podrías aplazar. Si te quedas sin ingresos, son los que tendrías que seguir pagando.
+</p>
+
+<h2>Cuántos meses: 3, 6 o más</h2>
+
+<div class="scroll">
+<table class="tabla">
+<tr><th>Gastos imprescindibles</th><th>3 meses</th><th>6 meses</th><th>9 meses</th></tr>
+<tr><td>900 €</td><td>2.700 €</td><td>5.400 €</td><td>8.100 €</td></tr>
+<tr><td>1.200 €</td><td>3.600 €</td><td>7.200 €</td><td>10.800 €</td></tr>
+<tr><td>1.500 €</td><td>4.500 €</td><td>9.000 €</td><td>13.500 €</td></tr>
+<tr><td>2.000 €</td><td>6.000 €</td><td>12.000 €</td><td>18.000 €</td></tr>
+</table>
+</div>
+
+<p>
+La referencia más habitual es entre 3 y 6 meses. Cuanto más estables sean tus ingresos y más fuentes haya en casa, menos necesitas. Los autónomos y quienes tienen ingresos variables suelen ir más allá de los 6 meses: los meses que uses en la calculadora son una orientación, no una norma.
+</p>
+
+<h2>Dónde guardarlo</h2>
+
+<p>
+En un sitio <strong>seguro y disponible al momento</strong>: una cuenta remunerada o un depósito sin penalización por cancelar, en una entidad adherida al Fondo de Garantía de Depósitos (cubre hasta 100.000 € por titular y entidad). No en bolsa: las emergencias suelen llegar justo cuando los mercados caen.
+</p>
+
+<h2>Y cuando lo tengas completo…</h2>
+
+<p>
+Todo lo que ahorres a partir de ahí puede ir a invertir a largo plazo. Te explicamos cómo en <a href="como-empezar-a-invertir.html">cómo empezar a invertir desde cero</a>, y si no sabes cuánto puedes apartar cada mes, usa la <a href="calculadora-regla-50-30-20.html">calculadora de la regla 50/30/20</a>.
+</p>
+
+<div class="cm-plantilla" style="background:#fefce8;border:1px solid #fde68a;padding:20px 25px;border-radius:14px;margin:30px 0;">
+<strong>¿Quieres hacer estas cuentas con tus números y guardarlas?</strong>
+<p style="margin:8px 0;">Empieza gratis con la plantilla de presupuesto y fondo de emergencia en Google Sheets. Si quieres el plan completo, con inversión y libertad financiera, cuesta 6,95 € (precio de lanzamiento).</p>
+<a href="plantilla-presupuesto-mensual-gratis.html">Descargar gratis →</a> &nbsp;·&nbsp; <a href="plantilla-plan-financiero.html">Ver el plan completo</a>
+</div>
+
+<h2>Preguntas frecuentes</h2>
+
+<h3>¿Cuánto debe tener un fondo de emergencia?</h3>
+<p>La referencia más habitual es entre 3 y 6 meses de gastos imprescindibles. Más cerca de 6, o incluso más, si tus ingresos son variables, eres autónomo o en casa solo entra un sueldo.</p>
+
+<h3>¿Dónde guardar el fondo de emergencia?</h3>
+<p>En un sitio seguro y disponible al momento: una cuenta remunerada o un depósito sin penalización por cancelar, en una entidad adherida al Fondo de Garantía de Depósitos, que cubre hasta 100.000 € por titular y entidad.</p>
+
+<h3>¿Hay que invertir el fondo de emergencia?</h3>
+<p>No en bolsa: su función es estar disponible justo cuando algo va mal, que a menudo coincide con caídas de los mercados.</p>
+
+<p class="nota" style="margin-top:30px;">Herramienta educativa. Los meses de cobertura son una orientación habitual, no una recomendación personalizada.</p>
+
+<br>
+
+<a href="/">← Volver a Capital en Marcha</a>
+
+</div>
+
+<script>
+function eur(x){return String(Math.round(x)).replace(/\B(?=(\d{3})+(?!\d))/g,".")+" €";}
+function calc(){
+  var g=Number(document.getElementById("gas").value), m=Number(document.getElementById("sit").value), a=Number(document.getElementById("aho").value)||0, x=Number(document.getElementById("men").value)||0;
+  var out=document.getElementById("res");
+  if(!(g>0)){out.innerHTML="Introduce tus gastos imprescindibles al mes.";return;}
+  var obj=g*m, falta=Math.max(0,obj-a), pr=Math.min(1,a/obj);
+  var html="Tu fondo de emergencia objetivo ("+m+" meses)<span class='grande'>"+eur(obj)+"</span>";
+  html+="Ya tienes el <strong>"+Math.round(pr*100)+" %</strong>. ";
+  if(falta===0) html+="¡Lo tienes completo! Lo que ahorres a partir de ahora puede ir a invertir.";
+  else if(x>0) html+="Te faltan <strong>"+eur(falta)+"</strong>: apartando "+eur(x)+" al mes, lo completarás en <strong>"+Math.ceil(falta/x)+" meses</strong>.";
+  else html+="Te faltan <strong>"+eur(falta)+"</strong>. Pon cuánto puedes apartar al mes para saber cuándo lo completarás.";
+  out.innerHTML=html;
+}
+calc();
+</script>
+
+</body>
+</html>
