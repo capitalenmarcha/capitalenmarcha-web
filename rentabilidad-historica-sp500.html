@@ -96,6 +96,25 @@ a{color:#2563eb;text-decoration:none;font-weight:bold;}
 }
 </script>
 
+<style>
+.cm-chart{--surface:#ffffff;--ink:#0f172a;--ink2:#475569;--muted:#64748b;--grid:#eef2f7;--axis:#94a3b8;--pos:#059669;--neg:#dc2626;
+  background:var(--surface);border:1px solid #e2e8f0;border-radius:16px;padding:20px 20px 12px;margin:18px 0 22px;position:relative;font-family:Arial,sans-serif;}
+.cm-chart .ch-kick{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
+.cm-chart .ch-hero{font-size:30px;font-weight:bold;color:var(--ink);margin-top:2px;}
+.cm-chart .ch-sub{font-size:14px;color:var(--ink2);margin-top:2px;line-height:1.5;}
+.cm-chart .ch-leg{display:flex;gap:16px;font-size:13px;color:var(--ink2);margin-top:10px;flex-wrap:wrap;}
+.cm-chart .ch-leg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px;}
+.cm-chart svg{display:block;width:100%;height:auto;overflow:visible;margin-top:8px;touch-action:pan-y;}
+.cm-chart svg:focus{outline:none;}
+.cm-chart svg:focus-visible{outline:2px solid #2563eb;outline-offset:4px;border-radius:6px;}
+.cm-chart .ch-tip{position:absolute;pointer-events:none;background:#0f172a;color:#f8fafc;border-radius:10px;padding:8px 12px;font-size:13px;line-height:1.5;box-shadow:0 10px 30px rgba(15,23,42,.25);opacity:0;transition:opacity .12s;z-index:5;white-space:nowrap;}
+.cm-chart .ch-tip b{font-size:15px;font-variant-numeric:tabular-nums;}
+.cm-chart .bar{transform-box:fill-box;transform-origin:center bottom;transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .15s;}
+.cm-chart .bar.neg{transform-origin:center top;}
+.cm-chart .bar.pre{transform:scaleY(0);}
+@media (prefers-reduced-motion:reduce){.cm-chart .bar{transition:none;}}
+@media (max-width:640px){.cm-chart{padding:16px 12px 10px;}.cm-chart .ch-hero{font-size:24px;}}
+</style>
 </head>
 
 <body>
@@ -145,6 +164,96 @@ Los últimos 10 años han sido excepcionalmente buenos. Para hacer planes a larg
 <p>
 Rentabilidad total de cada año natural, con dividendos reinvertidos, en dólares. En rojo, los años negativos.
 </p>
+
+<div class="cm-chart" id="graficoSp">
+<div class="ch-kick">S&amp;P 500 · 1970-2025 · con dividendos</div>
+<div class="ch-hero">45 de 56 años en positivo</div>
+<div class="ch-sub">Cada barra es un año. Pasa el dedo o el ratón por encima para ver la rentabilidad exacta.</div>
+<div class="ch-leg"><span><i style="background:#059669"></i>Año positivo</span><span><i style="background:#dc2626"></i>Año negativo</span></div>
+<svg id="spSvg" viewBox="0 0 720 300" role="img" tabindex="0" aria-label="Rentabilidad anual del S&amp;P 500 de 1970 a 2025: 45 años positivos y 11 negativos. Mejor año 1995 (+37,6 %), peor año 2008 (−37,0 %). Valores exactos en la tabla de abajo."></svg>
+<div class="ch-tip" id="spTip" role="status" aria-live="polite"></div>
+</div>
+<script>
+(function () {
+  var DATA = [[1970, 3.86], [1971, 14.3], [1972, 19.0], [1973, -14.69], [1974, -26.47], [1975, 37.23], [1976, 23.93], [1977, -7.16], [1978, 6.57], [1979, 18.61], [1980, 32.5], [1981, -4.92], [1982, 21.55], [1983, 22.56], [1984, 6.27], [1985, 31.73], [1986, 18.67], [1987, 5.25], [1988, 16.61], [1989, 31.69], [1990, -3.1], [1991, 30.47], [1992, 7.62], [1993, 10.08], [1994, 1.32], [1995, 37.58], [1996, 22.96], [1997, 33.36], [1998, 28.58], [1999, 21.04], [2000, -9.1], [2001, -11.89], [2002, -22.1], [2003, 28.68], [2004, 10.88], [2005, 4.91], [2006, 15.79], [2007, 5.49], [2008, -37.0], [2009, 26.46], [2010, 15.06], [2011, 2.11], [2012, 16.0], [2013, 32.39], [2014, 13.69], [2015, 1.38], [2016, 11.96], [2017, 21.83], [2018, -4.38], [2019, 31.49], [2020, 18.4], [2021, 28.71], [2022, -18.11], [2023, 26.29], [2024, 25.02], [2025, 17.88]], NS = "http://www.w3.org/2000/svg";
+  var svg = document.getElementById("spSvg"), box = document.getElementById("graficoSp"), tip = document.getElementById("spTip");
+  var pct = function (v, s) { return (s && v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v).toFixed(s ? 1 : 2).replace(".", ",") + " %"; };
+  function el(n, a, p) { var e = document.createElementNS(NS, n); for (var k in a) e.setAttribute(k, a[k]); if (p) p.appendChild(e); return e; }
+  var first = true;
+  function draw() {
+    var W = Math.max(280, Math.round(svg.getBoundingClientRect().width || 720)), small = W < 520, H = small ? 250 : 300;
+    var M = {t: 22, r: 8, b: 26, l: small ? 40 : 46};
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    var ymax = 40, ymin = -40, iw = W - M.l - M.r, ih = H - M.t - M.b;
+    var y = function (v) { return M.t + (ymax - v) / (ymax - ymin) * ih; };
+    var slot = iw / DATA.length, gap = slot >= 8 ? 2 : 1, bw = Math.min(24, slot - gap);
+    var g = el("g", {"aria-hidden": "true"}, svg);
+    for (var t = ymin; t <= ymax; t += 20) {
+      el("line", {x1: M.l, x2: W - M.r, y1: y(t), y2: y(t), stroke: t === 0 ? "var(--axis)" : "var(--grid)", "stroke-width": 1}, g);
+      var tx = el("text", {x: M.l - 6, y: y(t) + 4, "text-anchor": "end", "font-size": 12, fill: "var(--muted)"}, g);
+      tx.textContent = (t > 0 ? "+" : t < 0 ? "−" : "") + Math.abs(t) + " %";
+    }
+    var every = small ? 10 : 5;
+    DATA.forEach(function (d, i) {
+      if (d[0] % every === 0 || i === DATA.length - 1 && !small) {
+        var lx = el("text", {x: M.l + slot * i + slot / 2, y: H - 8, "text-anchor": "middle", "font-size": 12, fill: "var(--muted)"}, g);
+        lx.textContent = d[0];
+      }
+    });
+    var bars = [], r = Math.min(4, bw / 2), y0 = y(0);
+    DATA.forEach(function (d, i) {
+      var v = d[1], x0 = M.l + slot * i + (slot - bw) / 2, hgt = Math.max(1.5, Math.abs(y(v) - y0)), rr = Math.min(r, hgt);
+      var path = v >= 0
+        ? "M" + x0 + "," + y0 + "V" + (y0 - hgt + rr) + "Q" + x0 + "," + (y0 - hgt) + " " + (x0 + rr) + "," + (y0 - hgt) + "H" + (x0 + bw - rr) + "Q" + (x0 + bw) + "," + (y0 - hgt) + " " + (x0 + bw) + "," + (y0 - hgt + rr) + "V" + y0 + "Z"
+        : "M" + x0 + "," + y0 + "V" + (y0 + hgt - rr) + "Q" + x0 + "," + (y0 + hgt) + " " + (x0 + rr) + "," + (y0 + hgt) + "H" + (x0 + bw - rr) + "Q" + (x0 + bw) + "," + (y0 + hgt) + " " + (x0 + bw) + "," + (y0 + hgt - rr) + "V" + y0 + "Z";
+      var b = el("path", {d: path, fill: v >= 0 ? "var(--pos)" : "var(--neg)", "class": "bar" + (v < 0 ? " neg" : "") + (first ? " pre" : "")}, svg);
+      bars.push(b);
+    });
+    // Anotaciones: mejor y peor año
+    [[1995, "Mejor: 1995"], [2008, "Peor: 2008"]].forEach(function (a) {
+      var i = DATA.findIndex(function (d) { return d[0] === a[0]; }), v = DATA[i][1];
+      var cx = M.l + slot * i + slot / 2;
+      var t = v >= 0
+        ? el("text", {x: cx, y: y(v) - 7, "text-anchor": "middle", "font-size": 12, "font-weight": "bold", fill: "var(--ink)"}, svg)
+        : el("text", {x: cx + bw / 2 + 5, y: y(v) - 2, "text-anchor": "start", "font-size": 12, "font-weight": "bold", fill: "var(--ink)", stroke: "var(--surface)", "stroke-width": 3, "paint-order": "stroke"}, svg);
+      t.textContent = a[1] + " " + pct(v, true);
+      if (v < 0 && t.getBBox && t.getBBox().x + t.getBBox().width > W - 2) { t.setAttribute("text-anchor", "end"); t.setAttribute("x", cx - bw / 2 - 5); }
+    });
+    if (first) { first = false; requestAnimationFrame(function () { requestAnimationFrame(function () { bars.forEach(function (b, k) { b.style.transitionDelay = (k * 12) + "ms"; b.classList.remove("pre"); }); setTimeout(function () { bars.forEach(function (b) { b.style.transitionDelay = "0ms"; }); }, 1500); }); }); }
+    var active = -1;
+    function show(i) {
+      if (i < 0 || i >= DATA.length) return; active = i;
+      bars.forEach(function (b, k) { b.style.opacity = k === i ? 1 : 0.35; });
+      var d = DATA[i]; tip.textContent = "";
+      var s1 = document.createElement("span"); s1.textContent = d[0] + ": ";
+      var s2 = document.createElement("b"); s2.textContent = pct(d[1], false);
+      tip.appendChild(s1); tip.appendChild(s2);
+      var rect = svg.getBoundingClientRect(), br = box.getBoundingClientRect(), s = rect.width / W;
+      tip.style.opacity = 1;
+      var tw = tip.offsetWidth, th = tip.offsetHeight, cx = (M.l + slot * i + slot / 2) * s + rect.left - br.left;
+      var top = (d[1] >= 0 ? y(d[1]) : y0) * s + rect.top - br.top - th - 10;
+      tip.style.left = Math.min(Math.max(8, cx - tw / 2), br.width - tw - 8) + "px";
+      tip.style.top = Math.max(4, top) + "px";
+    }
+    function hide() { active = -1; tip.style.opacity = 0; bars.forEach(function (b) { b.style.opacity = 1; }); }
+    svg.onpointermove = function (e) {
+      var rect = svg.getBoundingClientRect(), mx = (e.clientX - rect.left) * W / rect.width;
+      if (mx < M.l || mx > W - M.r) { hide(); return; }
+      show(Math.floor((mx - M.l) / slot));
+    };
+    svg.onpointerleave = hide; svg.onblur = hide;
+    svg.onfocus = function () { show(DATA.length - 1); };
+    svg.onkeydown = function (e) {
+      if (e.key === "ArrowRight") { show(Math.min(DATA.length - 1, active < 0 ? 0 : active + 1)); e.preventDefault(); }
+      else if (e.key === "ArrowLeft") { show(Math.max(0, active < 0 ? DATA.length - 1 : active - 1)); e.preventDefault(); }
+      else if (e.key === "Escape") hide();
+    };
+  }
+  draw();
+  var rt; window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(draw, 150); });
+})();
+</script>
 
 <div class="scroll">
 <table>
