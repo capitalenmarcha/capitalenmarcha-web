@@ -49,6 +49,33 @@ a{color:#2563eb;text-decoration:none;font-weight:bold;}
 .cm-nav a:focus-visible{outline:2px solid #2563eb;outline-offset:2px;}
 @media (max-width:640px){.cm-nav{justify-content:center;text-align:center;}.cm-menu{justify-content:center;}}
 </style>
+<style>
+.cm-chart{--surface:#ffffff;--ink:#0f172a;--ink2:#475569;--muted:#64748b;--grid:#eef2f7;--axis:#cbd5e1;--s1:#2563eb;--s2:#059669;
+  background:var(--surface);border:1px solid #e2e8f0;border-radius:16px;padding:22px 22px 14px;margin-top:22px;position:relative;font-family:Arial,sans-serif;}
+.cm-chart .ch-kicker{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:bold;}
+.cm-chart .ch-hero{font-size:44px;font-weight:bold;color:var(--ink);line-height:1.1;margin:6px 0 4px;letter-spacing:-1px;}
+.cm-chart .ch-sub{font-size:15px;color:var(--ink2);line-height:1.5;}
+.cm-chart .ch-sub b{color:var(--ink);}
+.cm-chart .ch-split{display:flex;height:10px;border-radius:999px;overflow:hidden;margin:14px 0 6px;gap:2px;background:var(--surface);}
+.cm-chart .ch-split span{display:block;height:100%;}
+.cm-chart .ch-legend{display:flex;flex-wrap:wrap;gap:6px 18px;margin:12px 0 4px;font-size:14px;color:var(--ink2);}
+.cm-chart .ch-legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:7px;vertical-align:-1px;}
+.cm-chart svg{display:block;width:100%;height:auto;overflow:visible;touch-action:pan-y;}
+.cm-chart svg:focus{outline:none;}
+.cm-chart svg:focus-visible{outline:2px solid var(--s1);outline-offset:4px;border-radius:6px;}
+.cm-chart .ch-tip{position:absolute;pointer-events:none;background:#0f172a;color:#f8fafc;border-radius:10px;padding:10px 12px;font-size:13px;line-height:1.5;min-width:170px;box-shadow:0 10px 30px rgba(15,23,42,.25);opacity:0;transition:opacity .12s;z-index:5;}
+.cm-chart .ch-tip .t-h{color:#cbd5e1;font-size:12px;margin-bottom:4px;}
+.cm-chart .ch-tip .t-r{display:flex;align-items:center;justify-content:space-between;gap:14px;}
+.cm-chart .ch-tip .t-r b{font-variant-numeric:tabular-nums;}
+.cm-chart .ch-tip .t-k{display:inline-block;width:12px;height:2px;border-radius:2px;margin-right:7px;vertical-align:middle;}
+.cm-chart .ch-tip .t-tot{border-top:1px solid #334155;margin-top:6px;padding-top:6px;font-size:15px;}
+.cm-chart .ch-note{font-size:14px;color:var(--ink2);margin:10px 0 4px;line-height:1.5;}
+.cm-chart .bar{transition:opacity .15s;}
+.cm-chart .bars.anim .bar{transform:scaleY(0);transform-box:fill-box;transform-origin:50% 100%;}
+.cm-chart .bars .bar{transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .15s;transform-box:fill-box;transform-origin:50% 100%;}
+@media (prefers-reduced-motion:reduce){.cm-chart .bars .bar{transition:none;}}
+@media (max-width:640px){.cm-chart{padding:16px 12px 10px;}.cm-chart .ch-hero{font-size:34px;}}
+</style>
 </head>
 
 <body>
@@ -94,6 +121,17 @@ Simula cómo puede crecer tu dinero con el paso del tiempo gracias al interés c
 
 <div class="resultado" id="resultado">
 Introduce tus datos y pulsa calcular.
+</div>
+
+<div class="cm-chart" id="grafico" hidden>
+<div class="ch-kicker" id="chKicker">Capital estimado</div>
+<div class="ch-hero" id="chHero"></div>
+<div class="ch-sub" id="chSub"></div>
+<div class="ch-split" aria-hidden="true"><span id="chSplit1" style="background:var(--s1)"></span><span id="chSplit2" style="background:var(--s2)"></span></div>
+<div class="ch-legend"><span><i style="background:var(--s1)"></i>Lo que aportas tú</span><span><i style="background:var(--s2)"></i>Lo que pone el interés compuesto</span></div>
+<svg id="chSvg" viewBox="0 0 720 300" role="img" tabindex="0" aria-label="Gráfico de la evolución del capital"></svg>
+<div class="ch-tip" id="chTip" role="status" aria-live="polite"></div>
+<p class="ch-note" id="chNote"></p>
 </div>
 
 <div id="tablaEvolucion"></div>
@@ -439,7 +477,175 @@ function calcularInteres() {
     `;
 
     document.getElementById("tablaEvolucion").innerHTML = tabla;
+    dibujarGrafico(capital, aportacion, rentabilidadMensual, meses);
 }
+
+// ---------- Gráfico de evolución (Capital en Marcha) ----------
+(function () {
+  var NS = "http://www.w3.org/2000/svg";
+  var W = 720, H = 300, M = {t: 26, r: 14, b: 30, l: 62}, ultimo = null;
+  var fmtEur = function (x) { return String(Math.round(x)).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " €"; };
+  var fmtAxis = function (x) {
+    if (x >= 1e6) return (x / 1e6).toLocaleString("es-ES", {maximumFractionDigits: 1}) + " M€";
+    if (x >= 1e3) return Math.round(x / 1e3).toLocaleString("es-ES") + " mil €";
+    return Math.round(x) + " €";
+  };
+  function el(name, attrs, parent) {
+    var e = document.createElementNS(NS, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function niceStep(max, n) {
+    var raw = max / n, p = Math.pow(10, Math.floor(Math.log10(raw))), m = raw / p;
+    return (m <= 1 ? 1 : m <= 2 ? 2 : m <= 2.5 ? 2.5 : m <= 5 ? 5 : 10) * p;
+  }
+  function topRounded(x, y, w, h, r) {
+    r = Math.min(r, w / 2, h);
+    return "M" + x + "," + (y + h) + "V" + (y + r) + "Q" + x + "," + y + " " + (x + r) + "," + y +
+      "H" + (x + w - r) + "Q" + (x + w) + "," + y + " " + (x + w) + "," + (y + r) + "V" + (y + h) + "Z";
+  }
+
+  window.dibujarGrafico = function (capital, aportacion, rMensual, meses) {
+    var box = document.getElementById("grafico"), svg = document.getElementById("chSvg");
+    if (!(meses > 0)) { box.hidden = true; return; }
+    box.hidden = false;
+    ultimo = [capital, aportacion, rMensual, meses];
+    W = Math.max(280, Math.round(svg.getBoundingClientRect().width || 720));
+    H = W < 520 ? 250 : 300;
+    M.l = W < 520 ? 54 : 62;
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    // Serie: por años si hay 2 o más; por meses si el plazo es corto
+    var porMes = meses < 24, pts = [], v = capital;
+    for (var i = 1; i <= meses; i++) {
+      v = v * (1 + rMensual) + aportacion;
+      if (porMes || i % 12 === 0 || i === meses) {
+        var ap = capital + aportacion * i;
+        pts.push({i: i, label: porMes ? (i === 1 ? "Mes 1" : "Mes " + i) : (i % 12 === 0 ? "Año " + (i / 12) : (i / 12).toLocaleString("es-ES", {maximumFractionDigits: 1}) + " años"),
+                  tick: porMes ? String(i) : (i % 12 === 0 ? String(i / 12) : ""), ap: ap, int: Math.max(0, v - ap), tot: v});
+      }
+    }
+    var last = pts[pts.length - 1];
+    // Cabecera
+    document.getElementById("chKicker").textContent = "Capital estimado al final del " + (porMes ? "mes " + meses : (meses % 12 === 0 ? "año " + meses / 12 : "periodo"));
+    document.getElementById("chHero").textContent = fmtEur(last.tot);
+    var pctInt = last.tot > 0 ? last.int / last.tot : 0;
+    var sub = document.getElementById("chSub");
+    sub.textContent = "";
+    sub.appendChild(document.createTextNode("Has aportado "));
+    var b1 = document.createElement("b"); b1.textContent = fmtEur(last.ap); sub.appendChild(b1);
+    sub.appendChild(document.createTextNode(" y el interés compuesto ha añadido "));
+    var b2 = document.createElement("b"); b2.textContent = fmtEur(last.int); sub.appendChild(b2);
+    sub.appendChild(document.createTextNode(" (" + Math.round(pctInt * 100) + " % del total)."));
+    document.getElementById("chSplit1").style.width = ((1 - pctInt) * 100) + "%";
+    document.getElementById("chSplit2").style.width = (pctInt * 100) + "%";
+    // Escalas
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    var iw = W - M.l - M.r, ih = H - M.t - M.b, n = pts.length;
+    var step = niceStep(last.tot, W < 520 ? 4 : 5), ymax = Math.ceil(last.tot / step) * step || 1;
+    var y = function (val) { return M.t + ih - val / ymax * ih; };
+    var slot = iw / n, bw = Math.max(2, Math.min(24, slot - 2)), gap = 2;
+    // Rejilla y eje Y
+    var g0 = el("g", {"aria-hidden": "true"}, svg);
+    for (var t = 0; t <= ymax + 1e-9; t += step) {
+      el("line", {x1: M.l, x2: W - M.r, y1: y(t), y2: y(t), stroke: t === 0 ? "var(--axis)" : "var(--grid)", "stroke-width": 1}, g0);
+      var tx = el("text", {x: M.l - 8, y: y(t) + 4, "text-anchor": "end", "font-size": 12, fill: "var(--muted)"}, g0);
+      tx.textContent = fmtAxis(t);
+    }
+    // Etiquetas del eje X (como mucho ~8)
+    var every = Math.max(1, Math.ceil(n / Math.max(3, Math.floor(iw / 48))));
+    pts.forEach(function (p, k) {
+      if (!p.tick) return;
+      if (k % every !== every - 1 && k !== n - 1 && !(every === 1)) return;
+      var lx = el("text", {x: M.l + slot * k + slot / 2, y: H - 8, "text-anchor": "middle", "font-size": 12, fill: "var(--muted)"}, g0);
+      lx.textContent = p.tick;
+    });
+    // Barras apiladas
+    var gb = el("g", {"class": "bars anim"}, svg);
+    var cols = [];
+    pts.forEach(function (p, k) {
+      var x = M.l + slot * k + (slot - bw) / 2;
+      var hA = p.ap / ymax * ih, hI = p.int / ymax * ih;
+      var col = el("g", {"class": "bar"}, gb);
+      var hasInt = hI > gap + 1;
+      if (hasInt) {
+        el("rect", {x: x, y: y(p.ap), width: bw, height: Math.max(0, hA), fill: "var(--s1)"}, col);
+        el("path", {d: topRounded(x, y(p.ap + p.int), bw, Math.max(0, hI - gap), 4), fill: "var(--s2)"}, col);
+      } else {
+        el("path", {d: topRounded(x, y(p.ap), bw, Math.max(0, hA), 4), fill: "var(--s1)"}, col);
+      }
+      cols.push(col);
+    });
+    requestAnimationFrame(function () { requestAnimationFrame(function () { gb.setAttribute("class", "bars"); }); });
+    // Etiqueta directa: total en la última barra
+    var lt = el("text", {x: Math.min(W - M.r, M.l + slot * (n - 1) + slot / 2), y: y(last.tot) - 8, "text-anchor": n > 1 ? "end" : "middle", "font-size": 13, "font-weight": "bold", fill: "var(--ink)"}, svg);
+    lt.textContent = fmtEur(last.tot);
+    // Momento en que los intereses superan lo aportado
+    var cross = null;
+    for (var c = 0; c < n; c++) { if (pts[c].int >= pts[c].ap) { cross = pts[c]; break; } }
+    var note = document.getElementById("chNote");
+    if (cross && n > 1) {
+      var ci = pts.indexOf(cross), cx = M.l + slot * ci + slot / 2;
+      el("line", {x1: cx, x2: cx, y1: M.t - 6, y2: y(cross.tot) - 4, stroke: "var(--ink2)", "stroke-width": 1}, svg);
+      var ct = el("text", {x: cx, y: M.t - 10, "text-anchor": cx > W * 0.7 ? "end" : cx < W * 0.3 ? "start" : "middle", "font-size": 12, fill: "var(--ink2)"}, svg);
+      ct.textContent = W < 520 ? "Intereses > aportado" : "Los intereses ya superan lo aportado";
+      note.textContent = (porMes ? "En el mes " + cross.i : "A partir del " + cross.label.toLowerCase()) + ", lo que ha generado el interés compuesto supera a todo lo que has puesto de tu bolsillo. Por eso el tiempo pesa tanto.";
+    } else {
+      note.textContent = "En este plazo, lo que aportas sigue pesando más que los intereses. Prueba a alargar el periodo: el efecto del interés compuesto se acelera con los años.";
+    }
+    // Tooltip (puntero y teclado)
+    var tip = document.getElementById("chTip"), active = -1;
+    function row(color, label, value, strong) {
+      var r = document.createElement("div"); r.className = "t-r" + (strong ? " t-tot" : "");
+      var l = document.createElement("span");
+      if (color) { var k = document.createElement("span"); k.className = "t-k"; k.style.background = color; l.appendChild(k); }
+      l.appendChild(document.createTextNode(label));
+      var b = document.createElement("b"); b.textContent = value;
+      r.appendChild(l); r.appendChild(b); return r;
+    }
+    function show(k) {
+      if (k < 0 || k >= n) return;
+      active = k;
+      var p = pts[k];
+      cols.forEach(function (cEl, j) { cEl.style.opacity = j === k ? 1 : 0.45; });
+      tip.textContent = "";
+      var hd = document.createElement("div"); hd.className = "t-h"; hd.textContent = p.label; tip.appendChild(hd);
+      tip.appendChild(row("#60a5fa", "Aportado", fmtEur(p.ap)));
+      tip.appendChild(row("#34d399", "Intereses", fmtEur(p.int)));
+      tip.appendChild(row(null, "Capital", fmtEur(p.tot), true));
+      var rect = svg.getBoundingClientRect(), boxR = box.getBoundingClientRect();
+      var sx = rect.width / W, cx = (M.l + slot * k + slot / 2) * sx + rect.left - boxR.left;
+      var top = y(p.tot) * sx + rect.top - boxR.top - 12;
+      tip.style.opacity = 1;
+      var tw = tip.offsetWidth, th = tip.offsetHeight;
+      var left = Math.min(Math.max(8, cx - tw / 2), boxR.width - tw - 8);
+      tip.style.left = left + "px";
+      tip.style.top = Math.max(8, top - th) + "px";
+    }
+    function hide() { active = -1; tip.style.opacity = 0; cols.forEach(function (cEl) { cEl.style.opacity = 1; }); }
+    svg.onpointermove = function (e) {
+      var rect = svg.getBoundingClientRect(), x = (e.clientX - rect.left) * W / rect.width;
+      var k = Math.floor((x - M.l) / slot);
+      if (k >= 0 && k < n) show(k); else hide();
+    };
+    svg.onpointerleave = hide;
+    svg.onblur = hide;
+    svg.onfocus = function () { show(n - 1); };
+    svg.onkeydown = function (e) {
+      if (e.key === "ArrowRight") { show(Math.min(n - 1, (active < 0 ? n - 1 : active + 1))); e.preventDefault(); }
+      else if (e.key === "ArrowLeft") { show(Math.max(0, (active < 0 ? n - 1 : active - 1))); e.preventDefault(); }
+      else if (e.key === "Escape") hide();
+    };
+    svg.setAttribute("aria-label", "Evolución del capital: al final, " + fmtEur(last.tot) + ", de los que " + fmtEur(last.ap) + " son aportaciones y " + fmtEur(last.int) + " intereses. Usa las flechas para recorrer los periodos; la tabla de abajo tiene todos los valores.");
+  };
+  var rt = null;
+  window.addEventListener("resize", function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () { if (ultimo) window.dibujarGrafico.apply(null, ultimo); }, 150);
+  });
+})();
+
+calcularInteres();
 </script>
 
 </body>
