@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<script src="cookies.js" defer></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Plantilla de plan financiero personal en Google Sheets | Capital en Marcha</title>
+<meta name="description" content="Plantilla de Google Sheets con presupuesto mensual, fondo de emergencia, plan de inversión, libertad financiera y seguimiento del patrimonio. Rellenas tus datos y todo se calcula solo.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://capitalenmarcha.com/plantilla-plan-financiero.html">
+
+<style>
+body{font-family:Arial,sans-serif;background:#f8fafc;margin:0;color:#0f172a;}
+.container{max-width:900px;margin:50px auto;background:white;padding:40px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,0.08);}
+h1{text-align:center;font-size:38px;line-height:1.2;}
+h2{margin-top:35px;}
+p,li{line-height:1.8;color:#334155;}
+.tabla{width:100%;border-collapse:collapse;margin-top:20px;}
+.tabla th,.tabla td{border:1px solid #e2e8f0;padding:12px;text-align:left;}
+.tabla th{background:#f1f5f9;}
+.scroll{overflow-x:auto;}
+.destacado{background:#eff6ff;padding:25px;border-radius:14px;margin:30px 0;}
+.aviso{background:#fff7ed;padding:25px;border-radius:14px;margin:30px 0;}
+.cta{background:#ecfdf5;padding:25px;border-radius:14px;margin-top:30px;}
+a{color:#2563eb;text-decoration:none;font-weight:bold;}
+a:hover{text-decoration:underline;}
+@media (max-width:640px){
+  .container{margin:0;border-radius:0;padding:22px;}
+  h1{font-size:28px;}
+  .tabla th,.tabla td{padding:8px;font-size:15px;}
+}
+</style>
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://capitalenmarcha.com/plantilla-plan-financiero.html">
+<meta property="og:title" content="Plantilla de plan financiero personal (Google Sheets)">
+<meta property="og:description" content="Presupuesto, fondo de emergencia, plan de inversión y libertad financiera con tus propios números.">
+<meta property="og:image" content="https://capitalenmarcha.com/plantilla-portada.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Plantilla de plan financiero personal (Google Sheets)">
+<meta name="twitter:description" content="Presupuesto, fondo de emergencia, plan de inversión y libertad financiera con tus propios números.">
+<meta name="twitter:image" content="https://capitalenmarcha.com/plantilla-portada.png">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Plan financiero personal (plantilla de Google Sheets)",
+  "description": "Plantilla de Google Sheets con presupuesto mensual, fondo de emergencia, plan de inversión, libertad financiera y seguimiento del patrimonio. Rellenas tus datos y todo se calcula solo.",
+  "image": "https://capitalenmarcha.com/plantilla-portada.png",
+  "brand": {
+    "@type": "Brand",
+    "name": "Capital en Marcha"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "6.95",
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock",
+    "url": "https://capitalenmarcha.gumroad.com/l/plan-financiero"
+  }
+}
+</script>
+
+<style>
+.cm-nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 20px;padding-bottom:18px;margin-bottom:24px;border-bottom:1px solid #e2e8f0;font-family:Arial,sans-serif;}
+.cm-logo{color:#2563eb;font-weight:bold;font-size:17px;text-decoration:none;}
+.cm-menu{display:flex;flex-wrap:wrap;gap:6px 18px;}
+.cm-menu a{color:#334155;font-weight:bold;font-size:15px;text-decoration:none;}
+.cm-menu a:hover{color:#2563eb;text-decoration:underline;}
+.cm-nav a:focus-visible{outline:2px solid #2563eb;outline-offset:2px;}
+@media (max-width:640px){.cm-nav{justify-content:center;text-align:center;}.cm-menu{justify-content:center;}}
+</style>
+<style>
+.calc{background:#f8fafc;border:1px solid #e2e8f0;border-radius:16px;padding:10px 25px 25px;margin-top:20px;}
+.fila{display:grid;grid-template-columns:1fr 1fr;gap:0 20px;}
+.calc label{display:block;margin-top:16px;margin-bottom:6px;font-weight:bold;}
+.calc input{width:100%;padding:12px;font-size:17px;border:1px solid #cbd5e1;border-radius:10px;box-sizing:border-box;background:white;}
+.calc button{width:100%;margin-top:22px;padding:15px;border:none;border-radius:12px;background:#2563eb;color:white;font-size:18px;cursor:pointer;}
+.calc button:hover{background:#1d4ed8;}
+.resultado{margin-top:20px;padding:20px;background:#ecfdf5;border-radius:12px;line-height:1.7;}
+.resultado .grande{display:block;font-size:24px;font-weight:bold;color:#065f46;margin-top:12px;}
+.nota{font-size:13px;color:#64748b;line-height:1.5;}
+@media (max-width:640px){.fila{grid-template-columns:1fr;}.calc{padding:5px 16px 20px;}}
+.buy{display:inline-block;background:#2563eb;color:white!important;font-size:20px;font-weight:bold;padding:18px 34px;border-radius:14px;margin-top:10px;text-decoration:none!important;}
+.buy:hover{background:#1d4ed8;}
+.precio{font-size:30px;font-weight:bold;margin-top:20px;}
+.precio s{color:#94a3b8;font-size:20px;margin-left:8px;font-weight:normal;}
+.portada{width:100%;height:auto;border-radius:14px;border:1px solid #e2e8f0;margin:20px 0;}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<nav class="cm-nav" aria-label="Menú principal">
+<a class="cm-logo" href="/">Capital en Marcha</a>
+<div class="cm-menu">
+<a href="calculadoras.html">Calculadoras</a>
+<a href="invertir.html">Invertir</a>
+<a href="libertad-financiera-recursos.html">Libertad financiera</a>
+<a href="articulos.html">Artículos</a>
+<a href="sobre.html">Sobre</a>
+</div>
+</nav>
+
+<h1>Plantilla de plan financiero personal</h1>
+
+<p style="text-align:center;font-size:19px;">
+Las calculadoras de esta web, juntas y con tus propios números. Una plantilla de Google Sheets: rellenas las celdas amarillas y todo lo demás se calcula solo.
+</p>
+
+<img class="portada" src="plantilla-portada.png" alt="Vista de la plantilla: plan de inversión año a año y año en que alcanzas tu objetivo" width="1280" height="720">
+
+<div style="text-align:center;">
+<div class="precio">6,95 € <s>9 €</s></div>
+<p style="margin:4px 0 0;color:#64748b;">Precio de lanzamiento · Pago único, sin suscripción</p>
+<a class="buy" href="https://capitalenmarcha.gumroad.com/l/plan-financiero" rel="noopener">Comprar la plantilla →</a>
+<p class="nota" style="margin-top:12px;">El pago se hace en Gumroad, una plataforma segura de venta de productos digitales. Recibes el enlace al instante.</p>
+</div>
+
+<h2>Qué incluye</h2>
+
+<ul>
+<li><strong>Presupuesto mensual:</strong> tus ingresos y gastos por categorías, cuánto te sobra, tu tasa de ahorro y la comparación con la regla 50/30/20.</li>
+<li><strong>Fondo de emergencia:</strong> cuánto colchón necesitas según tus gastos imprescindibles y en cuántos meses lo completarás.</li>
+<li><strong>Plan de inversión:</strong> tu capital año a año durante 50 años, en euros de hoy y descontando las comisiones del fondo, con gráfico y el año exacto en que alcanzas tu objetivo.</li>
+<li><strong>Libertad financiera:</strong> qué patrimonio necesitas para vivir de tus inversiones, teniendo en cuenta tu pensión, y en qué año llegarías con tu plan.</li>
+<li><strong>Seguimiento:</strong> anota tu patrimonio cada mes durante 3 años y mira cómo avanza.</li>
+</ul>
+
+<p>
+Las seis pestañas están conectadas: los gastos de tu presupuesto pasan solos al fondo de emergencia y a la libertad financiera, y el plan de inversión te dice cuándo llegas. Usa los mismos cálculos que las calculadoras de Capital en Marcha.
+</p>
+
+<h2>Cómo funciona</h2>
+
+<ol>
+<li>Compras la plantilla y recibes un enlace al momento.</li>
+<li>Pulsas "Hacer una copia" y se guarda en tu Google Drive.</li>
+<li>Es tuya para siempre: funciona en el ordenador y en el móvil.</li>
+</ol>
+
+<p>
+Solo necesitas una cuenta gratuita de Google. Si tienes cualquier problema, escribe a capitalenmarcha@gmail.com.
+</p>
+
+<h2>¿Por qué de pago, si las calculadoras son gratis?</h2>
+
+<p>
+Las calculadoras de la web seguirán siendo gratis. La plantilla es para quien quiere tener todo su plan en un solo sitio, guardado y actualizable mes a mes, sin volver a meter los datos cada vez. Comprarla ayuda a mantener esta web sin llenarla de publicidad.
+</p>
+
+<div style="text-align:center;margin-top:30px;">
+<a class="buy" href="https://capitalenmarcha.gumroad.com/l/plan-financiero" rel="noopener">Comprar por 6,95 €</a>
+</div>
+
+<p class="nota" style="margin-top:30px;">
+Herramienta educativa. Las rentabilidades son supuestos, no garantías, y los cálculos son antes de impuestos. No constituye asesoramiento financiero ni fiscal.
+</p>
+
+<br>
+
+<a href="/">← Volver a Capital en Marcha</a>
+
+</div>
+
+</body>
+</html>
