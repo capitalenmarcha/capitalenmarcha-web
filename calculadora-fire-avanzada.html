@@ -91,6 +91,7 @@ Calcula cuánto patrimonio necesitas para alcanzar la independencia financiera y
 <div class="resultado" id="resultado">
 Introduce tus datos y pulsa calcular.
 </div>
+<div id="grafico" hidden></div>
 
 <p class="aviso">
 Esta herramienta usa la regla del 4% como referencia orientativa. No tiene en cuenta impuestos, inflación, cambios de ingresos ni variaciones futuras del mercado.
@@ -368,8 +369,12 @@ También pueden ayudarte estas herramientas y guías:
 
 </div>
 
+<script src="cm-grafico.js"></script>
+<script>function eur0(n){return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,".")+" €";}
+</script>
 <script>
 function calcularFireAvanzado() {
+    CMGrafico.ocultar(document.getElementById("grafico"));
     let patrimonio = Number(document.getElementById("patrimonio").value);
     let aportacion = Number(document.getElementById("aportacion").value);
     let gastos = Number(document.getElementById("gastos").value);
@@ -461,10 +466,30 @@ if (capitalRestante < 0) {
     '%;">' +
     progreso.toLocaleString("es-ES", {maximumFractionDigits: 1}) +
        '%</div></div>';
+    {
+    const anosVer = meses >= 1000 * 12 ? 40 : Math.min(60, Math.max(5, Math.ceil(meses / 12) + 3));
+    let c = patrimonioActual, ap = patrimonioActual; const vals = [c], aps = [ap];
+    for (let m = 1; m <= anosVer * 12; m++) { c = c * (1 + rentabilidadMensual) + aportacion; ap += aportacion; if (m % 12 === 0) { vals.push(c); aps.push(ap); } }
+    const llega = meses > 0 && meses < 1000 * 12;
+    CMGrafico.linea(document.getElementById("grafico"), {
+        titulo: "Tu camino hacia la libertad financiera",
+        sub: llega ? "Llegarías a tu objetivo FIRE de " + eur0(objetivoFire) + " en " + tiempoTexto + "." : (patrimonioActual >= objetivoFire ? "Ya has superado tu objetivo FIRE." : "Con estos datos no llegas al objetivo en 40 años: prueba a subir la aportación."),
+        n: vals.length,
+        series: [{nombre: "Patrimonio", color: "#2563eb", valores: vals, area: true}],
+        xEtiqueta: i => i === 0 ? "Hoy" : "Año " + i,
+        refs: [{y: objetivoFire, texto: "Objetivo FIRE: " + CMGrafico.fmtEje(objetivoFire)}],
+        puntos: llega ? [{i: meses / 12, y: objetivoFire, texto: "Libre: " + fechaTexto}] : [],
+        tip: i => ({cabecera: i === 0 ? "Hoy" : "Año " + i,
+            filas: [["Patrimonio", eur0(vals[i]), true], ["Aportado", eur0(aps[i])],
+                    ["Del objetivo", Math.min(999, Math.round(vals[i] / objetivoFire * 100)) + " %"]]})
+    });
+    }
+
 
 }
 </script>
 
+<script>window.addEventListener("DOMContentLoaded",function(){ calcularFireAvanzado(); });</script>
 <script src="compartir.js" defer data-calc="calcularFireAvanzado"></script>
 </body>
 </html>

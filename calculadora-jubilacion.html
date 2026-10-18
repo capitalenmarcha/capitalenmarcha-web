@@ -180,6 +180,7 @@ Introduce el ingreso que te gustaría tener al jubilarte y tu pensión estimada.
 <div class="resultado" id="resultado" aria-live="polite">
 Introduce tus datos y pulsa calcular.
 </div>
+<div id="grafico" hidden></div>
 
 </div>
 
@@ -309,12 +310,16 @@ Este contenido es educativo e informativo. No constituye asesoramiento financier
 
 </div>
 
+<script src="cm-grafico.js"></script>
+<script>function eur0(n){return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,".")+" €";}
+</script>
 <script>
 function euros(n) {
     return Math.round(n).toLocaleString("es-ES") + " €";
 }
 
 function calcularJubilacion() {
+    CMGrafico.ocultar(document.getElementById("grafico"));
     const v = id => Number(document.getElementById(id).value);
     const edadActual = v("edadActual");
     const edadJubilacion = v("edadJubilacion");
@@ -375,9 +380,33 @@ function calcularJubilacion() {
         "<tr><td>Ese capital en euros de dentro de " + T + " años</td><td>" + euros(nominal) + "</td></tr>" +
         "<tr><td>Valor de lo que ya tienes al jubilarte (euros de hoy)</td><td>" + euros(valorPatrimonio) + "</td></tr>" +
         "</table>";
+    {
+    const ah = falta > 0 ? (Math.abs(rm) < 1e-9 ? falta / mesesAhorro : falta * rm / (Math.pow(1 + rm, mesesAhorro) - 1)) : 0;
+    let c = patrimonio; const vals = [c];
+    for (let m = 1; m <= mesesAhorro + mesesRetiro; m++) {
+        c = m <= mesesAhorro ? c * (1 + rm) + ah : c * (1 + rm) - brecha;
+        if (m % 12 === 0) vals.push(Math.max(0, c));
+    }
+    const pico = vals[T];
+    CMGrafico.linea(document.getElementById("grafico"), {
+        titulo: "Cómo evoluciona tu ahorro para la jubilación",
+        sub: "Ahorras hasta los " + edadJubilacion + " y después retiras " + eur0(brecha) + " al mes hasta los " + edadFinal + ". En euros de hoy.",
+        n: vals.length,
+        series: [{nombre: "Tu ahorro", color: "#2563eb", valores: vals, area: true}],
+        xEtiqueta: i => (edadActual + i) + " años",
+        xPasoFn: small => (vals.length > 40 ? (small ? 20 : 10) : (small ? 10 : 5)),
+        marcas: [{i: T, texto: "Te jubilas"}],
+        puntos: [{i: T, y: pico, texto: "Máximo: " + eur0(pico), color: "#2563eb"}],
+        tip: i => ({cabecera: (edadActual + i) + " años" + (i === 0 ? " · hoy" : ""),
+            filas: [["Tu ahorro", eur0(vals[i]), true],
+                    i < T ? ["Ahorras", eur0(ah) + "/mes"] : ["Retiras", eur0(brecha) + "/mes"]]})
+    });
+    }
+
 }
 </script>
 
+<script>window.addEventListener("DOMContentLoaded",function(){ calcularJubilacion(); });</script>
 <script src="compartir.js" defer data-calc="calcularJubilacion"></script>
 </body>
 </html>

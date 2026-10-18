@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de interés compuesto | Capital en Marcha</title>
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://capitalenmarcha.com/interes-compuesto.html">
+<style>
+*{box-sizing:border-box;}
+html,body{margin:0;background:#fff;}
+body{font-family:Arial,sans-serif;color:#0f172a;padding:6px;}
+.w{max-width:640px;margin:0 auto;border:1px solid #e2e8f0;border-radius:16px;padding:16px;}
+.w h1{font-size:18px;margin:0 0 10px;}
+.g{display:grid;grid-template-columns:1fr 1fr;gap:10px 12px;}
+label{display:block;font-size:13px;font-weight:bold;color:#334155;margin-bottom:4px;}
+input{width:100%;padding:9px 10px;font-size:16px;border:1px solid #cbd5e1;border-radius:9px;font-family:inherit;}
+input:focus{outline:2px solid #2563eb;outline-offset:1px;border-color:#2563eb;}
+.res{margin-top:14px;padding:12px 14px;background:#f8fafc;border-radius:12px;}
+.res .k{font-size:12px;color:#64748b;text-transform:uppercase;letter-spacing:.04em;}
+.res .big{font-size:28px;font-weight:bold;margin-top:2px;font-variant-numeric:tabular-nums;}
+.res .s{font-size:14px;color:#475569;margin-top:2px;}
+#grafico.cm-chart{margin-top:12px;border:0;padding:0;}
+.pie{margin-top:10px;font-size:12px;color:#64748b;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;}
+.pie a{color:#2563eb;font-weight:bold;text-decoration:none;}
+.pie a:hover{text-decoration:underline;}
+</style>
+</head>
+<body>
+<div class="w">
+<h1>Calculadora de interés compuesto</h1>
+<div class="g">
+<div><label for="capital">Capital inicial (€)</label><input type="number" id="capital" value="10000" min="0" inputmode="numeric"></div>
+<div><label for="aportacion">Aportación mensual (€)</label><input type="number" id="aportacion" value="200" min="0" inputmode="numeric"></div>
+<div><label for="rentabilidad">Rentabilidad anual (%)</label><input type="number" id="rentabilidad" value="7" step="0.1" inputmode="decimal"></div>
+<div><label for="anos">Años</label><input type="number" id="anos" value="20" min="1" max="60" inputmode="numeric"></div>
+</div>
+<div class="res" aria-live="polite">
+<div class="k" id="rk">Capital final</div>
+<div class="big" id="rbig"></div>
+<div class="s" id="rs"></div>
+</div>
+<div id="grafico" hidden></div>
+<div class="pie">
+<span>Estimación con capitalización mensual. No es asesoramiento financiero.</span>
+<a href="https://capitalenmarcha.com/interes-compuesto.html" target="_blank" rel="noopener">Capital en Marcha ↗</a>
+</div>
+</div>
+<script src="cm-grafico.js"></script>
+<script>
+function eur0(n){return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,".")+" €";}
+function calc(){
+  var v=function(id){return Number(document.getElementById(id).value)||0;};
+  var c0=Math.max(0,v("capital")), ap=Math.max(0,v("aportacion")), r=v("rentabilidad")/100, n=Math.min(60,Math.max(1,Math.round(v("anos"))));
+  var rm=r/12, c=c0, apt=c0, tot=[c0], aps=[c0];
+  for(var m=1;m<=n*12;m++){c=c*(1+rm)+ap; apt+=ap; if(m%12===0){tot.push(c);aps.push(apt);}}
+  document.getElementById("rk").textContent="Capital final en "+n+(n===1?" año":" años");
+  document.getElementById("rbig").textContent=eur0(c);
+  document.getElementById("rs").textContent="Has aportado "+eur0(apt)+" y los intereses suman "+eur0(Math.max(0,c-apt))+".";
+  CMGrafico.linea(document.getElementById("grafico"),{
+    n:tot.length,
+    series:[{nombre:"Con intereses",corto:"Con intereses",color:"#059669",valores:tot},{nombre:"Solo lo aportado",corto:"Aportado",color:"#2563eb",valores:aps}],
+    xEtiqueta:function(i){return i===0?"Hoy":"Año "+i;},
+    tip:function(i){return {cabecera:i===0?"Hoy":"Año "+i,filas:[["Total",eur0(tot[i]),true,"#059669"],["Aportado",eur0(aps[i]),false,"#2563eb"],["Intereses",eur0(Math.max(0,tot[i]-aps[i]))]]};}
+  });
+  document.querySelector("#grafico .ch-title").style.display="none";
+  document.querySelector("#grafico .ch-sub").style.display="none";
+}
+document.querySelectorAll("input").forEach(function(i){i.addEventListener("input",calc);});
+calc();
+</script>
+</body>
+</html>

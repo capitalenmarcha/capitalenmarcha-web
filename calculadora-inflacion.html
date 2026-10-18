@@ -159,6 +159,7 @@ Descubre cuánto valdrá tu dinero en el futuro si lo dejas parado, cuánto nece
 <div class="resultado" id="resultado" aria-live="polite">
 Introduce tus datos y pulsa calcular.
 </div>
+<div id="grafico" hidden></div>
 
 </div>
 
@@ -263,12 +264,16 @@ Este contenido es educativo e informativo. No constituye asesoramiento financier
 
 </div>
 
+<script src="cm-grafico.js"></script>
+<script>function eur0(n){return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,".")+" €";}
+</script>
 <script>
 function euros(n) {
     return Math.round(n).toLocaleString("es-ES") + " €";
 }
 
 function calcularInflacion() {
+    CMGrafico.ocultar(document.getElementById("grafico"));
     const v = id => Number(document.getElementById(id).value);
     const dinero = v("dinero");
     const anos = v("anos");
@@ -312,9 +317,27 @@ function calcularInflacion() {
         "<tr><td>Lo que necesitarás para comprar lo mismo que hoy</td><td><strong>" + euros(necesitaras) + "</strong></td></tr>" +
         "<tr><td>Rentabilidad neta mínima para no perder</td><td>" + (inf * 100).toLocaleString("es-ES") + " % anual</td></tr>" +
         "</table>";
+    {
+    const n = anos + 1, parado = [], inv = [];
+    for (let t = 0; t < n; t++) { const f = Math.pow(1 + inf, t); parado.push(dinero / f); inv.push(dinero * Math.pow(1 + r, t) / f); }
+    const series = [{nombre: "Si lo dejas parado", final: "Parado: " + eur0(parado[n - 1]), color: "#dc2626", valores: parado, area: r === 0}];
+    if (r !== 0) series.unshift({nombre: "Invertido al " + (r * 100).toLocaleString("es-ES") + " %", final: "Invertido: " + eur0(inv[n - 1]), color: "#059669", valores: inv});
+    CMGrafico.linea(document.getElementById("grafico"), {
+        titulo: "Lo que podrás comprar con tu dinero",
+        sub: "Poder de compra de tus " + eur0(dinero) + " año a año, en euros de hoy, con una inflación del " + (inf * 100).toLocaleString("es-ES") + " %.",
+        n: n, series: series,
+        xEtiqueta: i => i === 0 ? "Hoy" : "Año " + i,
+        refs: [{y: dinero, texto: "Hoy: " + eur0(dinero), xFrac: r === 0 ? 0 : 0.3}],
+        puntos: [{i: n - 1, y: parado[n - 1], texto: r === 0 ? eur0(parado[n - 1]) : "", color: "#dc2626"}],
+        tip: i => ({cabecera: i === 0 ? "Hoy" : "Año " + i, filas: (r !== 0 ? [["Invertido", eur0(inv[i]), true, "#059669"]] : [])
+            .concat([["Parado", eur0(parado[i]), r === 0, "#dc2626"], ["Necesitarás", eur0(dinero * Math.pow(1 + inf, i))]])})
+    });
+    }
+
 }
 </script>
 
+<script>window.addEventListener("DOMContentLoaded",function(){ calcularInflacion(); });</script>
 <script src="compartir.js" defer data-calc="calcularInflacion"></script>
 </body>
 </html>
