@@ -133,6 +133,54 @@ Con una rentabilidad media del 7 % anual, aportando al final de cada mes:
 </table>
 </div>
 
+<div class="cm-sim" style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:16px;padding:18px 18px 6px;margin:26px 0;">
+<div style="font-weight:bold;font-size:17px;">Míralo año a año</div>
+<div style="display:flex;flex-wrap:wrap;gap:10px 18px;align-items:end;margin-top:10px;">
+<label style="font-size:14px;font-weight:bold;color:#334155;">Inversión al mes (€)<br><input type="number" id="simAp" value="1000" min="0" step="50" inputmode="numeric" style="margin-top:4px;width:130px;padding:9px 10px;font-size:16px;border:1px solid #cbd5e1;border-radius:9px;"></label>
+<div role="group" aria-label="Rentabilidad anual" style="display:flex;gap:6px;" id="simRs">
+<button type="button" data-r="4">4 %</button><button type="button" data-r="7" aria-pressed="true">7 %</button><button type="button" data-r="10">10 %</button>
+</div>
+</div>
+<div id="grafico" hidden></div>
+</div>
+<style>
+#simRs button{padding:9px 14px;border:1px solid #cbd5e1;border-radius:999px;background:#fff;font-size:15px;font-weight:bold;color:#334155;cursor:pointer;font-family:inherit;}
+#simRs button[aria-pressed="true"]{background:#2563eb;border-color:#2563eb;color:#fff;}
+.cm-sim .cm-chart{border:0;padding:0;background:transparent;margin-top:6px;}
+</style>
+<script src="cm-grafico.js"></script>
+<script>
+(function () {
+  var r = 0.07, Y = 30;
+  function eur0(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " €"; }
+  function draw() {
+    var ap = Math.max(0, Number(document.getElementById("simAp").value) || 0), rm = Math.pow(1 + r, 1 / 12) - 1;
+    var c = 0, a = 0, tot = [0], aps = [0];
+    for (var m = 1; m <= Y * 12; m++) { c = c * (1 + rm) + ap; a += ap; if (m % 12 === 0) { tot.push(c); aps.push(a); } }
+    var pct = (r * 100).toLocaleString("es-ES");
+    CMGrafico.linea(document.getElementById("grafico"), {
+      titulo: "",
+      sub: "Con " + eur0(ap) + " al mes al " + pct + " % tendrías " + eur0(tot[Y]) + " en " + Y + " años, de los que " + eur0(tot[Y] - aps[Y]) + " son rentabilidad.",
+      n: tot.length,
+      series: [{nombre: "Capital acumulado", corto: "Capital", color: "#059669", valores: tot}, {nombre: "Dinero aportado", corto: "Aportado", color: "#2563eb", valores: aps}],
+      xEtiqueta: function (i) { return i === 0 ? "Hoy" : "Año " + i; },
+      xPasoFn: function (small) { return small ? 10 : 5; },
+      tip: function (i) { return {cabecera: i === 0 ? "Hoy" : "Año " + i, filas: [["Capital", eur0(tot[i]), true, "#059669"], ["Aportado", eur0(aps[i]), false, "#2563eb"], ["Ganancia", eur0(tot[i] - aps[i])]]}; }
+    });
+    document.querySelector("#grafico .ch-title").style.display = "none";
+  }
+  document.getElementById("simAp").addEventListener("input", draw);
+  document.querySelectorAll("#simRs button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      document.querySelectorAll("#simRs button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+      r = Number(b.getAttribute("data-r")) / 100; draw();
+    });
+  });
+  draw();
+})();
+</script>
+
+
 <p>
 En los primeros 5 años, la ganancia apenas supone 11.000 €: casi todo es dinero que has puesto tú. A partir de los 20 años, en cambio, el interés compuesto aporta más que tus propias aportaciones. Entre el año 25 y el 30 el capital crece casi 390.000 €, más de lo que aportas en toda tu vida. Puedes probar otras cifras con la <a href="interes-compuesto.html">calculadora de interés compuesto</a>.
 </p>
