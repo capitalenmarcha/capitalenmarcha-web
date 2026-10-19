@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<script src="cookies.js" defer></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Calculadora de la regla del 72: cuánto tarda en duplicarse tu dinero | Capital en Marcha</title>
+<meta name="description" content="Calculadora de la regla del 72: descubre en cuántos años se duplica tu dinero según la rentabilidad, con el cálculo exacto, ejemplos del 1 % al 12 % y un gráfico.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://capitalenmarcha.com/calculadora-regla-del-72.html">
+
+<style>
+body{font-family:Arial,sans-serif;background:#f8fafc;margin:0;color:#0f172a;}
+.container{max-width:900px;margin:50px auto;background:white;padding:40px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,0.08);}
+h1{text-align:center;font-size:38px;line-height:1.2;}
+h2{margin-top:35px;}
+p,li{line-height:1.8;color:#334155;}
+.tabla{width:100%;border-collapse:collapse;margin-top:20px;}
+.tabla th,.tabla td{border:1px solid #e2e8f0;padding:12px;text-align:left;}
+.tabla th{background:#f1f5f9;}
+.scroll{overflow-x:auto;}
+.destacado{background:#eff6ff;padding:25px;border-radius:14px;margin:30px 0;}
+.aviso{background:#fff7ed;padding:25px;border-radius:14px;margin:30px 0;}
+.cta{background:#ecfdf5;padding:25px;border-radius:14px;margin-top:30px;}
+a{color:#2563eb;text-decoration:none;font-weight:bold;}
+a:hover{text-decoration:underline;}
+@media (max-width:640px){
+  .container{margin:0;border-radius:0;padding:22px;}
+  h1{font-size:28px;}
+  .tabla th,.tabla td{padding:8px;font-size:15px;}
+}
+</style>
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://capitalenmarcha.com/calculadora-regla-del-72.html">
+<meta property="og:title" content="Calculadora de la regla del 72: cuánto tarda en duplicarse tu dinero">
+<meta property="og:description" content="Calculadora de la regla del 72: descubre en cuántos años se duplica tu dinero según la rentabilidad, con el cálculo exacto, ejemplos del 1 % al 12 % y un gráfico.">
+<meta property="og:image" content="https://capitalenmarcha.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Calculadora de la regla del 72: cuánto tarda en duplicarse tu dinero">
+<meta name="twitter:description" content="Calculadora de la regla del 72: descubre en cuántos años se duplica tu dinero según la rentabilidad, con el cálculo exacto, ejemplos del 1 % al 12 % y un gráfico.">
+<meta name="twitter:image" content="https://capitalenmarcha.com/og-image.jpg">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Calculadora de la regla del 72: cuánto tarda en duplicarse tu dinero",
+      "description": "Calculadora de la regla del 72: descubre en cuántos años se duplica tu dinero según la rentabilidad, con el cálculo exacto, ejemplos del 1 % al 12 % y un gráfico.",
+      "url": "https://capitalenmarcha.com/calculadora-regla-del-72.html",
+      "mainEntityOfPage": "https://capitalenmarcha.com/calculadora-regla-del-72.html",
+      "datePublished": "2026-10-19",
+      "dateModified": "2026-10-19",
+      "inLanguage": "es-ES",
+      "image": "https://capitalenmarcha.com/og-image.jpg",
+      "author": {"@type": "Organization", "name": "Capital en Marcha", "url": "https://capitalenmarcha.com/sobre.html"},
+      "publisher": {"@type": "Organization", "name": "Capital en Marcha", "url": "https://capitalenmarcha.com/"}
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+{"@type":"Question","name":"¿Qué es la regla del 72?","acceptedAnswer":{"@type":"Answer","text":"Es una forma rápida de saber cuántos años tarda en duplicarse un dinero invertido: se divide 72 entre la rentabilidad anual. Por ejemplo, al 6 % se duplica en unos 12 años."}},
+{"@type":"Question","name":"¿Cuánto tarda en duplicarse mi dinero al 7 %?","acceptedAnswer":{"@type":"Answer","text":"Unos 10,3 años según la regla del 72 (72 ÷ 7). El cálculo exacto da 10,2 años."}},
+{"@type":"Question","name":"¿Es exacta la regla del 72?","acceptedAnswer":{"@type":"Answer","text":"No, es una aproximación. Es muy precisa entre el 4 % y el 12 % de rentabilidad; fuera de ese rango se desvía algo más."}},
+{"@type":"Question","name":"¿Sirve la regla del 72 para la inflación?","acceptedAnswer":{"@type":"Answer","text":"Sí. Dividiendo 72 entre la inflación sabes en cuántos años se duplican los precios, es decir, cuándo tu dinero parado pierde la mitad de su poder de compra."}}
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+.cm-nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 20px;padding-bottom:18px;margin-bottom:24px;border-bottom:1px solid #e2e8f0;font-family:Arial,sans-serif;}
+.cm-logo{color:#2563eb;font-weight:bold;font-size:17px;text-decoration:none;}
+.cm-menu{display:flex;flex-wrap:wrap;gap:6px 18px;}
+.cm-menu a{color:#334155;font-weight:bold;font-size:15px;text-decoration:none;}
+.cm-menu a:hover{color:#2563eb;text-decoration:underline;}
+.cm-nav a:focus-visible{outline:2px solid #2563eb;outline-offset:2px;}
+@media (max-width:640px){.cm-nav{justify-content:center;text-align:center;}.cm-menu{justify-content:center;}}
+</style>
+<style>
+.calc{background:#f8fafc;border:1px solid #e2e8f0;border-radius:16px;padding:10px 25px 25px;margin-top:20px;}
+.fila{display:grid;grid-template-columns:1fr 1fr;gap:0 20px;}
+.calc label{display:block;margin-top:16px;margin-bottom:6px;font-weight:bold;}
+.calc input{width:100%;padding:12px;font-size:17px;border:1px solid #cbd5e1;border-radius:10px;box-sizing:border-box;background:white;}
+.calc button{width:100%;margin-top:22px;padding:15px;border:none;border-radius:12px;background:#2563eb;color:white;font-size:18px;cursor:pointer;}
+.calc button:hover{background:#1d4ed8;}
+.resultado{margin-top:20px;padding:20px;background:#ecfdf5;border-radius:12px;line-height:1.7;}
+.resultado .grande{display:block;font-size:24px;font-weight:bold;color:#065f46;margin-top:12px;}
+.nota{font-size:13px;color:#64748b;line-height:1.5;}
+@media (max-width:640px){.fila{grid-template-columns:1fr;}.calc{padding:5px 16px 20px;}}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<nav class="cm-nav" aria-label="Menú principal">
+<a class="cm-logo" href="/">Capital en Marcha</a>
+<div class="cm-menu">
+<a href="calculadoras.html">Calculadoras</a>
+<a href="invertir.html">Invertir</a>
+<a href="libertad-financiera-recursos.html">Libertad financiera</a>
+<a href="articulos.html">Artículos</a>
+<a href="sobre.html">Sobre</a>
+</div>
+</nav>
+
+<h1>Regla del 72: ¿cuánto tarda en duplicarse tu dinero?</h1>
+
+<p style="text-align:center;font-size:19px;">
+Introduce la rentabilidad anual y te decimos en cuántos años se duplica tu dinero, con la regla del 72 y con el cálculo exacto.
+</p>
+
+<div class="calc">
+<div class="fila">
+<div>
+<label for="rent">Rentabilidad anual (%)</label>
+<input type="number" id="rent" value="7" min="0.1" step="0.1" inputmode="decimal">
+</div>
+<div>
+<label for="cap">Tu dinero hoy (€)</label>
+<input type="number" id="cap" value="10000" min="0" step="500" inputmode="decimal">
+</div>
+</div>
+<button type="button" onclick="calc()">Calcular cuándo se duplica</button>
+<div class="resultado" id="resultado" aria-live="polite">Introduce tus datos y pulsa calcular.</div>
+<div id="grafico" hidden></div>
+</div>
+
+<h2>Qué es la regla del 72</h2>
+
+<p>
+Es un truco para calcular de cabeza cuántos años tarda en duplicarse tu dinero: <strong>divide 72 entre la rentabilidad anual</strong>. Al 6 %, 72 ÷ 6 = 12 años. Al 8 %, 72 ÷ 8 = 9 años.
+</p>
+
+<p>
+Funciona porque el dinero crece con <a href="interes-compuesto.html">interés compuesto</a>: cada año ganas sobre lo que ya habías ganado. Es una aproximación, pero muy buena entre el 4 % y el 12 %:
+</p>
+
+<div class="scroll">
+<table class="tabla">
+<tr><th>Rentabilidad anual</th><th>Regla del 72</th><th>Cálculo exacto</th></tr>
+<tr><td>1 %</td><td>72,0 años</td><td>69,7 años</td></tr><tr><td>2 %</td><td>36,0 años</td><td>35,0 años</td></tr><tr><td>3 %</td><td>24,0 años</td><td>23,4 años</td></tr><tr><td>4 %</td><td>18,0 años</td><td>17,7 años</td></tr><tr><td>5 %</td><td>14,4 años</td><td>14,2 años</td></tr><tr><td>6 %</td><td>12,0 años</td><td>11,9 años</td></tr><tr><td>7 %</td><td>10,3 años</td><td>10,2 años</td></tr><tr><td>8 %</td><td>9,0 años</td><td>9,0 años</td></tr><tr><td>10 %</td><td>7,2 años</td><td>7,3 años</td></tr><tr><td>12 %</td><td>6,0 años</td><td>6,1 años</td></tr>
+</table>
+</div>
+
+<h2>También sirve para la inflación</h2>
+
+<p>
+La regla funciona al revés: con una inflación del 3 %, los precios se duplican en unos 24 años (72 ÷ 3). Dicho de otra forma, el dinero que dejas parado en la cuenta pierde la mitad de su poder de compra en ese tiempo. Míralo con tus cifras en la <a href="calculadora-inflacion.html">calculadora de inflación</a>.
+</p>
+
+<h2>Y para ver lo que cuestan las comisiones</h2>
+
+<p>
+Un fondo que cobra un 1,5 % al año te resta ese 1,5 % de rentabilidad. Si el mercado da un 7 %, con un fondo barato al 0,12 % tu dinero se duplica en unos 10,5 años; con el fondo caro, al 5,5 % neto, en unos 13. Lo calculamos en euros en <a href="fondos-indexados-baratos.html">fondos indexados baratos</a>.
+</p>
+
+<div class="destacado">
+<strong>Si además aportas cada mes</strong>
+<p>
+La regla del 72 solo vale para un dinero que ya tienes y no tocas. Si inviertes una cantidad cada mes, usa la <a href="interes-compuesto.html">calculadora de interés compuesto</a> o mira, por ejemplo, <a href="cuanto-tendria-si-invierto-500-euros-al-mes.html">cuánto tendrías invirtiendo 500 € al mes</a>.
+</p>
+</div>
+
+<h2>Preguntas frecuentes</h2>
+
+<h3>¿Qué es la regla del 72?</h3>
+<p>Es una forma rápida de saber cuántos años tarda en duplicarse un dinero invertido: se divide 72 entre la rentabilidad anual. Por ejemplo, al 6 % se duplica en unos 12 años.</p>
+<h3>¿Cuánto tarda en duplicarse mi dinero al 7 %?</h3>
+<p>Unos 10,3 años según la regla del 72 (72 ÷ 7). El cálculo exacto da 10,2 años.</p>
+<h3>¿Es exacta la regla del 72?</h3>
+<p>No, es una aproximación. Es muy precisa entre el 4 % y el 12 % de rentabilidad; fuera de ese rango se desvía algo más.</p>
+<h3>¿Sirve la regla del 72 para la inflación?</h3>
+<p>Sí. Dividiendo 72 entre la inflación sabes en cuántos años se duplican los precios, es decir, cuándo tu dinero parado pierde la mitad de su poder de compra.</p>
+
+<div class="cm-plantilla" style="background:#fefce8;border:1px solid #fde68a;padding:20px 25px;border-radius:14px;margin:30px 0;">
+<strong>¿Quieres hacer estas cuentas con tus números y guardarlas?</strong>
+<p style="margin:8px 0;">Empieza gratis con la plantilla de presupuesto y fondo de emergencia en Google Sheets. Si quieres el plan completo, con inversión y libertad financiera, cuesta 6,95 € (precio de lanzamiento).</p>
+<a href="plantilla-presupuesto-mensual-gratis.html">Descargar gratis →</a> &nbsp;·&nbsp; <a href="plantilla-plan-financiero.html">Ver el plan completo</a>
+</div>
+
+<p class="nota" style="margin-top:30px;">
+Este contenido es educativo e informativo. No constituye asesoramiento financiero ni fiscal. Consulta <a href="sobre.html">cómo hacemos los cálculos</a>.
+</p>
+
+<br>
+
+<a href="/">← Volver a Capital en Marcha</a>
+
+</div>
+
+<script src="cm-grafico.js"></script>
+<script>
+function eur0(n){return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,".")+" €";}
+function n1(x){return x.toLocaleString("es-ES",{maximumFractionDigits:1});}
+function calc(){
+  var r=Number(document.getElementById("rent").value)/100, cap=Number(document.getElementById("cap").value)||0, out=document.getElementById("resultado");
+  CMGrafico.ocultar(document.getElementById("grafico"));
+  if(!(r>0)){out.innerHTML="Introduce una rentabilidad mayor que 0.";return;}
+  var reg=0.72/r, ex=Math.log(2)/Math.log(1+r);
+  out.innerHTML="<strong>Tu dinero se duplica en</strong><span class='grande'>"+n1(ex)+" años</span>"+
+   "Con la regla del 72: 72 ÷ "+n1(r*100)+" = <b>"+n1(reg)+" años</b> (cálculo exacto: "+n1(ex)+" años)."+
+   (cap>0?"<br>Tus "+eur0(cap)+" serían "+eur0(cap*2)+" en unos "+n1(ex)+" años, "+eur0(cap*4)+" en unos "+n1(ex*2)+" y "+eur0(cap*8)+" en unos "+n1(ex*3)+".":"");
+  if(cap<=0) return;
+  var Y=Math.min(80,Math.max(10,Math.ceil(ex*3))), vals=[];
+  for(var t=0;t<=Y;t++) vals.push(cap*Math.pow(1+r,t));
+  var pts=[1,2,3].filter(function(k){return ex*k<=Y;}).map(function(k){return {i:ex*k,y:cap*Math.pow(2,k),texto:"×"+Math.pow(2,k)+" · año "+Math.round(ex*k)};});
+  CMGrafico.linea(document.getElementById("grafico"),{
+    titulo:"Cómo se duplica tu dinero",
+    sub:"Al "+n1(r*100)+" % anual, sin aportar nada más. Cada punto es una duplicación.",
+    n:vals.length, series:[{nombre:"Tu dinero",color:"#2563eb",valores:vals,area:true}],
+    xEtiqueta:function(i){return i===0?"Hoy":"Año "+i;},
+    puntos:pts,
+    tip:function(i){return {cabecera:i===0?"Hoy":"Año "+i,filas:[["Tu dinero",eur0(vals[i]),true],["Veces lo inicial","×"+n1(vals[i]/cap)]]};}
+  });
+}
+window.addEventListener("DOMContentLoaded",calc);
+</script>
+<script src="compartir.js" defer data-calc="calc"></script>
+</body>
+</html>
