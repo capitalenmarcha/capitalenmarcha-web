@@ -115,6 +115,19 @@ a{color:#2563eb;text-decoration:none;font-weight:bold;}
 @media (prefers-reduced-motion:reduce){.cm-chart .bar{transition:none;}}
 @media (max-width:640px){.cm-chart{padding:16px 12px 10px;}.cm-chart .ch-hero{font-size:24px;}}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "100 € al mes en la bolsa desde 1970: así habría ido, año a año (con todas las crisis)",
+  "description": "Qué habría pasado invirtiendo 100 € al mes en el S&P 500 desde 1970, año a año y con todas las crisis: 1974, 1987, 2000, 2008, 2020 y 2022.",
+  "thumbnailUrl": "https://i.ytimg.com/vi/StXfKujbZCw/hqdefault.jpg",
+  "uploadDate": "2026-10-19T17:50:00+02:00",
+  "duration": "PT3M43S",
+  "embedUrl": "https://www.youtube.com/embed/StXfKujbZCw",
+  "publisher": {"@type": "Organization", "name": "Capital en Marcha", "url": "https://capitalenmarcha.com/"}
+}
+</script>
 </head>
 
 <body>
@@ -254,6 +267,24 @@ Rentabilidad total de cada año natural, con dividendos reinvertidos, en dólare
   var rt; window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(draw, 150); });
 })();
 </script>
+
+<div class="cm-video" style="margin:10px 0 26px;">
+<p style="margin-bottom:10px;"><strong>En vídeo:</strong> qué habría pasado invirtiendo 100 € al mes desde 1970, año a año y con todas las crisis.</p>
+<button type="button" id="ytFacade" aria-label="Reproducir el vídeo: 100 € al mes en la bolsa desde 1970" style="position:relative;display:block;width:100%;aspect-ratio:16/9;border:0;padding:0;border-radius:14px;overflow:hidden;cursor:pointer;background:#0b1020 url('https://i.ytimg.com/vi/StXfKujbZCw/hqdefault.jpg') center/cover no-repeat;">
+<span style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:76px;height:54px;border-radius:14px;background:#ff0000;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.35);"><span style="width:0;height:0;border-left:20px solid #fff;border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:4px;"></span></span>
+</button>
+<script>
+document.getElementById("ytFacade").addEventListener("click", function () {
+  var f = document.createElement("iframe");
+  f.src = "https://www.youtube-nocookie.com/embed/StXfKujbZCw?autoplay=1&rel=0";
+  f.title = "100 € al mes en la bolsa desde 1970";
+  f.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture";
+  f.allowFullscreen = true;
+  f.style.cssText = "display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:14px;";
+  this.replaceWith(f);
+});
+</script>
+</div>
 
 <div class="scroll">
 <table>
