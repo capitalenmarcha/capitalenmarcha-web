@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>¿En qué invertir 1.000 euros? 7 opciones comparadas (2026)</title>
+<title>¿En qué invertir 1.000 euros en 2026? 7 opciones (con calculadora)</title>
 <meta name="description" content="¿Tienes 1.000 euros y no sabes en qué invertirlos? Comparamos 7 opciones por riesgo, liquidez y plazo, con lo que cuestan las comisiones y cuánto podrían crecer.">
 
 <!-- Canonical -->
@@ -34,7 +34,7 @@ a{color:#2563eb;text-decoration:none;font-weight:bold;}
 <!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://capitalenmarcha.com/como-invertir-1000-euros.html">
-<meta property="og:title" content="¿En qué invertir 1.000 euros? 7 opciones comparadas (2026)">
+<meta property="og:title" content="¿En qué invertir 1.000 euros en 2026? 7 opciones (con calculadora)">
 <meta property="og:description" content="¿Tienes 1.000 euros y no sabes en qué invertirlos? Comparamos 7 opciones por riesgo, liquidez y plazo, con lo que cuestan las comisiones y cuánto podrían crecer.">
 <meta property="og:image" content="https://capitalenmarcha.com/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -42,7 +42,7 @@ a{color:#2563eb;text-decoration:none;font-weight:bold;}
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="¿En qué invertir 1.000 euros? 7 opciones comparadas (2026)">
+<meta name="twitter:title" content="¿En qué invertir 1.000 euros en 2026? 7 opciones (con calculadora)">
 <meta name="twitter:description" content="¿Tienes 1.000 euros y no sabes en qué invertirlos? Comparamos 7 opciones por riesgo, liquidez y plazo, con lo que cuestan las comisiones y cuánto podrían crecer.">
 <meta name="twitter:image" content="https://capitalenmarcha.com/og-image.jpg">
 
@@ -52,10 +52,10 @@ a{color:#2563eb;text-decoration:none;font-weight:bold;}
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "¿En qué invertir 1.000 euros? 7 opciones comparadas (2026)",
+  "headline": "¿En qué invertir 1.000 euros en 2026? 7 opciones (con calculadora)",
   "description": "¿Tienes 1.000 euros y no sabes en qué invertirlos? Comparamos 7 opciones por riesgo, liquidez y plazo, con lo que cuestan las comisiones y cuánto podrían crecer.",
   "url": "https://capitalenmarcha.com/como-invertir-1000-euros.html",
-  "dateModified": "2026-10-13",
+  "dateModified": "2026-10-25",
   "inLanguage": "es-ES",
   "mainEntityOfPage": {
     "@type": "WebPage",
@@ -127,6 +127,16 @@ Tener 1.000 euros disponibles para invertir puede ser un buen punto de partida. 
 <p>
 La mejor forma de invertir esos 1.000 € dependerá sobre todo de tu horizonte temporal, tu tolerancia al riesgo, tu necesidad de liquidez y tus objetivos.
 </p>
+
+<div class="cm-rapida" style="background:#eff6ff;border-left:4px solid #2563eb;border-radius:12px;padding:18px 22px;margin:24px 0;">
+<strong>Respuesta rápida</strong>
+<ul style="margin:8px 0 0;padding-left:20px;">
+<li><strong>Si es tu colchón o lo necesitarás en menos de 2 años:</strong> cuenta remunerada, depósito o Letras del Tesoro (con 1.000 € ya llegas al mínimo).</li>
+<li><strong>Si no lo vas a necesitar en 5 años o más:</strong> un fondo indexado global sin comisión de compra.</li>
+<li><strong>Si vas a seguir ahorrando:</strong> lo que más pesa a largo plazo es la aportación de cada mes, no los 1.000 € iniciales.</li>
+</ul>
+<p style="margin:10px 0 0;">Compara las opciones con tus números en la <a href="#simulador">calculadora de abajo</a>.</p>
+</div>
 
 <h2>¿Merece la pena invertir 1.000 euros?</h2>
 
@@ -231,6 +241,67 @@ La mejor opción para invertir 1.000 euros no depende solo de cuánto dinero tie
 </p>
 
 </div>
+
+<h2 id="simulador">¿Cuánto tendrías con tus 1.000 € en cada opción?</h2>
+
+<p>
+Cambia la cantidad, el plazo y los tipos por los que te ofrezcan. Los tipos de las cuentas y los depósitos cambian con frecuencia, así que los de partida son solo supuestos orientativos.
+</p>
+
+<div class="cm-sim500" style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:16px;padding:20px;margin:20px 0;">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:12px 16px;">
+<label class="s5">Cantidad (€)<input type="number" id="s5cant" value="1000" min="0" step="50" inputmode="decimal"></label>
+<label class="s5">Plazo<select id="s5anos"><option value="1">1 año</option><option value="3">3 años</option><option value="5" selected>5 años</option><option value="10">10 años</option><option value="20">20 años</option></select></label>
+<label class="s5">Cuenta remunerada (%)<input type="number" id="s5c" value="1.5" step="0.1" inputmode="decimal"></label>
+<label class="s5">Depósito (%)<input type="number" id="s5d" value="2" step="0.1" inputmode="decimal"></label>
+<label class="s5">Letras del Tesoro (%)<input type="number" id="s5l" value="2" step="0.1" inputmode="decimal"></label>
+<label class="s5">Fondo monetario (%)<input type="number" id="s5m" value="2" step="0.1" inputmode="decimal"></label>
+<label class="s5">Fondo indexado (% medio)<input type="number" id="s5i" value="7" step="0.1" inputmode="decimal"></label>
+</div>
+<div id="s5out" aria-live="polite" style="margin-top:18px;"></div>
+<p class="nota" style="font-size:13px;color:#64748b;margin:12px 0 0;">Rentabilidades brutas y compuestas cada año, sin impuestos ni comisiones. La del fondo indexado es una media a largo plazo, no una garantía: un año concreto puede ser muy negativo (el S&amp;P 500 cayó un 37 % en 2008).</p>
+</div>
+<style>
+.s5{display:flex;flex-direction:column;gap:5px;font-size:14px;font-weight:bold;color:#334155;}
+.s5 input,.s5 select{padding:10px;font-size:16px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;font-family:inherit;}
+.s5row{margin-top:12px;}
+.s5row .s5h{display:flex;justify-content:space-between;gap:10px;font-size:15px;color:#0f172a;}
+.s5row .s5h b{font-variant-numeric:tabular-nums;white-space:nowrap;}
+.s5bar{height:14px;background:#e2e8f0;border-radius:7px;margin-top:5px;overflow:hidden;}
+.s5bar div{height:100%;border-radius:7px;background:#2563eb;}
+</style>
+<script>
+(function () {
+  function eur(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " €"; }
+  function v(id) { return Number(document.getElementById(id).value) || 0; }
+  function calc() {
+    var c = Math.max(0, v("s5cant")), n = v("s5anos");
+    var ops = [["Cuenta remunerada", v("s5c")], ["Depósito", v("s5d")], ["Letras del Tesoro", v("s5l")], ["Fondo monetario", v("s5m")], ["Fondo indexado global", v("s5i")]];
+    var res = ops.map(function (o) { return [o[0], o[1], c * Math.pow(1 + o[1] / 100, n)]; });
+    var max = Math.max.apply(null, res.map(function (r) { return r[2]; })) || 1;
+    var out = document.getElementById("s5out"); out.textContent = "";
+    var t = document.createElement("div"); t.style.cssText = "font-weight:bold;font-size:16px;";
+    t.textContent = "Tus " + eur(c) + " dentro de " + n + (n === 1 ? " año" : " años") + ":"; out.appendChild(t);
+    res.forEach(function (r) {
+      var row = document.createElement("div"); row.className = "s5row";
+      var hd = document.createElement("div"); hd.className = "s5h";
+      var a = document.createElement("span"); a.textContent = r[0] + " (" + String(r[1]).replace(".", ",") + " %)";
+      var b = document.createElement("b"); b.textContent = eur(r[2]) + "  (+" + eur(r[2] - c) + ")";
+      hd.appendChild(a); hd.appendChild(b);
+      var bar = document.createElement("div"); bar.className = "s5bar";
+      var fill = document.createElement("div"); fill.style.width = Math.max(1, r[2] / max * 100) + "%"; bar.appendChild(fill);
+      row.appendChild(hd); row.appendChild(bar); out.appendChild(row);
+    });
+    var p = document.createElement("p"); p.style.cssText = "margin:14px 0 0;font-size:15px;";
+    p.textContent = n < 5
+      ? "A " + n + (n === 1 ? " año" : " años") + ", la diferencia es pequeña y el fondo indexado podría estar en pérdidas si el mercado cae. Para plazos cortos, lo prudente es la cuenta, el depósito o el monetario."
+      : "A " + n + " años, el fondo indexado ha tendido a dar mucho más, a cambio de aguantar caídas por el camino. Por eso solo tiene sentido con dinero que no vayas a necesitar.";
+    out.appendChild(p);
+  }
+  ["s5cant", "s5anos", "s5c", "s5d", "s5l", "s5m", "s5i"].forEach(function (id) { document.getElementById(id).addEventListener("input", calc); });
+  calc();
+})();
+</script>
 
 <h2>Las 7 opciones, comparadas</h2>
 
