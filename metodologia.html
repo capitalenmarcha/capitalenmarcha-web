@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<script src="cookies.js" defer></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Metodología y fuentes: cómo hacemos los cálculos | Capital en Marcha</title>
+<meta name="description" content="Cómo calculamos en Capital en Marcha: fórmulas, supuestos de rentabilidad, impuestos e inflación, y las fuentes oficiales que usamos (INE, Banco de España, Agencia Tributaria, BOE).">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://capitalenmarcha.com/metodologia.html">
+
+<style>
+body{font-family:Arial,sans-serif;background:#f8fafc;margin:0;color:#0f172a;}
+.container{max-width:900px;margin:50px auto;background:white;padding:40px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,0.08);}
+.marca{text-align:center;color:#2563eb;font-weight:bold;margin-bottom:15px;}
+h1{text-align:center;font-size:38px;}
+h2{margin-top:35px;}
+h3{margin-top:25px;}
+p,li{line-height:1.8;color:#334155;}
+.tabla{width:100%;border-collapse:collapse;margin-top:20px;}
+.tabla th,.tabla td{border:1px solid #e2e8f0;padding:12px;text-align:left;}
+.tabla th{background:#f1f5f9;}
+.destacado{background:#eff6ff;padding:25px;border-radius:14px;margin:30px 0;}
+.aviso{background:#fff7ed;padding:25px;border-radius:14px;margin:30px 0;}
+.cta{background:#ecfdf5;padding:25px;border-radius:14px;margin-top:30px;}
+a{color:#2563eb;text-decoration:none;font-weight:bold;}
+</style>
+
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://capitalenmarcha.com/metodologia.html">
+<meta property="og:title" content="Metodología y fuentes: cómo hacemos los cálculos | Capital en Marcha">
+<meta property="og:description" content="Cómo calculamos en Capital en Marcha: fórmulas, supuestos de rentabilidad, impuestos e inflación, y las fuentes oficiales que usamos (INE, Banco de España, Agencia Tributaria, BOE).">
+<meta property="og:image" content="https://capitalenmarcha.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Metodología y fuentes: cómo hacemos los cálculos | Capital en Marcha">
+<meta name="twitter:description" content="Cómo calculamos en Capital en Marcha: fórmulas, supuestos de rentabilidad, impuestos e inflación, y las fuentes oficiales que usamos (INE, Banco de España, Agencia Tributaria, BOE).">
+<meta name="twitter:image" content="https://capitalenmarcha.com/og-image.jpg">
+
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "headline": "Metodología y fuentes: cómo hacemos los cálculos | Capital en Marcha",
+  "description": "Cómo calculamos en Capital en Marcha: fórmulas, supuestos de rentabilidad, impuestos e inflación, y las fuentes oficiales que usamos (INE, Banco de España, Agencia Tributaria, BOE).",
+  "url": "https://capitalenmarcha.com/metodologia.html",
+  "dateModified": "2026-10-27",
+  "inLanguage": "es-ES",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://capitalenmarcha.com/metodologia.html"
+  },
+  "image": "https://capitalenmarcha.com/og-image.jpg",
+  "author": {
+    "@type": "Organization",
+    "name": "Capital en Marcha"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Capital en Marcha"
+  }
+}
+</script>
+
+<style>
+.cm-nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 20px;padding-bottom:18px;margin-bottom:24px;border-bottom:1px solid #e2e8f0;font-family:Arial,sans-serif;}
+.cm-logo{color:#2563eb;font-weight:bold;font-size:17px;text-decoration:none;}
+.cm-menu{display:flex;flex-wrap:wrap;gap:6px 18px;}
+.cm-menu a{color:#334155;font-weight:bold;font-size:15px;text-decoration:none;}
+.cm-menu a:hover{color:#2563eb;text-decoration:underline;}
+.cm-nav a:focus-visible{outline:2px solid #2563eb;outline-offset:2px;}
+@media (max-width:640px){.cm-nav{justify-content:center;text-align:center;}.cm-menu{justify-content:center;}}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<nav class="cm-nav" aria-label="Menú principal">
+<a class="cm-logo" href="/">Capital en Marcha</a>
+<div class="cm-menu">
+<a href="calculadoras.html">Calculadoras</a>
+<a href="invertir.html">Invertir</a>
+<a href="libertad-financiera-recursos.html">Libertad financiera</a>
+<a href="articulos.html">Artículos</a>
+<a href="sobre.html">Sobre</a>
+</div>
+</nav>
+
+<h1>Metodología y fuentes: cómo hacemos los cálculos</h1>
+
+<p>Todas las cifras de Capital en Marcha salen de cálculos propios que puedes reproducir. Esta página explica qué fórmulas usamos, qué supuestos aplicamos y de dónde salen los datos. Si encuentras un error, escríbenos a <a href="mailto:capitalenmarcha@gmail.com">capitalenmarcha@gmail.com</a> y lo corregiremos.</p>
+
+<p style="font-size:14px;color:#64748b;">Última revisión: 27 de octubre de 2026.</p>
+
+<h2>1. Interés compuesto y aportaciones mensuales</h2>
+
+<p>Para calcular cuánto crece una inversión usamos la fórmula del interés compuesto:</p>
+
+<p style="background:#f1f5f9;padding:16px;border-radius:12px;text-align:center;font-weight:bold;">Capital final = Capital inicial × (1 + r)<sup>n</sup></p>
+
+<p>Cuando hay aportaciones cada mes, simulamos mes a mes: el capital crece y, al final de cada mes, se suma la aportación. En la mayoría de las páginas usamos el <strong>tipo mensual equivalente</strong> a la rentabilidad anual, (1 + r)<sup>1/12</sup> − 1, para que un 7 % anual sea exactamente un 7 % al año. Algunas calculadoras, como la de <a href="interes-compuesto.html">interés compuesto</a>, usan el tipo anual dividido entre 12, que es la convención de muchos simuladores bancarios. La diferencia entre los dos métodos es pequeña y se indica en cada página.</p>
+
+<h2>2. Rentabilidades: escenarios, no promesas</h2>
+
+<p>Nadie sabe qué rentabilidad darán los mercados. Por eso las presentamos siempre como escenarios:</p>
+
+<div class="scroll" style="overflow-x:auto;">
+<table class="tabla">
+<tr><th>Supuesto</th><th>Por qué lo usamos</th></tr>
+<tr><td>2-3 %</td><td>Orientativo para depósitos, cuentas remuneradas, Letras del Tesoro y fondos monetarios. Cambia con los tipos de interés del BCE, así que dejamos ajustarlo.</td></tr>
+<tr><td>4-5 %</td><td>Escenario prudente para carteras con renta fija o para planificar con margen.</td></tr>
+<tr><td>7 %</td><td>Escenario central para una cartera de bolsa global a largo plazo, en términos nominales (antes de inflación). Es inferior a la media histórica del S&amp;P 500, que ha estado en torno al 10 % anual.</td></tr>
+<tr><td>10 %</td><td>Similar a la media histórica del S&amp;P 500 con dividendos. Lo mostramos como escenario optimista, sin garantía de que se repita.</td></tr>
+</table>
+</div>
+
+<p>Los datos del S&amp;P 500 año a año proceden de la rentabilidad total publicada por <a href="https://www.slickcharts.com/sp500/returns" target="_blank" rel="nofollow noopener">Slickcharts</a>. Puedes verlos en <a href="rentabilidad-historica-sp500.html">rentabilidad histórica del S&amp;P 500</a>.</p>
+
+<h2>3. Impuestos</h2>
+
+<p>Usamos la escala del ahorro del IRPF de territorio común para 2026, publicada por la <a href="https://sede.agenciatributaria.gob.es/" target="_blank" rel="noopener">Agencia Tributaria</a>:</p>
+
+<div class="scroll" style="overflow-x:auto;">
+<table class="tabla">
+<tr><th>Base del ahorro</th><th>Tipo</th></tr>
+<tr><td>Hasta 6.000 €</td><td>19 %</td></tr>
+<tr><td>De 6.000 a 50.000 €</td><td>21 %</td></tr>
+<tr><td>De 50.000 a 200.000 €</td><td>23 %</td></tr>
+<tr><td>De 200.000 a 300.000 €</td><td>27 %</td></tr>
+<tr><td>Más de 300.000 €</td><td>30 %</td></tr>
+</table>
+</div>
+
+<p>En los fondos de inversión solo tributa la ganancia, y solo al vender: los traspasos entre fondos no tributan. País Vasco y Navarra tienen normativa foral propia con tramos distintos. Cuando una calculadora pide un tipo fiscal, es un supuesto orientativo que puedes cambiar. Puedes calcular tu caso con la <a href="calculadora-impuestos-venta-fondos.html">calculadora de impuestos al vender fondos</a>.</p>
+
+<h2>4. Inflación</h2>
+
+<p>Para pasar euros del futuro a euros de hoy dividimos entre (1 + inflación)<sup>años</sup>. Como supuesto central usamos un 2 % anual, el objetivo del Banco Central Europeo. Los datos de inflación pasada de España proceden del IPC del <a href="https://www.ine.es/" target="_blank" rel="noopener">INE</a>. Puedes probar otros valores en la <a href="calculadora-inflacion.html">calculadora de inflación</a>.</p>
+
+<h2>5. Vivir de las inversiones: la regla del 4 %</h2>
+
+<p>Para estimar cuánto capital hace falta para una renta mensual dividimos el gasto anual entre la tasa de retirada. La referencia del 4 % procede de los estudios de William Bengen (1994) y del llamado Trinity Study (Cooley, Hubbard y Walz, 1998), basados en datos de Estados Unidos. Por eso mostramos también el 3 %, más prudente para horizontes largos. Lo explicamos en la <a href="regla-del-4.html">regla del 4 %</a>.</p>
+
+<h2>6. Hipotecas</h2>
+
+<p>Las cuotas se calculan con el sistema de amortización francés (cuota constante). Los límites de comisión por amortización anticipada proceden de la <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2019-3814" target="_blank" rel="noopener">Ley 5/2019 de contratos de crédito inmobiliario</a>. Puedes verlo en <a href="amortizar-hipoteca-o-invertir.html">amortizar hipoteca o invertir</a>.</p>
+
+<h2>7. Otros datos oficiales que usamos</h2>
+
+<ul>
+<li><strong>Patrimonio de los hogares por edad:</strong> Encuesta Financiera de las Familias del <a href="https://www.bde.es/" target="_blank" rel="noopener">Banco de España</a>. Ver <a href="patrimonio-medio-por-edad.html">patrimonio medio por edad</a>.</li>
+<li><strong>Garantía de depósitos:</strong> 100.000 € por titular y entidad, según el <a href="https://www.fgd.es/" target="_blank" rel="noopener">Fondo de Garantía de Depósitos</a>.</li>
+<li><strong>Letras del Tesoro:</strong> importe mínimo y plazos del <a href="https://www.tesoro.es/" target="_blank" rel="noopener">Tesoro Público</a>.</li>
+<li><strong>Ahorro recomendado según la edad:</strong> referencias de Fidelity, adaptadas y explicadas en <a href="cuanto-dinero-deberia-tener-ahorrado-segun-mi-edad.html">cuánto dinero deberías tener ahorrado según tu edad</a>.</li>
+</ul>
+
+<h2>8. Lo que no incluyen los cálculos</h2>
+
+<ul>
+<li>Las rentabilidades se suponen constantes. En la realidad hay años de caídas, y el orden de los años buenos y malos importa, sobre todo cuando retiras dinero.</li>
+<li>Salvo que se indique, no se descuentan comisiones. Un fondo con un 1,5 % de gastos anuales rendirá 1,5 puntos menos cada año que el supuesto.</li>
+<li>No hay recomendaciones de productos concretos ni de cuándo comprar o vender.</li>
+</ul>
+
+<h2>Política editorial</h2>
+
+<ul>
+<li><strong>Independencia:</strong> no cobramos por recomendar productos. Si alguna página incluye enlaces de afiliación, se indicará en esa misma página.</li>
+<li><strong>Revisión:</strong> revisamos las cifras cuando cambian los datos de los que dependen (impuestos, tipos de interés, estadísticas oficiales) y actualizamos la fecha de la página.</li>
+<li><strong>Correcciones:</strong> si detectas un error, escríbenos. Lo comprobamos y, si procede, lo corregimos.</li>
+<li><strong>No es asesoramiento:</strong> no somos asesores financieros registrados en la CNMV. El contenido es educativo y no es una recomendación personalizada.</li>
+</ul>
+
+<p><a href="sobre.html">Más sobre Capital en Marcha</a> · <a href="contacto.html">Contacto</a></p>
+
+</div>
+
+<footer class="cm-legal" style="max-width:900px;margin:10px auto 30px;padding:0 20px;text-align:center;font-family:Arial,sans-serif;font-size:13px;color:#64748b;line-height:1.9;">
+<a href="sobre.html" style="color:#475569;">Sobre</a> · <a href="contacto.html" style="color:#475569;">Contacto</a> · <a href="metodologia.html" style="color:#475569;">Metodología</a> · <a href="aviso-legal.html" style="color:#475569;">Aviso legal</a> · <a href="politica-privacidad.html" style="color:#475569;">Política de privacidad</a> · <a href="politica-cookies.html" style="color:#475569;">Cookies</a><br>
+© 2026 Capital en Marcha · Contenido educativo, no constituye asesoramiento financiero.
+</footer>
+</body>
+</html>
