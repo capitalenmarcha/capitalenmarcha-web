@@ -104,7 +104,7 @@
       lines.push(el("path", {d: d, fill: "none", stroke: se.color, "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round", "class": "ch-line"}, svg));
     });
     // Etiqueta directa al final de cada serie (si hay más de una)
-    if (o.series.length > 1) {
+    if (o.series.length > 1 && !o.sinEtiquetas) {
       var ys = o.series.map(function (se) { return {se: se, yy: y(se.valores[n - 1])}; }).sort(function (a, b) { return a.yy - b.yy; });
       for (var k = 1; k < ys.length; k++) if (ys[k].yy - ys[k - 1].yy < 16) ys[k].yy = ys[k - 1].yy + 16;
       ys.forEach(function (o2) {
