@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<script src="cookies.js" defer></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Calculadora de préstamos personales: cuota, intereses y TAE (2026)</title>
+<meta name="description" content="Calcula la cuota mensual de un préstamo personal, los intereses totales, la TAE con comisiones y el cuadro de amortización. Con tabla de cuotas según importe y plazo.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://capitalenmarcha.com/calculadora-prestamo-personal.html">
+
+<style>
+body{font-family:Arial,sans-serif;background:#f8fafc;margin:0;color:#0f172a;}
+.container{max-width:900px;margin:50px auto;background:white;padding:40px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,0.08);}
+.marca{text-align:center;color:#2563eb;font-weight:bold;margin-bottom:15px;}
+h1{text-align:center;font-size:38px;}
+h2{margin-top:35px;}
+h3{margin-top:25px;}
+p,li{line-height:1.8;color:#334155;}
+.tabla{width:100%;border-collapse:collapse;margin-top:20px;}
+.tabla th,.tabla td{border:1px solid #e2e8f0;padding:12px;text-align:left;}
+.tabla th{background:#f1f5f9;}
+.destacado{background:#eff6ff;padding:25px;border-radius:14px;margin:30px 0;}
+.aviso{background:#fff7ed;padding:25px;border-radius:14px;margin:30px 0;}
+.cta{background:#ecfdf5;padding:25px;border-radius:14px;margin-top:30px;}
+a{color:#2563eb;text-decoration:none;font-weight:bold;}
+</style>
+
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://capitalenmarcha.com/calculadora-prestamo-personal.html">
+<meta property="og:title" content="Calculadora de préstamos personales: cuota, intereses y TAE (2026)">
+<meta property="og:description" content="Calcula la cuota mensual de un préstamo personal, los intereses totales, la TAE con comisiones y el cuadro de amortización. Con tabla de cuotas según importe y plazo.">
+<meta property="og:image" content="https://capitalenmarcha.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Calculadora de préstamos personales: cuota, intereses y TAE (2026)">
+<meta name="twitter:description" content="Calcula la cuota mensual de un préstamo personal, los intereses totales, la TAE con comisiones y el cuadro de amortización. Con tabla de cuotas según importe y plazo.">
+<meta name="twitter:image" content="https://capitalenmarcha.com/og-image.jpg">
+
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Calculadora de préstamos personales: cuota, intereses y TAE (2026)",
+  "description": "Calcula la cuota mensual de un préstamo personal, los intereses totales, la TAE con comisiones y el cuadro de amortización. Con tabla de cuotas según importe y plazo.",
+  "url": "https://capitalenmarcha.com/calculadora-prestamo-personal.html",
+  "dateModified": "2026-10-30",
+  "inLanguage": "es-ES",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://capitalenmarcha.com/calculadora-prestamo-personal.html"
+  },
+  "image": "https://capitalenmarcha.com/og-image.jpg",
+  "author": {
+    "@type": "Organization",
+    "name": "Capital en Marcha"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Capital en Marcha"
+  }
+}
+</script>
+
+<style>
+.cm-nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 20px;padding-bottom:18px;margin-bottom:24px;border-bottom:1px solid #e2e8f0;font-family:Arial,sans-serif;}
+.cm-logo{color:#2563eb;font-weight:bold;font-size:17px;text-decoration:none;}
+.cm-menu{display:flex;flex-wrap:wrap;gap:6px 18px;}
+.cm-menu a{color:#334155;font-weight:bold;font-size:15px;text-decoration:none;}
+.cm-menu a:hover{color:#2563eb;text-decoration:underline;}
+.cm-nav a:focus-visible{outline:2px solid #2563eb;outline-offset:2px;}
+@media (max-width:640px){.cm-nav{justify-content:center;text-align:center;}.cm-menu{justify-content:center;}}
+</style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "¿Cuánto pago al mes por un préstamo de 10.000 €?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Al 7 % TIN, unos 198 € al mes a 5 años, o unos 309 € a 3 años. Cuanto más corto el plazo, más cuota pero menos intereses."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Cuál es la diferencia entre TIN y TAE?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "El TIN es el interés nominal; la TAE incluye además las comisiones y gastos obligatorios. Para comparar préstamos, usa siempre la TAE."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Puedo devolver un préstamo personal antes de tiempo?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Sí. La ley de crédito al consumo permite amortizarlo total o parcialmente, con una comisión máxima del 1 % de lo amortizado (0,5 % si quedan menos de 12 meses), y muchas entidades no cobran nada."
+   }
+  }
+ ]
+}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://capitalenmarcha.com/"}, {"@type": "ListItem", "position": 2, "name": "Calculadoras", "item": "https://capitalenmarcha.com/calculadoras.html"}, {"@type": "ListItem", "position": 3, "name": "Calculadora de préstamos personales", "item": "https://capitalenmarcha.com/calculadora-prestamo-personal.html"}]}
+</script>
+</head>
+<body>
+
+<div class="container">
+
+<nav class="cm-nav" aria-label="Menú principal">
+<a class="cm-logo" href="/">Capital en Marcha</a>
+<div class="cm-menu">
+<a href="calculadoras.html">Calculadoras</a>
+<a href="invertir.html">Invertir</a>
+<a href="libertad-financiera-recursos.html">Libertad financiera</a>
+<a href="articulos.html">Artículos</a>
+<a href="sobre.html">Sobre</a>
+</div>
+</nav>
+
+<h1>Calculadora de préstamos personales: cuota, intereses y TAE</h1>
+
+<div class="cm-rapida" style="background:#eff6ff;border-left:4px solid #2563eb;border-radius:12px;padding:18px 22px;margin:24px 0;">
+<strong>Respuesta rápida</strong>
+<ul style="margin:8px 0 0;padding-left:20px;">
+<li><strong>Un préstamo de 10.000 € a 5 años al 7 % TIN</strong> tiene una cuota de unos <strong>198 € al mes</strong> y te cuesta unos <strong>1.881 € de intereses</strong>.</li>
+<li><strong>Compara siempre la TAE, no el TIN:</strong> la TAE incluye las comisiones y es la única forma de comparar ofertas.</li>
+<li><strong>Cuanto más plazo, menos cuota pero más intereses.</strong> El mismo préstamo a 8 años baja la cuota a 136 €, pero los intereses suben a unos 3.100 €.</li>
+</ul>
+</div>
+
+<h2 id="calculadora">Calcula tu préstamo</h2>
+
+<div class="cm-pres" style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:16px;padding:20px;margin:20px 0;">
+<div class="pg">
+<label class="s5">Importe del préstamo (€)<input type="number" id="pImp" value="10000" step="500" inputmode="decimal"></label>
+<label class="s5">TIN (%)<input type="number" id="pTin" value="7" step="0.1" inputmode="decimal"></label>
+<label class="s5">Plazo (meses)<input type="number" id="pMeses" value="60" step="6" min="3" max="120" inputmode="numeric"></label>
+<label class="s5">Comisión de apertura (%)<input type="number" id="pCom" value="0" step="0.25" min="0" inputmode="decimal"></label>
+</div>
+<div id="pOut" aria-live="polite" style="margin-top:16px;"></div>
+</div>
+
+<style>
+.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px 16px;}
+.s5{display:flex;flex-direction:column;gap:5px;font-size:14px;font-weight:bold;color:#334155;}
+.s5 input{padding:10px;font-size:16px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;font-family:inherit;}
+.p-big{font-size:30px;font-weight:bold;font-variant-numeric:tabular-nums;margin:2px 0;}
+#pOut .tabla td,#pOut .tabla th{padding:8px 10px;}
+details summary{cursor:pointer;font-weight:bold;color:#2563eb;margin-top:12px;}
+</style>
+
+<script>
+(function () {
+  function eur(n, d) { var f = Math.pow(10, d || 0), r = Math.round(n * f) / f, ent = Math.floor(Math.abs(r)), dec = Math.round((Math.abs(r) - ent) * f);
+    return (r < 0 ? "-" : "") + String(ent).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + (d ? "," + String(dec).padStart(d, "0") : "") + " €"; }
+  function v(id) { return Number(document.getElementById(id).value) || 0; }
+  function cuota(P, ia, n) { if (ia === 0) return P / n; var t = ia / 12; return P * t / (1 - Math.pow(1 + t, -n)); }
+  function tae(neto, q, n) { // tipo mensual r tal que neto = sum q/(1+r)^k
+    var lo = 0, hi = 1;
+    if (q * n <= neto) return 0;
+    for (var k = 0; k < 100; k++) { var m = (lo + hi) / 2, pv = q * (1 - Math.pow(1 + m, -n)) / m; if (pv > neto) lo = m; else hi = m; }
+    return Math.pow(1 + (lo + hi) / 2, 12) - 1;
+  }
+  function calc() {
+    var P = v("pImp"), i = v("pTin") / 100, n = Math.round(v("pMeses")), c = Math.max(0, v("pCom")) / 100;
+    var out = document.getElementById("pOut");
+    if (P <= 0 || n < 1 || i < 0) { out.innerHTML = "<strong>Revisa los datos.</strong>"; return; }
+    var q = cuota(P, i, n), inter = q * n - P, com = P * c, coste = inter + com, t = tae(P - com, q, n);
+    var filas = "", s = P, intA = 0, capA = 0;
+    for (var m = 1; m <= n; m++) { var it = s * i / 12, am = q - it; s -= am; intA += it; capA += am;
+      if (m % 12 === 0 || m === n) { filas += "<tr><td>" + (m % 12 === 0 ? "Año " + m / 12 : "Mes " + m) + "</td><td>" + eur(capA) + "</td><td>" + eur(intA) + "</td><td>" + eur(Math.max(0, s)) + "</td></tr>"; capA = 0; intA = 0; } }
+    out.innerHTML =
+      '<div style="font-size:14px;color:#64748b;">Cuota mensual</div><div class="p-big">' + eur(q, 2) + '</div>' +
+      '<div style="overflow-x:auto;"><table class="tabla">' +
+      '<tr><td>Intereses totales</td><td>' + eur(inter, 2) + '</td></tr>' +
+      (com > 0 ? '<tr><td>Comisión de apertura</td><td>' + eur(com, 2) + '</td></tr>' : '') +
+      '<tr><td><strong>Coste total del préstamo</strong></td><td><strong>' + eur(coste, 2) + '</strong></td></tr>' +
+      '<tr><td>Total que devuelves</td><td>' + eur(q * n + com, 2) + '</td></tr>' +
+      '<tr><td>TAE aproximada</td><td>' + (t * 100).toLocaleString("es-ES", {maximumFractionDigits: 2}) + ' %</td></tr>' +
+      '</table></div>' +
+      '<details><summary>Ver cuadro de amortización por años</summary><div style="overflow-x:auto;"><table class="tabla"><tr><th>Periodo</th><th>Capital devuelto</th><th>Intereses</th><th>Pendiente</th></tr>' + filas + '</table></div></details>';
+  }
+  ["pImp", "pTin", "pMeses", "pCom"].forEach(function (id) { document.getElementById(id).addEventListener("input", calc); });
+  calc();
+})();
+</script>
+
+<p style="font-size:13px;color:#64748b;">Cálculo con cuota constante (sistema francés). La TAE es aproximada e incluye solo la comisión de apertura; la oficial puede incluir otros gastos obligatorios. No es una oferta ni asesoramiento financiero.</p>
+
+<h2>Cuota de un préstamo según importe y plazo</h2>
+
+<p>Cuota mensual al 7 % TIN, sin comisiones:</p>
+
+<div class="scroll" style="overflow-x:auto;">
+<table class="tabla">
+{TABLA}</table>
+</div>
+
+<h2>TIN y TAE: la diferencia que más importa</h2>
+
+<ul>
+<li><strong>TIN (tipo de interés nominal):</strong> el interés «puro» que te cobran por el dinero.</li>
+<li><strong>TAE (tasa anual equivalente):</strong> incluye también las comisiones obligatorias y la frecuencia de pago. Es lo que te cuesta de verdad, y los bancos están obligados a indicarla.</li>
+</ul>
+
+<p>Dos préstamos al mismo TIN pueden tener TAE muy distintas si uno cobra comisión de apertura o te obliga a contratar un seguro. Compara siempre la TAE y el coste total en euros.</p>
+
+<h2>Antes de pedir un préstamo personal</h2>
+
+<ul>
+<li><strong>¿Lo necesitas de verdad?</strong> Para un capricho, ahorrar unos meses suele ser mucho más barato. Calcula <a href="cuanto-ahorrar-al-mes.html">cuánto ahorrar al mes</a> para llegar a la cantidad.</li>
+<li><strong>Ten un fondo de emergencia:</strong> muchos préstamos se piden por imprevistos que un colchón habría cubierto. Mira la <a href="calculadora-fondo-de-emergencia.html">calculadora de fondo de emergencia</a>.</li>
+<li><strong>Vigila tu nivel de deuda:</strong> la suma de todas tus cuotas no debería pasar del 30-35 % de tus ingresos. Además, cada cuota te resta capacidad si en el futuro quieres <a href="cuanta-hipoteca-puedo-pedir.html">pedir una hipoteca</a>.</li>
+<li><strong>Evita las tarjetas revolving y los minicréditos:</strong> suelen tener TAE muy altas y es fácil que la deuda no baje nunca.</li>
+</ul>
+
+<h2>Si ya tienes varias deudas: cómo salir antes</h2>
+
+<ul>
+<li><strong>Método avalancha:</strong> pagas el mínimo en todas y todo lo que puedas de más en la que tenga el interés más alto. Es el que menos intereses te hace pagar.</li>
+<li><strong>Método bola de nieve:</strong> pagas de más en la deuda más pequeña primero. Cuesta algo más en intereses, pero ver deudas desaparecer pronto ayuda a no abandonar.</li>
+<li><strong>Amortizar anticipadamente:</strong> en los préstamos al consumo, la comisión por devolverlo antes está limitada por ley (como máximo un 1 % de lo que amortizas si quedan más de 12 meses, y un 0,5 % si queda menos). Si te sobra dinero y tu préstamo es caro, amortizar suele ser la mejor «inversión».</li>
+</ul>
+
+<h2>Preguntas frecuentes</h2>
+
+<h3>¿Cuánto pago al mes por un préstamo de 10.000 €?</h3>
+<p>Al 7 % TIN, unos 198 € al mes a 5 años, o unos 309 € a 3 años. Cuanto más corto el plazo, más cuota pero menos intereses.</p>
+
+<h3>¿Cuál es la diferencia entre TIN y TAE?</h3>
+<p>El TIN es el interés nominal; la TAE incluye además las comisiones y gastos obligatorios. Para comparar préstamos, usa siempre la TAE.</p>
+
+<h3>¿Puedo devolver un préstamo personal antes de tiempo?</h3>
+<p>Sí. La ley de crédito al consumo te permite amortizarlo total o parcialmente, con una comisión máxima del 1 % de lo amortizado (0,5 % si quedan menos de 12 meses), y muchas entidades no cobran nada.</p>
+
+<h2>Sigue haciendo números</h2>
+<ul>
+<li><a href="comprar-coche-o-renting.html">¿Comprar coche o renting?</a></li>
+<li><a href="cuanto-ahorrar-al-mes.html">Cuánto ahorrar al mes según tu sueldo</a></li>
+<li><a href="calculadora-fondo-de-emergencia.html">Calculadora de fondo de emergencia</a></li>
+</ul>
+
+<div class="aviso">
+
+<strong>Recuerda:</strong>
+
+<p>
+Antes de firmar un préstamo, pide la ficha de información normalizada (INE) y compara la TAE y el coste total de varias ofertas.
+</p>
+
+</div>
+
+<p style="font-size:13px;color:#64748b;">
+Este contenido es educativo e informativo. No constituye asesoramiento financiero ni una recomendación personalizada de inversión. Las rentabilidades utilizadas son ejemplos matemáticos y no garantizan resultados futuros.
+</p>
+
+<br>
+
+<a href="/">← Volver a Capital en Marcha</a>
+
+</div>
+
+<footer class="cm-legal" style="max-width:900px;margin:10px auto 30px;padding:0 20px;text-align:center;font-family:Arial,sans-serif;font-size:13px;color:#64748b;line-height:1.9;">
+<a href="sobre.html" style="color:#475569;">Sobre</a> · <a href="contacto.html" style="color:#475569;">Contacto</a> · <a href="metodologia.html" style="color:#475569;">Metodología</a> · <a href="aviso-legal.html" style="color:#475569;">Aviso legal</a> · <a href="politica-privacidad.html" style="color:#475569;">Política de privacidad</a> · <a href="politica-cookies.html" style="color:#475569;">Cookies</a><br>
+© 2026 Capital en Marcha · Contenido educativo, no constituye asesoramiento financiero.
+</footer>
+</body>
+</html>
