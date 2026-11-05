@@ -1,0 +1,445 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-96x96.png" sizes="96x96" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<script src="cookies.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rentabilidad del IBEX 35: año a año desde 1993 (y con dividendos)</title>
+
+<meta name="description" content="Rentabilidad del IBEX 35 año a año desde 1993: 6,1 % anual en 10 años y 5,3 % en 30 sin dividendos. Y por qué con dividendos casi duplica la rentabilidad.">
+
+<style>
+body{font-family:Arial,sans-serif;background:#f8fafc;margin:0;color:#0f172a;}
+.container{max-width:900px;margin:50px auto;background:white;padding:40px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,0.08);}
+.marca{text-align:center;color:#2563eb;font-weight:bold;margin-bottom:15px;}
+h1{text-align:center;font-size:38px;}
+h2{margin-top:35px;}
+p,li{line-height:1.8;color:#334155;}
+table{width:100%;border-collapse:collapse;margin-top:20px;}
+th,td{border:1px solid #cbd5e1;padding:12px;text-align:left;}
+.neg{color:#dc2626;}
+.scroll{overflow-x:auto;}
+.aviso{background:#fff7ed;padding:25px;border-radius:14px;margin:30px 0;}
+@media (max-width:640px){.container{margin:0;border-radius:0;padding:22px;}h1{font-size:28px;}th,td{padding:8px;font-size:15px;}}
+th{background:#f1f5f9;}
+.cta{background:#ecfdf5;padding:25px;border-radius:14px;margin-top:30px;}
+a{color:#2563eb;text-decoration:none;font-weight:bold;}
+</style>
+
+<!-- Canonical -->
+<link rel="canonical" href="https://capitalenmarcha.com/rentabilidad-historica-ibex-35.html">
+
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://capitalenmarcha.com/rentabilidad-historica-ibex-35.html">
+<meta property="og:title" content="Rentabilidad del IBEX 35: año a año desde 1993 (y con dividendos)">
+<meta property="og:description" content="Rentabilidad del IBEX 35 año a año desde 1993: 6,1 % anual en 10 años y 5,3 % en 30 sin dividendos. Y por qué con dividendos casi duplica la rentabilidad.">
+<meta property="og:image" content="https://capitalenmarcha.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Rentabilidad del IBEX 35: año a año desde 1993 (y con dividendos)">
+<meta name="twitter:description" content="Rentabilidad del IBEX 35 año a año desde 1993: 6,1 % anual en 10 años y 5,3 % en 30 sin dividendos. Y por qué con dividendos casi duplica la rentabilidad.">
+<meta name="twitter:image" content="https://capitalenmarcha.com/og-image.jpg">
+
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Rentabilidad histórica del IBEX 35 año por año (1993-2025)",
+  "dateModified": "2026-11-05",
+  "inLanguage": "es-ES",
+  "description": "Rentabilidad del IBEX 35 año a año desde 1993: 6,1 % anual en 10 años y 5,3 % en 30 sin dividendos. Y por qué con dividendos casi duplica la rentabilidad.",
+  "url": "https://capitalenmarcha.com/rentabilidad-historica-ibex-35.html",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://capitalenmarcha.com/rentabilidad-historica-ibex-35.html"
+  },
+  "image": "https://capitalenmarcha.com/og-image.jpg",
+  "author": {
+    "@type": "Organization",
+    "name": "Capital en Marcha"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Capital en Marcha"
+  }
+}
+</script>
+
+<style>
+.cm-nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 20px;padding-bottom:18px;margin-bottom:24px;border-bottom:1px solid #e2e8f0;font-family:Arial,sans-serif;}
+.cm-logo{color:#2563eb;font-weight:bold;font-size:17px;text-decoration:none;}
+.cm-menu{display:flex;flex-wrap:wrap;gap:6px 18px;}
+.cm-menu a{color:#334155;font-weight:bold;font-size:15px;text-decoration:none;}
+.cm-menu a:hover{color:#2563eb;text-decoration:underline;}
+.cm-nav a:focus-visible{outline:2px solid #2563eb;outline-offset:2px;}
+@media (max-width:640px){.cm-nav{justify-content:center;text-align:center;}.cm-menu{justify-content:center;}}
+</style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "¿Cuánto ha rentado el IBEX 35 en los últimos 10 años?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Sin dividendos, un 6,1 % anual de 2016 a 2025: 1.000 € se convirtieron en unos 1.814 €. Con los dividendos reinvertidos, la rentabilidad es varios puntos mayor."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Cuál es la rentabilidad media histórica del IBEX 35?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Sin dividendos, un 6,2 % anual de 1993 a 2025 y un 5,3 % en los últimos 30 años. Con dividendos, entre 1995 y 2019 rindió un 8,7 % anual frente al 4,6 % sin ellos."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Por qué el IBEX 35 con dividendos rinde tanto más?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Porque el IBEX 35 que se publica es un índice de precios: no suma los dividendos que reparten las empresas, que en la bolsa española son altos (del orden de un 3-4 % al año). Un fondo indexado los reinvierte, así que se parece más al IBEX 35 con dividendos."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Cuánto tardó el IBEX 35 en recuperar su máximo de 2007?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Sin dividendos, cerró 2007 en 15.182 puntos y no volvió a cerrar un año por encima hasta 2025 (17.308 puntos): 18 años. Con los dividendos reinvertidos, a finales de 2014 ya se había recuperado el nivel de finales de 2007."
+   }
+  }
+ ]
+}
+</script>
+
+<style>
+.cm-chart{--surface:#ffffff;--ink:#0f172a;--ink2:#475569;--muted:#64748b;--grid:#eef2f7;--axis:#94a3b8;--pos:#059669;--neg:#dc2626;
+  background:var(--surface);border:1px solid #e2e8f0;border-radius:16px;padding:20px 20px 12px;margin:18px 0 22px;position:relative;font-family:Arial,sans-serif;}
+.cm-chart .ch-kick{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
+.cm-chart .ch-hero{font-size:30px;font-weight:bold;color:var(--ink);margin-top:2px;}
+.cm-chart .ch-sub{font-size:14px;color:var(--ink2);margin-top:2px;line-height:1.5;}
+.cm-chart .ch-leg{display:flex;gap:16px;font-size:13px;color:var(--ink2);margin-top:10px;flex-wrap:wrap;}
+.cm-chart .ch-leg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px;}
+.cm-chart svg{display:block;width:100%;height:auto;overflow:visible;margin-top:8px;touch-action:pan-y;}
+.cm-chart svg:focus{outline:none;}
+.cm-chart svg:focus-visible{outline:2px solid #2563eb;outline-offset:4px;border-radius:6px;}
+.cm-chart .ch-tip{position:absolute;pointer-events:none;background:#0f172a;color:#f8fafc;border-radius:10px;padding:8px 12px;font-size:13px;line-height:1.5;box-shadow:0 10px 30px rgba(15,23,42,.25);opacity:0;transition:opacity .12s;z-index:5;white-space:nowrap;}
+.cm-chart .ch-tip b{font-size:15px;font-variant-numeric:tabular-nums;}
+.cm-chart .bar{transform-box:fill-box;transform-origin:center bottom;transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .15s;}
+.cm-chart .bar.neg{transform-origin:center top;}
+.cm-chart .bar.pre{transform:scaleY(0);}
+@media (prefers-reduced-motion:reduce){.cm-chart .bar{transition:none;}}
+@media (max-width:640px){.cm-chart{padding:16px 12px 10px;}.cm-chart .ch-hero{font-size:24px;}}
+</style>
+
+
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://capitalenmarcha.com/"}, {"@type": "ListItem", "position": 2, "name": "Invertir", "item": "https://capitalenmarcha.com/invertir.html"}, {"@type": "ListItem", "position": 3, "name": "Rentabilidad histórica del IBEX 35", "item": "https://capitalenmarcha.com/rentabilidad-historica-ibex-35.html"}]}
+</script>
+</head>
+
+<body>
+
+<div class="container">
+
+<nav class="cm-nav" aria-label="Menú principal">
+<a class="cm-logo" href="/">Capital en Marcha</a>
+<div class="cm-menu">
+<a href="calculadoras.html">Calculadoras</a>
+<a href="invertir.html">Invertir</a>
+<a href="libertad-financiera-recursos.html">Libertad financiera</a>
+<a href="articulos.html">Artículos</a>
+<a href="sobre.html">Sobre</a>
+</div>
+</nav>
+
+<h1>Rentabilidad histórica del IBEX 35 año por año (1993-2025)</h1>
+
+<p>
+De 1993 a 2025, el IBEX 35 ha tenido una <strong>rentabilidad media del 6,2 % anual</strong> sin contar los dividendos. En ese tiempo, <strong>20 de 33 años</strong> terminaron en positivo; el peor fue 2008 (−39,4 %) y el mejor 1993 (+54,2 %). Pero esa cifra engaña: <strong>el IBEX 35 que sale en las noticias no incluye los dividendos</strong>, y en la bolsa española pesan mucho. Abajo tienes los datos de cada año y la comparación con el IBEX 35 con dividendos.
+</p>
+
+<div style="background:#eff6ff;border-left:4px solid #2563eb;border-radius:12px;padding:16px 22px;margin:22px 0;">
+<strong>Rentabilidad media anual del IBEX 35 (sin dividendos, hasta 2025)</strong>
+<ul style="margin:8px 0 0;padding-left:20px;">
+<li><strong>Últimos 10 años (2016-2025):</strong> 6,1 % anual</li>
+<li><strong>Últimos 20 años (2006-2025):</strong> 2,4 % anual</li>
+<li><strong>Últimos 30 años (1996-2025):</strong> 5,3 % anual</li>
+<li><strong>Con dividendos (1995-2019):</strong> 8,7 % anual, frente a 4,6 % sin ellos en el mismo periodo</li>
+</ul>
+</div>
+
+<h2>Rentabilidad media del IBEX 35 según el plazo</h2>
+
+<p>Rentabilidad anual compuesta del índice de precios (sin dividendos), hasta el 31 de diciembre de 2025:</p>
+
+<div class="scroll">
+<table>
+<tr><th>Periodo</th><th>Rentabilidad media anual</th><th>1.000 € se convirtieron en</th></tr>
+<tr><td>Últimos 5 años (2021-2025)</td><td>16,5 %</td><td>2.144 €</td></tr>
+<tr><td>Últimos 10 años (2016-2025)</td><td>6,1 %</td><td>1.814 €</td></tr>
+<tr><td>Últimos 20 años (2006-2025)</td><td>2,4 %</td><td>1.613 €</td></tr>
+<tr><td>Últimos 30 años (1996-2025)</td><td>5,3 %</td><td>4.768 €</td></tr>
+<tr><td>Desde 1993 (33 años)</td><td>6,2 %</td><td>7.384 €</td></tr>
+</table>
+</div>
+
+<p>Los últimos 5 años parecen espectaculares por el enorme 2025 (+49,3 %), el segundo mejor año del índice desde 1993. Pero a 20 años, sin dividendos, la rentabilidad apenas pasa del 2 % anual, más o menos lo mismo que la inflación. La razón principal: el índice cerró 2007 en 15.182 puntos y <strong>no volvió a cerrar un año por encima hasta 2025</strong> (17.308 puntos), 18 años después.</p>
+
+<h2>Con dividendos, otra historia</h2>
+
+<p>El IBEX 35 publicado es un índice de precios. Si cobras los dividendos y los reinviertes, como hace un fondo indexado, el resultado cambia por completo. Entre 1995 y 2019:</p>
+
+<div style="background:#ecfdf5;border-left:4px solid #059669;border-radius:12px;padding:16px 22px;margin:22px 0;">
+<strong>1.000 € invertidos en 1995 se convirtieron a finales de 2019 en 3.093 € sin dividendos, y en 8.096 € con los dividendos reinvertidos.</strong> Del 4,6 % al 8,7 % anual: casi el doble.
+</div>
+
+<div class="scroll">
+<table>
+<tr><th>Año</th><th>IBEX 35 (sin dividendos)</th><th>IBEX 35 con dividendos</th></tr>
+<tr><td>2019</td><td>11,82 %</td><td>18,08 %</td></tr>
+<tr><td>2018</td><td class="neg">−14,97 %</td><td class="neg">−11,51 %</td></tr>
+<tr><td>2017</td><td>7,40 %</td><td>11,25 %</td></tr>
+<tr><td>2016</td><td class="neg">−2,01 %</td><td>2,60 %</td></tr>
+<tr><td>2015</td><td class="neg">−7,15 %</td><td class="neg">−3,35 %</td></tr>
+<tr><td>2014</td><td>3,66 %</td><td>8,62 %</td></tr>
+<tr><td>2013</td><td>21,42 %</td><td>27,75 %</td></tr>
+<tr><td>2012</td><td class="neg">−4,66 %</td><td>2,78 %</td></tr>
+<tr><td>2011</td><td class="neg">−13,11 %</td><td class="neg">−7,75 %</td></tr>
+<tr><td>2010</td><td class="neg">−17,43 %</td><td class="neg">−12,93 %</td></tr>
+<tr><td>2009</td><td>29,84 %</td><td>38,27 %</td></tr>
+<tr><td>2008</td><td class="neg">−39,43 %</td><td class="neg">−36,50 %</td></tr>
+<tr><td>2007</td><td>7,32 %</td><td>10,71 %</td></tr>
+<tr><td>2006</td><td>31,79 %</td><td>36,04 %</td></tr>
+<tr><td>2005</td><td>18,20 %</td><td>21,98 %</td></tr>
+<tr><td>2004</td><td>17,37 %</td><td>21,09 %</td></tr>
+<tr><td>2003</td><td>28,17 %</td><td>32,19 %</td></tr>
+<tr><td>2002</td><td class="neg">−28,11 %</td><td class="neg">−26,50 %</td></tr>
+<tr><td>2001</td><td class="neg">−7,82 %</td><td class="neg">−6,06 %</td></tr>
+<tr><td>2000</td><td class="neg">−21,75 %</td><td class="neg">−20,54 %</td></tr>
+<tr><td>1999</td><td>18,35 %</td><td>20,08 %</td></tr>
+<tr><td>1998</td><td>35,58 %</td><td>38,64 %</td></tr>
+<tr><td>1997</td><td>40,75 %</td><td>44,46 %</td></tr>
+<tr><td>1996</td><td>41,97 %</td><td>47,05 %</td></tr>
+<tr><td>1995</td><td>17,59 %</td><td>22,38 %</td></tr>
+</table>
+</div>
+
+<p style="font-size:13px;color:#64748b;">Serie con dividendos 1995-2019 recogida en la <a href="https://bogleheads.es/wiki/indice-ibex-35-con-dividendos" rel="nofollow noopener" target="_blank">wiki de Bogleheads España</a> a partir de datos de BME. BME publica el índice «IBEX 35 con Dividendos» desde 2012, con datos calculados hacia atrás.</p>
+
+<p>Por eso, cuando alguien diga que «el IBEX lleva 20 años sin subir», tiene razón en el índice de precios, pero no en lo que ha ganado un inversor que cobraba y reinvertía los dividendos.</p>
+
+<h2>Rentabilidad del IBEX 35 año por año (1993-2025)</h2>
+
+<p>Variación anual del índice (sin dividendos) y punto de cierre de cada año. En rojo, los años negativos.</p>
+
+<div class="cm-chart" id="graficoIbex">
+<div class="ch-kick">IBEX 35 · 1993-2025 · sin dividendos</div>
+<div class="ch-hero">20 de 33 años en positivo</div>
+<div class="ch-sub">Cada barra es un año. Pasa el dedo o el ratón por encima para ver la rentabilidad exacta.</div>
+<div class="ch-leg"><span><i style="background:#059669"></i>Año positivo</span><span><i style="background:#dc2626"></i>Año negativo</span></div>
+<svg id="ibexSvg" viewBox="0 0 720 300" role="img" tabindex="0" aria-label="Rentabilidad anual del IBEX 35 de 1993 a 2025: 20 años positivos y 13 negativos. Mejor año 1993 (54,2 %), peor año 2008 (−39,4 %). Valores exactos en la tabla de abajo."></svg>
+<div class="ch-tip" id="ibexTip" role="status" aria-live="polite"></div>
+</div>
+<script>
+(function () {
+  var DATA = [[1993, 54.2], [1994, -14.59], [1995, 17.59], [1996, 41.97], [1997, 40.75], [1998, 35.58], [1999, 18.35], [2000, -21.75], [2001, -7.82], [2002, -28.11], [2003, 28.17], [2004, 17.37], [2005, 18.2], [2006, 31.79], [2007, 7.32], [2008, -39.43], [2009, 29.84], [2010, -17.43], [2011, -13.11], [2012, -4.66], [2013, 21.42], [2014, 3.66], [2015, -7.15], [2016, -2.01], [2017, 7.4], [2018, -14.97], [2019, 11.82], [2020, -15.45], [2021, 7.93], [2022, -5.56], [2023, 22.76], [2024, 14.78], [2025, 49.27]], NS = "http://www.w3.org/2000/svg";
+  var svg = document.getElementById("ibexSvg"), box = document.getElementById("graficoIbex"), tip = document.getElementById("ibexTip");
+  var pct = function (v, s) { return (s && v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v).toFixed(s ? 1 : 2).replace(".", ",") + " %"; };
+  function el(n, a, p) { var e = document.createElementNS(NS, n); for (var k in a) e.setAttribute(k, a[k]); if (p) p.appendChild(e); return e; }
+  var first = true;
+  function draw() {
+    var W = Math.max(280, Math.round(svg.getBoundingClientRect().width || 720)), small = W < 520, H = small ? 250 : 300;
+    var M = {t: 22, r: 8, b: 26, l: small ? 40 : 46};
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    var ymax = 60, ymin = -60, iw = W - M.l - M.r, ih = H - M.t - M.b;
+    var y = function (v) { return M.t + (ymax - v) / (ymax - ymin) * ih; };
+    var slot = iw / DATA.length, gap = slot >= 8 ? 2 : 1, bw = Math.min(24, slot - gap);
+    var g = el("g", {"aria-hidden": "true"}, svg);
+    for (var t = ymin; t <= ymax; t += 30) {
+      el("line", {x1: M.l, x2: W - M.r, y1: y(t), y2: y(t), stroke: t === 0 ? "var(--axis)" : "var(--grid)", "stroke-width": 1}, g);
+      var tx = el("text", {x: M.l - 6, y: y(t) + 4, "text-anchor": "end", "font-size": 12, fill: "var(--muted)"}, g);
+      tx.textContent = (t > 0 ? "+" : t < 0 ? "−" : "") + Math.abs(t) + " %";
+    }
+    var every = small ? 8 : 4;
+    DATA.forEach(function (d, i) {
+      if (d[0] % every === 0 || i === DATA.length - 1 && !small) {
+        var lx = el("text", {x: M.l + slot * i + slot / 2, y: H - 8, "text-anchor": "middle", "font-size": 12, fill: "var(--muted)"}, g);
+        lx.textContent = d[0];
+      }
+    });
+    var bars = [], r = Math.min(4, bw / 2), y0 = y(0);
+    DATA.forEach(function (d, i) {
+      var v = d[1], x0 = M.l + slot * i + (slot - bw) / 2, hgt = Math.max(1.5, Math.abs(y(v) - y0)), rr = Math.min(r, hgt);
+      var path = v >= 0
+        ? "M" + x0 + "," + y0 + "V" + (y0 - hgt + rr) + "Q" + x0 + "," + (y0 - hgt) + " " + (x0 + rr) + "," + (y0 - hgt) + "H" + (x0 + bw - rr) + "Q" + (x0 + bw) + "," + (y0 - hgt) + " " + (x0 + bw) + "," + (y0 - hgt + rr) + "V" + y0 + "Z"
+        : "M" + x0 + "," + y0 + "V" + (y0 + hgt - rr) + "Q" + x0 + "," + (y0 + hgt) + " " + (x0 + rr) + "," + (y0 + hgt) + "H" + (x0 + bw - rr) + "Q" + (x0 + bw) + "," + (y0 + hgt) + " " + (x0 + bw) + "," + (y0 + hgt - rr) + "V" + y0 + "Z";
+      var b = el("path", {d: path, fill: v >= 0 ? "var(--pos)" : "var(--neg)", "class": "bar" + (v < 0 ? " neg" : "") + (first ? " pre" : "")}, svg);
+      bars.push(b);
+    });
+    // Anotaciones: mejor y peor año
+    [[1993, "Mejor: 1993"], [2008, "Peor: 2008"]].forEach(function (a) {
+      var i = DATA.findIndex(function (d) { return d[0] === a[0]; }), v = DATA[i][1];
+      var cx = M.l + slot * i + slot / 2;
+      var t = v >= 0
+        ? el("text", {x: cx, y: y(v) - 7, "text-anchor": "middle", "font-size": 12, "font-weight": "bold", fill: "var(--ink)"}, svg)
+        : el("text", {x: cx + bw / 2 + 5, y: y(v) - 2, "text-anchor": "start", "font-size": 12, "font-weight": "bold", fill: "var(--ink)", stroke: "var(--surface)", "stroke-width": 3, "paint-order": "stroke"}, svg);
+      t.textContent = a[1] + " " + pct(v, true);
+      if (v >= 0 && i < 3) { t.setAttribute("text-anchor", "start"); t.setAttribute("x", cx - bw / 2); }
+      if (v < 0 && t.getBBox && t.getBBox().x + t.getBBox().width > W - 2) { t.setAttribute("text-anchor", "end"); t.setAttribute("x", cx - bw / 2 - 5); }
+    });
+    if (first) { first = false; requestAnimationFrame(function () { requestAnimationFrame(function () { bars.forEach(function (b, k) { b.style.transitionDelay = (k * 12) + "ms"; b.classList.remove("pre"); }); setTimeout(function () { bars.forEach(function (b) { b.style.transitionDelay = "0ms"; }); }, 1500); }); }); }
+    var active = -1;
+    function show(i) {
+      if (i < 0 || i >= DATA.length) return; active = i;
+      bars.forEach(function (b, k) { b.style.opacity = k === i ? 1 : 0.35; });
+      var d = DATA[i]; tip.textContent = "";
+      var s1 = document.createElement("span"); s1.textContent = d[0] + ": ";
+      var s2 = document.createElement("b"); s2.textContent = pct(d[1], false);
+      tip.appendChild(s1); tip.appendChild(s2);
+      var rect = svg.getBoundingClientRect(), br = box.getBoundingClientRect(), s = rect.width / W;
+      tip.style.opacity = 1;
+      var tw = tip.offsetWidth, th = tip.offsetHeight, cx = (M.l + slot * i + slot / 2) * s + rect.left - br.left;
+      var top = (d[1] >= 0 ? y(d[1]) : y0) * s + rect.top - br.top - th - 10;
+      tip.style.left = Math.min(Math.max(8, cx - tw / 2), br.width - tw - 8) + "px";
+      tip.style.top = Math.max(4, top) + "px";
+    }
+    function hide() { active = -1; tip.style.opacity = 0; bars.forEach(function (b) { b.style.opacity = 1; }); }
+    svg.onpointermove = function (e) {
+      var rect = svg.getBoundingClientRect(), mx = (e.clientX - rect.left) * W / rect.width;
+      if (mx < M.l || mx > W - M.r) { hide(); return; }
+      show(Math.floor((mx - M.l) / slot));
+    };
+    svg.onpointerleave = hide; svg.onblur = hide;
+    svg.onfocus = function () { show(DATA.length - 1); };
+    svg.onkeydown = function (e) {
+      if (e.key === "ArrowRight") { show(Math.min(DATA.length - 1, active < 0 ? 0 : active + 1)); e.preventDefault(); }
+      else if (e.key === "ArrowLeft") { show(Math.max(0, active < 0 ? DATA.length - 1 : active - 1)); e.preventDefault(); }
+      else if (e.key === "Escape") hide();
+    };
+  }
+  draw();
+  var rt; window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(draw, 150); });
+})();
+</script>
+
+
+
+<div class="scroll">
+<table>
+<tr><th>Año</th><th>Cierre</th><th>Variación</th><th>Año</th><th>Variación</th></tr>
+<tr><td>2025</td><td>17.308</td><td>49,27 %</td><td>2008</td><td class="neg">−39,43 %</td></tr>
+<tr><td>2024</td><td>11.595</td><td>14,78 %</td><td>2007</td><td>7,32 %</td></tr>
+<tr><td>2023</td><td>10.102</td><td>22,76 %</td><td>2006</td><td>31,79 %</td></tr>
+<tr><td>2022</td><td>8.229</td><td class="neg">−5,56 %</td><td>2005</td><td>18,20 %</td></tr>
+<tr><td>2021</td><td>8.714</td><td>7,93 %</td><td>2004</td><td>17,37 %</td></tr>
+<tr><td>2020</td><td>8.074</td><td class="neg">−15,45 %</td><td>2003</td><td>28,17 %</td></tr>
+<tr><td>2019</td><td>9.549</td><td>11,82 %</td><td>2002</td><td class="neg">−28,11 %</td></tr>
+<tr><td>2018</td><td>8.540</td><td class="neg">−14,97 %</td><td>2001</td><td class="neg">−7,82 %</td></tr>
+<tr><td>2017</td><td>10.044</td><td>7,40 %</td><td>2000</td><td class="neg">−21,75 %</td></tr>
+<tr><td>2016</td><td>9.352</td><td class="neg">−2,01 %</td><td>1999</td><td>18,35 %</td></tr>
+<tr><td>2015</td><td>9.544</td><td class="neg">−7,15 %</td><td>1998</td><td>35,58 %</td></tr>
+<tr><td>2014</td><td>10.279</td><td>3,66 %</td><td>1997</td><td>40,75 %</td></tr>
+<tr><td>2013</td><td>9.917</td><td>21,42 %</td><td>1996</td><td>41,97 %</td></tr>
+<tr><td>2012</td><td>8.168</td><td class="neg">−4,66 %</td><td>1995</td><td>17,59 %</td></tr>
+<tr><td>2011</td><td>8.566</td><td class="neg">−13,11 %</td><td>1994</td><td class="neg">−14,59 %</td></tr>
+<tr><td>2010</td><td>9.859</td><td class="neg">−17,43 %</td><td>1993</td><td>54,20 %</td></tr>
+<tr><td>2009</td><td>11.940</td><td>29,84 %</td><td></td><td></td></tr>
+</table>
+</div>
+
+<p style="font-size:13px;color:#64748b;">Fuente: cierres y variaciones anuales del IBEX 35 recogidos en <a href="https://en.wikipedia.org/wiki/IBEX_35" rel="nofollow noopener" target="_blank">Wikipedia</a>, que coinciden con la <a href="https://www.bolsasymercados.es/dam/descargas/indices/factsheet-ibex-35-es.pdf" rel="nofollow noopener" target="_blank">ficha oficial de BME</a> para 2017-2024. Las medias por periodo son cálculos propios.</p>
+
+<h2>Mejores y peores años</h2>
+
+<ul>
+<li><strong>Mejores años:</strong> 1993 (+54,2 %), 2025 (+49,3 %), 1996 (+42,0 %), 1997 (+40,8 %).</li>
+<li><strong>Peores años:</strong> 2008 (−39,4 %), 2002 (−28,1 %), 2000 (−21,8 %), 2010 (−17,4 %).</li>
+<li><strong>Años negativos:</strong> 13 de 33, más de uno de cada tres. Bastante más que en el S&amp;P 500 o el MSCI World.</li>
+</ul>
+
+<h2>¿Cuántas veces se ha perdido dinero según el plazo?</h2>
+
+<p>Mirando todos los periodos posibles de años naturales seguidos, sin dividendos:</p>
+
+<div class="scroll">
+<table>
+<tr><th>Plazo</th><th>Periodos con pérdidas</th><th>Peor resultado (anual)</th><th>Mejor resultado (anual)</th></tr>
+<tr><td>1 año</td><td>13 de 33 (39 %)</td><td class="neg">−39,4 % (2008)</td><td>+54,2 % (1993)</td></tr>
+<tr><td>5 años</td><td>13 de 29 (45 %)</td><td class="neg">−11,7 % (2008-2012)</td><td>+30,4 % (1995-1999)</td></tr>
+<tr><td>10 años</td><td>7 de 24 (29 %)</td><td class="neg">−4,1 % (2007-2016)</td><td>+11,4 % (1996-2005)</td></tr>
+<tr><td>15 años</td><td>5 de 19 (26 %)</td><td class="neg">−4,0 % (2008-2022)</td><td>+13,3 % (1993-2007)</td></tr>
+<tr><td>20 años</td><td>3 de 14 (21 %)</td><td class="neg">−1,0 % (2000-2019)</td><td>+6,4 % (1993-2012)</td></tr>
+</table>
+</div>
+
+<p>Sin dividendos, el IBEX 35 ha tenido incluso periodos de 20 años en pérdidas, algo que no ha pasado en el S&amp;P 500 ni en el MSCI World. Con los dividendos, el panorama es mucho mejor, pero aun así la bolsa española ha sido más irregular que la mundial.</p>
+
+<h2>IBEX 35 frente a la bolsa mundial</h2>
+
+<p>El IBEX 35 reúne solo 35 empresas de un país, con mucho peso de bancos, energía y constructoras. Eso lo hace más volátil y menos diversificado que un índice mundial. Para comparar: en los últimos 30 años, el <a href="rentabilidad-historica-msci-world.html">MSCI World</a> rindió un 8,6 % anual y el <a href="rentabilidad-historica-sp500.html">S&amp;P 500</a>, un 10,4 %, en ambos casos con dividendos y en dólares (la rentabilidad en euros es algo distinta por el tipo de cambio). Por eso la mayoría de los inversores indexados en España usan un fondo global como núcleo de la cartera, y no solo el IBEX 35.</p>
+
+<div class="aviso">
+<strong>Importante</strong>
+<p>Las rentabilidades pasadas no garantizan rentabilidades futuras. Más sobre el índice en <a href="que-es-el-ibex35.html">qué es el IBEX 35</a>.</p>
+</div>
+
+<h2>Preguntas frecuentes</h2>
+
+<h3>¿Cuánto ha rentado el IBEX 35 en los últimos 10 años?</h3>
+<p>Sin dividendos, un 6,1 % anual de 2016 a 2025: 1.000 € se convirtieron en unos 1.814 €. Con los dividendos reinvertidos, la rentabilidad es varios puntos mayor.</p>
+
+<h3>¿Cuál es la rentabilidad media histórica del IBEX 35?</h3>
+<p>Sin dividendos, un 6,2 % anual de 1993 a 2025 y un 5,3 % en los últimos 30 años. Con dividendos, entre 1995 y 2019 rindió un 8,7 % anual frente al 4,6 % sin ellos.</p>
+
+<h3>¿Por qué el IBEX 35 con dividendos rinde tanto más?</h3>
+<p>Porque el IBEX 35 que se publica es un índice de precios: no suma los dividendos que reparten las empresas, que en la bolsa española son altos (del orden de un 3-4 % al año). Un fondo indexado los reinvierte, así que se parece más al IBEX 35 con dividendos.</p>
+
+<h3>¿Cuánto tardó el IBEX 35 en recuperar su máximo de 2007?</h3>
+<p>Sin dividendos, cerró 2007 en 15.182 puntos y no volvió a cerrar un año por encima hasta 2025 (17.308 puntos): 18 años. Con los dividendos reinvertidos, a finales de 2014 ya se había recuperado el nivel de finales de 2007.</p>
+
+<div class="cta">
+<h2>Calcula cuánto puede crecer tu dinero</h2>
+<p>Prueba con tu capital, tu aportación mensual y una rentabilidad prudente.</p>
+<a href="interes-compuesto.html">Usar la calculadora →</a>
+</div>
+
+<p style="font-size:13px;color:#64748b;margin-top:30px;">
+Este contenido es educativo e informativo. No constituye asesoramiento financiero, fiscal ni de inversión. Consulta <a href="metodologia.html">cómo hacemos los cálculos</a>.
+</p>
+
+<br>
+<h2>También te puede interesar</h2>
+
+<ul>
+<li><a href="que-es-el-ibex35.html">¿Qué es el IBEX 35?</a></li>
+<li><a href="rentabilidad-historica-sp500.html">Rentabilidad histórica del S&amp;P 500</a></li>
+<li><a href="rentabilidad-historica-msci-world.html">Rentabilidad histórica del MSCI World</a></li>
+<li><a href="fondos-indexados-baratos.html">Fondos indexados baratos</a></li>
+</ul>
+<a href="/">← Volver a Capital en Marcha</a>
+
+</div>
+
+<footer class="cm-legal" style="max-width:900px;margin:10px auto 30px;padding:0 20px;text-align:center;font-family:Arial,sans-serif;font-size:13px;color:#64748b;line-height:1.9;">
+<a href="sobre.html" style="color:#475569;">Sobre</a> · <a href="contacto.html" style="color:#475569;">Contacto</a> · <a href="metodologia.html" style="color:#475569;">Metodología</a> · <a href="aviso-legal.html" style="color:#475569;">Aviso legal</a> · <a href="politica-privacidad.html" style="color:#475569;">Política de privacidad</a> · <a href="politica-cookies.html" style="color:#475569;">Cookies</a><br>
+© 2026 Capital en Marcha · Contenido educativo, no constituye asesoramiento financiero.
+</footer>
+</body>
+</html>
